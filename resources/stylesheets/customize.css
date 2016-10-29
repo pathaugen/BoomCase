@@ -1,0 +1,44 @@
+
+
+
+#case-container {
+	text-align:			center;
+}
+
+
+.case-block {
+	display:			inline-block;
+	text-align:			center;
+	background-color:	white;
+	padding:			1%;
+	margin:				1%;
+	/* float:				left; */
+	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
+}
+.case-block img {
+	width:				200px;
+	height:				200px;
+}
+.case-block:hover {
+	/* background-color:	yellow; */
+}
+.case-block .name-container {
+	color:				black;
+	font-size:			1.5em;
+	display:			block;
+	margin-top:			5px;
+}
+.case-block .watt-container {
+	font-size:			0.9em;
+	display:			block;
+	margin-top:			5px;
+}
+.case-block .price-container {
+	font-size:			1.2em;
+	display:			block;
+	margin-top:			5px;
+}
+
+
+
+

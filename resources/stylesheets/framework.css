@@ -1,0 +1,146 @@
+
+
+
+
+/* families": ["Clarendon-Medium", "Clarendon-Light", "Clarendon-Xbold"] */
+/* http://dhdg4tktn3ydk.cloudfront.net/ */
+/* Clarendon-Medium webfont (new-bulletproof) */ 
+@font-face {
+	font-family: 'Clarendon-Medium';
+	src:	url('/Clarendon-Medium.eot?#iefix') format('embedded-opentype'),
+			url('/Clarendon-Medium.woff') format('woff'),
+			url('/Clarendon-Medium.ttf')  format('truetype'),
+			url('/Clarendon-Medium.svg#webfont') format('svg');
+}
+/* Clarendon-Light webfont (new-bulletproof) */ 
+@font-face {
+    font-family: 'Clarendon-Light';
+    src: url('/Clarendon-Light.eot?#iefix') format('embedded-opentype'),
+         url('/Clarendon-Light.woff') format('woff'),
+         url('/Clarendon-Light.ttf')  format('truetype'),
+         url('/Clarendon-Light.svg#webfont') format('svg');
+}
+/* Clarendon-Xbold webfont (new-bulletproof) */ 
+@font-face {
+    font-family: 'Clarendon-Xbold';
+    src: url('/Clarendon-Xbold.eot?#iefix') format('embedded-opentype'),
+         url('/Clarendon-Xbold.woff') format('woff'),
+         url('/Clarendon-Xbold.ttf')  format('truetype'),
+         url('/Clarendon-Xbold.svg#webfont') format('svg');
+}
+
+
+
+
+body {
+	margin:				0px 1% 0px 1%;
+	
+	background-image:	url(/background.jpg);
+	background-color:	rgb(238, 238, 238);
+	background-position:0px 0px;
+	background-repeat:	repeat;
+    
+	color:				rgb(102, 102, 102);
+	font-family:		Clarendon-Light;
+}
+h1 {
+	color:				black;
+	font-family:		Clarendon-Xbold;
+}
+a {
+	text-decoration:	none;
+	color:				rgb(102, 102, 102);
+}
+a:hover {
+	text-decoration:	underline;
+	color:				black;
+}
+
+
+#header-container {
+	padding:			0px 10px 10px 10px;
+	
+	/*background-color:	lightgrey;*/
+    background-color:	rgba(255, 255, 255, 0.9); /* 0.952941 */
+    box-shadow:			rgba(0, 0, 0, 0.2) 0px 0px 4px;
+}
+
+
+#header-container #logo-container {
+	float:				left;
+}
+#header-container #logo-container img {
+	margin-top:			10px;
+}
+
+
+#header-container ul {
+	margin:				0px;
+	padding:			10px 0px 10px 0px;
+}
+#header-container ul li {
+	display:			inline;
+}
+
+
+#header-container #social-media-container {
+	text-align:			right;
+	font-size:			1.2em;
+}
+#header-container #social-media-container ul li {
+    margin:				0px 5px;
+}
+#header-container #social-media-container ul li a {
+	text-decoration:	none;
+}
+#header-container #social-media-container ul li a:hover {
+	text-decoration:	none;
+}
+#header-container #social-media-container ul li span {
+	display:			none;
+}
+
+
+#header-container #navigation-bar-container {
+	text-align:			center;
+}
+#header-container #navigation-bar-container ul li {
+	/*font-weight:		bold;*/
+	font-family:		Clarendon-Medium;
+    text-transform:		uppercase;
+    margin:				0px 10px;
+}
+#header-container #navigation-bar-container ul li a {
+	color:				black;
+	text-decoration:	none;
+}
+#header-container #navigation-bar-container ul li a:hover {
+	text-decoration:	underline;
+}
+
+
+#stylesheet-picker {
+	text-align:			right;
+}
+
+
+#footer-container {
+	clear:				both;
+	/* background-color:	lightgrey; */
+	padding:			1%;
+	
+	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
+	background:			rgba(255, 255, 255, 0.9); /* 0.6 */
+}
+#footer-container #payment-cards {
+	text-align:			center;
+}
+#footer-container #copyright-container {
+	text-align:			center;
+}
+
+
+
+
+
+

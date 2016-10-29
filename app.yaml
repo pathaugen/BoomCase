@@ -1,0 +1,38 @@
+
+
+application: pmd-boomcase
+version: 2016-10-25-a
+runtime: go
+api_version: go1
+
+
+handlers:
+- url: /resources/stylesheets
+  static_dir: resources/stylesheets
+  
+- url: /resources/external
+  static_dir: resources/external
+  
+  
+# All URLs ending in .gif .png .jpg are treated as paths to
+# static files in the resources/images/ directory. The URL pattern is a
+# regular expression, with a grouping that is inserted into the path to the file.
+- url: /(.*\.(gif|png|jpg))$
+  static_files: resources/images/\1
+  upload: resources/images/.*\.(gif|png|jpg)$
+  
+  
+- url: /(.*\.(webm|mp4))$
+  static_files: resources/videos/\1
+  upload: resources/videos/.*\.(webm|mp4)$
+  
+  
+- url: /(.*\.(eot|woff|ttf|svg))$
+  static_files: resources/fonts/\1
+  upload: resources/fonts/.*\.(ot|woff|ttf|svg)$
+  
+  
+- url: /.*
+  script: _go_app
+  
+  
