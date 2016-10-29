@@ -31,8 +31,12 @@
 
 
 
-
+html {
+	height: 100%;
+}
 body {
+	/*height: 100%;*/
+	
 	margin:				0px 1% 0px 1%;
 	
 	background-image:	url(/background.jpg);
@@ -46,6 +50,8 @@ body {
 h1 {
 	color:				black;
 	font-family:		Clarendon-Xbold;
+	
+    /*text-shadow:		rgba(255, 255, 255, 0.2) 0px 0px 4px;*/
 }
 a {
 	text-decoration:	none;
@@ -85,7 +91,7 @@ a:hover {
 
 #header-container #social-media-container {
 	text-align:			right;
-	font-size:			1.2em;
+	font-size:			0.7em;
 }
 #header-container #social-media-container ul li {
     margin:				0px 5px;
@@ -96,13 +102,15 @@ a:hover {
 #header-container #social-media-container ul li a:hover {
 	text-decoration:	none;
 }
-#header-container #social-media-container ul li span {
+#header-container #social-media-container ul li span.social-label {
 	display:			none;
 }
 
 
 #header-container #navigation-bar-container {
 	text-align:			center;
+	
+	font-size:			0.8em;
 }
 #header-container #navigation-bar-container ul li {
 	/*font-weight:		bold;*/
@@ -111,10 +119,12 @@ a:hover {
     margin:				0px 10px;
 }
 #header-container #navigation-bar-container ul li a {
-	color:				black;
+	/*color:				black;*/
 	text-decoration:	none;
 }
 #header-container #navigation-bar-container ul li a:hover {
+	color:				black;
+	
 	text-decoration:	underline;
 }
 

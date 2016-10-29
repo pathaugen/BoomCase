@@ -19,10 +19,37 @@ video#bgvid {
 
 
 #post-video {
-	/*margin-top:			50%;*/
+	/* margin-top:			50%; */
+	
+	/*
 	min-height:			100%;
-	text-align:			center;
+	height:				auto;
+	*/
+	
+	/*height:				calc(100vh - 200px);*/
+	height:				100vh;
+	
+	/*text-align:			center;*/
+	
+	position:			relative;
 }
+#post-video h1 {
+	font-size:			5.0em;
+	text-align:			center;
+	
+	color:				white;
+    text-shadow:		rgba(0, 0, 0, 0.5) 0px 0px 4px;
+}
+#post-video #post-video-arrow {
+	position:			absolute;
+	bottom:				250px;
+	width:				100%;
+	text-align:			center;
+	
+	color:				white;
+    text-shadow:		rgba(0, 0, 0, 0.5) 0px 0px 4px;
+}
+
 
 #barrel-color {
 	background-color:	lightgreen;

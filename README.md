@@ -21,6 +21,19 @@ Video Background Examples:
 
 ---------- ---------- ---------- ---------- ----------
 
+* GitHub Project Repository: <https://github.com/pathaugen/boomcase>
+* Google App Engine URL: <https://pmd-boomcase.appspot.com/>
+
+---------- ---------- ---------- ---------- ----------
+
+External Libraries and Resources Included in Application
+------------------------------------------
+
+* Font: Clarendon
+* Font Awesome 4.7.0: <http://fontawesome.io/>
+
+---------- ---------- ---------- ---------- ----------
+
 Resources
 ---------
 
