@@ -40,6 +40,12 @@ In addition, I want to overview a few graphics that need to be updated and notes
 
 Two current website designs: <http://theboomcase.com> vs <http://store.theboomcase.com>
 
+theboomcase.com
+![theboomcase.com](https://github.com/pathaugen/boomcase/blob/master/resources/images/barrel1.jpg)
+
+store.theboomcase.com
+![store.theboomcase.com](https://github.com/pathaugen/boomcase/blob/master/resources/images/barrel1.jpg)
+
 
 ### Background
 

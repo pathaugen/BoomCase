@@ -84,6 +84,7 @@ func drawPage(pageRequested string) (string) {
     output = strings.Replace(output, "<STYLESHEET>", stylesheetLink, -1)
     output = strings.Replace(output, "<CONTENT>", htmlContent, -1)
     //output = strings.Replace(output, "<DELETECASE>", `<span>Delete Item</span>`, -1)
+    output = strings.Replace(output, "<PAGETITLE>", pageRequested, -1)
     
     
     return output
