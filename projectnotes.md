@@ -8,7 +8,7 @@ Project Notes
 
 Notes about the BoomCase project.
 
-* 2016-10-28 - Friday
+* 2016-10-30 - Sunday
 * 2016-09-11 - Sunday
 
 
