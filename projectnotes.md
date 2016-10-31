@@ -15,7 +15,7 @@ Notes about the BoomCase project.
 ---------- ---------- ---------- ---------- ----------
 
 
-2016-10-28 - Friday
+2016-10-30 - Sunday
 -------------------
 
 From initial September 11th overview email, the end of this October is the first deployment of the BoomCase applications in a state that they can be examined and looked at for discussion moving forward.
@@ -41,16 +41,18 @@ In addition, I want to overview a few graphics that need to be updated and notes
 Two current website designs: <http://theboomcase.com> vs <http://store.theboomcase.com>
 
 theboomcase.com
-![theboomcase.com](https://github.com/pathaugen/boomcase/blob/master/resources/images/barrel1.jpg)
+![theboomcase.com](https://github.com/pathaugen/boomcase/blob/master/resources/images/projectnotes/theboomcasecom.png)
 
 store.theboomcase.com
-![store.theboomcase.com](https://github.com/pathaugen/boomcase/blob/master/resources/images/barrel1.jpg)
+![store.theboomcase.com](https://github.com/pathaugen/boomcase/blob/master/resources/images/projectnotes/storetheboomcasecom.png)
 
 
 ### Background
 
 Currently different, and graphically on only one design. Utilization questions moving forward
 
+theboomcase.com background has texture vs pure white store.theboomcase.com
+![theboomcase.com](https://github.com/pathaugen/boomcase/blob/master/resources/images/projectnotes/texturedbackground.png)
 
 ### Links
 
