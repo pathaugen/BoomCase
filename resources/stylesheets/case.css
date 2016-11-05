@@ -10,12 +10,29 @@
 }
 #customize-container #case-image {
 	float:				left;
+	
+	/*min-width:			500px;*/
+	
+	width:				49%;
+}
+#customize-container #case-image img {
+	width:				100%
 }
 
 #customize-container #case-information {
+	float:				right;
+	
+	padding:			2%;
+	/* div width padding fixes */
+	-webkit-box-sizing:	border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing:	border-box; /* Firefox, other Gecko */
+	box-sizing:			border-box; /* Opera/IE 8+ */
+	
 	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
 	background:			rgba(255, 255, 255, 0.9); /* 0.6 */
 	
 	text-align:			left;
+	
+	width:				49%;
 }
 
