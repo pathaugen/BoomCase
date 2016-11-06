@@ -1,5 +1,10 @@
 
 
+#fb-share-button {
+	display:			none;
+}
+
+
 #customize-container {
 	text-align:			center;
 	
@@ -8,16 +13,90 @@
 #customize-container h1 {
     /*font-family:		Clarendon-Light;*/
 }
+
+#customize-container #case-title {
+	margin-bottom:		2%;
+}
+#customize-container #case-title h1 {
+	margin-bottom:		0px;
+}
+#customize-container #case-title h2 {
+	margin-top:			0px;
+	font-weight:		normal;
+	font-size:			3.0em;
+}
+
 #customize-container #case-image {
+	position:			relative;
 	float:				left;
 	
 	/*min-width:			500px;*/
 	
-	width:				49%;
+	width:				66%;
+	
+	margin-bottom:		2%;
 }
 #customize-container #case-image img {
 	width:				100%
 }
+
+
+#customize-container #case-addspeaker {
+	margin-bottom:		4%;
+}
+#customize-container #case-addspeaker h1 {
+	margin-bottom:		0px;
+	font-size:			1.6em;
+}
+#customize-container #case-addspeaker h2 {
+	margin-top:			0px;
+	font-size:			1.2em;
+}
+
+#customize-container #case-addspeaker .driver-info {
+	text-decoration:	none;
+	
+	display:			inline-block;
+	text-align:			center;
+	background-color:	white;
+	padding:			1%;
+	margin:				1%;
+	/* float:				left; */
+	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
+}
+#customize-container #case-addspeaker .driver-info img {
+	width:				150px;
+	height:				150px;
+}
+#customize-container #case-addspeaker .driver-info:hover {
+	/* background-color:	yellow; */
+}
+#customize-container #case-addspeaker .driver-info .name-container {
+	color:				black;
+	font-size:			1.5em;
+	display:			block;
+	margin-top:			5px;
+}
+#customize-container #case-addspeaker .driver-info .watt-container {
+	font-size:			0.9em;
+	display:			block;
+	margin-top:			5px;
+}
+#customize-container #case-addspeaker .driver-info .price-container {
+	font-size:			1.2em;
+	display:			block;
+	margin-top:			5px;
+}
+#customize-container #case-addspeaker .driver-info .add-container {
+	font-size:			2.0em;
+	display:			block;
+	margin-top:			5px;
+}
+
+#customize-container #case-addspeaker .driver-picker {
+	/*display:			none;*/
+}
+
 
 #customize-container #case-information {
 	float:				right;
@@ -33,6 +112,73 @@
 	
 	text-align:			left;
 	
-	width:				49%;
+	width:				33%;
+	
+	margin-bottom:		2%;
+}
+#customize-container #case-information h1 {
+	margin-top:			0;
+	font-weight:		normal;
+	font-family:		Clarendon-Light;
+}
+#customize-container #case-information h2 {
+	font-size:			1.3em;
+	font-weight:		normal;
+	color:				black;
+	margin-bottom:		0px;
+}
+#customize-container #case-information hr {
+	margin:				10% 0px;
+}
+
+
+.draggable {
+	/*float:				left;*/
+	
+	position:			absolute;
+	top:				2%;
+	left:				2%; /*40%*/
+	
+	
+	width:				25%; /*25%;*/
+	height:				auto; /*100%;*/
+	/*min-height:			6.5em;*/
+	/*margin:				10%;*/
+	
+	/*background-color:	#29e;*/
+	color:				white;
+	
+	border-radius:		50%;
+	
+	padding:			4%;
+	
+	-webkit-transform:	translate(0px, 0px);
+			transform:	translate(0px, 0px);
+	
+	background-image:	url(/speakeruploads/mid2.jpg);
+	background-size:	contain; /*contain cover*/
+	
+	border:				1px solid black;
+}
+.draggable:before{
+	content:			"";
+	display:			block;
+	padding-top:		100%; /* initial ratio of 1:1*/
+}
+.draggable:hover {
+	border:				1px solid yellow;
+}
+.draggable-inside {
+	position:			absolute;
+	top:				0;
+	left:				0;
+	bottom:				0;
+	right:				0;
+}
+
+
+#drag-me::before {
+	content:			"#" attr(id);
+	font-weight:		bold;
 }
 

@@ -2,61 +2,299 @@
 
 <div id="customize-container">
 	
-	
-	<h1>Customize Case</h1>
-	<h2>Case Name</h2>
-	
+	<div id="case-title">
+		<h1 id="maintitle">Customize Case</h1>
+		<h2>Case Name</h2>
+		<a href="/customize"><i class="fa fa-arrow-left" aria-hidden="true"></i> back to other case options</a>
+	</div>
 	
 	<div>
 		<div id="case-image">
+			
+			
 			<img src="/caseuploads/blankcase1.jpg" />
+			
+			<div class="draggable">
+				<div class="draggable-inside"><p></p></div>
+			</div>
+			
+			
+			<div class="fb-share-button" 
+				data-href="<URL>" 
+				data-layout="button_count"
+				data-size="large"
+				data-mobile-iframe="true">
+			</div>
+			
+			
+			<!--
+			<div id="drag-1" class="draggable">
+				<div class="draggable-inside"><p>You can drag one element</p></div>
+			</div>
+			<div id="drag-2" class="draggable">
+				<div class="draggable-inside"><p>with each pointer</p></div>
+			</div>
+			<div id="drag-3" class="draggable">
+				<div class="draggable-inside"><p>Testing some test test</p></div>
+			</div>
+			-->
+			
+			
+			<div id="case-addspeaker">
+				<h1>Select Drivers to Add</h1>
+				
+				<h2>
+					<a href="">All</a> &middot;
+					<a href="">Low Range Woofers</a> &middot;
+					<a href="">Mid Range Drivers</a> &middot;
+					<a href="">High Range Tweeters</a>
+				</h2>
+				<!--
+				<select>
+					<option>Round Black Speaker</option>
+				</select>
+				<a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+				-->
+				
+				
+				<div>
+					
+					<a href="" class="driver-info">
+						<img src="/speakeruploads/low1.jpg" />
+						<span class="name-container">Speaker Name</span>
+						<span class="inch-container"><span class="watts">10</span>"</span>
+						<span class="frequency-container"><span class="frequency">80hz - 20khz</span></span>
+						<span class="price-container">+ $<span class="price">45</span>/each</span>
+						<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+					</a>
+					
+					<a href="" class="driver-info">
+						<img src="/speakeruploads/low2.jpg" />
+						<span class="name-container">Speaker Name</span>
+						<span class="inch-container"><span class="watts">12</span>"</span>
+						<span class="frequency-container"><span class="frequency">80hz - 20khz</span></span>
+						<span class="price-container">+ $<span class="price">45</span>/each</span>
+						<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+					</a>
+					
+					<a href="" class="driver-info">
+						<img src="/speakeruploads/mid1.jpg" />
+						<span class="name-container">Speaker Name</span>
+						<span class="inch-container"><span class="watts">6</span>"</span>
+						<span class="frequency-container"><span class="frequency">80hz - 20khz</span></span>
+						<span class="price-container">+ $<span class="price">45</span>/each</span>
+						<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+					</a>
+					
+					<a href="" class="driver-info">
+						<img src="/speakeruploads/mid2.jpg" />
+						<span class="name-container">Speaker Name</span>
+						<span class="inch-container"><span class="watts">8</span>"</span>
+						<span class="frequency-container"><span class="frequency">80hz - 20khz</span></span>
+						<span class="price-container">+ $<span class="price">45</span>/each</span>
+						<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+					</a>
+					
+					<a href="" class="driver-info">
+						<img src="/speakeruploads/high1.jpg" />
+						<span class="name-container">Speaker Name</span>
+						<span class="inch-container"><span class="watts">1</span>"</span>
+						<span class="frequency-container"><span class="frequency">80hz - 20khz</span></span>
+						<span class="price-container">+ $<span class="price">45</span>/each</span>
+						<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+					</a>
+					
+					<a href="" class="driver-info">
+						<img src="/speakeruploads/high2.jpg" />
+						<span class="name-container">Speaker Name</span>
+						<span class="inch-container"><span class="watts">2</span>"</span>
+						<span class="frequency-container"><span class="frequency">80hz - 20khz</span></span>
+						<span class="price-container">+ $<span class="price">45</span>/each</span>
+						<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+					</a>
+					
+				</div>
+				
+				<!--
+				<div class="driver-picker">
+					<div class="draggable">
+						<div class="draggable-inside"><p></p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p></p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p></p></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+				
+				<div class="driver-picker">
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+				
+				<div class="driver-picker">
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					<div class="draggable">
+						<div class="draggable-inside"><p>Test</p></div>
+					</div>
+					
+					<div style="clear: both;"></div>
+				</div>
+				-->
+			</div>
+			
+			
 		</div>
 		
 		
+		
+		
 		<div id="case-information">
+			<h1>Case Name</h1>
+			
+			
+			<hr />
+			
+			
 			<div>
-				<h2>Overview:</h2>
-				This is a test.
+				<h2>Overview</h2>
+				Hard to find Gator Samsonite suitcase featuring a gold rimmed 15" White Woofer and a Wide Excursion Horn.
 			</div>
 			
 			<div>
-				<h2>Featuring:</h2>
-				This is a test.
+				<h2>Featuring</h2>
+				(customize as you see fit)
 			</div>
 			
 			<div>
-				<h2>Dimensions:</h2>
-				This is a test.
+				<h2>Frequency Response</h2>
+				46hz - 20,000hz
 			</div>
 			
 			<div>
-				<h2>Extra Options Available:</h2>
-				This is a test.
+				<h2>Dimensions</h2>
+				#" x #" x #"
 			</div>
 			
 			<div>
-				<h2>Notes:</h2>
-				This is a test.
+				<h2>Weight</h2>
+				## lbs
+			</div>
+			
+			<div>
+				<h2>Battery Life</h2>
+				##+ Hours
+			</div>
+			
+			<!--
+			<div>
+				<h2>Extra Options Available</h2>
+				Battery Meter - $FREE
+				<br />Bluetooth - $45 
+				<br />Volume Knob - $35
+				<br />Shoulder Strap - $40
+			</div>
+			-->
+			
+			<div>
+				<h2>Notes</h2>
+				All BoomCases are rechargeable. Comes with battery charger and audio cable. Includes NEW LITHIUM BATTERY! This BoomCase Ships Within two weeks. Rush Delivery Available.
 			</div>
 			
 			
-			<form>
-				<div>
-					<h1>$550</h1>
+			<hr />
+			
+			
+			<div>
+				Base Price:
+				<h1>$550</h1>
+			</div>
+			
+			
+			<div>
+				<h2>Custom Driver Selections</h2>
+				<div style="margin-top:4%;">
+					Low Range Woofers:
+					<div>
+						<div>8" Woofer + $45 <a href="" style="color:#d9534f;"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
+						<div>4" Woofer + $35 <a href="" style="color:#d9534f;"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
+					</div>
 				</div>
-				
-				<div>
-					<select>
-						<option>Test</option>
-						<option>Test</option>
-						<option>Test</option>
-					</select>
+				<div style="margin-top:4%;">
+					Mid Range Drivers:
+					<div>
+						<div>8" Woofer + $45 <a href="" style="color:#d9534f;"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
+						<div>4" Woofer + $35 <a href="" style="color:#d9534f;"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
+					</div>
 				</div>
-				
-				<div>
-					<input />
+				<div style="margin-top:4%;">
+					High End Tweeters:
+					<div>
+						<div>8" Woofer + $45 <a href="" style="color:#d9534f;"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
+						<div>4" Woofer + $35 <a href="" style="color:#d9534f;"><i class="fa fa-times-circle" aria-hidden="true"></i></a></div>
+					</div>
 				</div>
-			</form>
+			</div>
+			
+			
+			<div>
+				<h2>Extra Options</h2>
+				<div>
+					<div><input type="checkbox" name="bluetooth" value="45" /> Bluetooth + $45</div>
+					<div><input type="checkbox" name="volumeknob" value="35" /> Volume Knob + $35</div>
+					<div><input type="checkbox" name="shoulderstrap" value="40" /> Shoulder Strap + $40</div>
+				</div>
+			</div>
+			
+			
+			<hr />
+			
+			
+			<div>
+				Total Price:
+				<h1>$550</h1>
+			</div>
+			
+			<a href="/cart" class="btn btn-primary" aria-label="View items in your shopping cart">
+				<i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart
+			</a>
+			
+			
 		</div>
 	</div>
 	

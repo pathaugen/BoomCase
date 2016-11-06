@@ -8,15 +8,15 @@ Project Notes
 
 Notes about the BoomCase project.
 
-* **2016-10-31 - Monday**
+* **2016-11-05 - Saturday**
 * **2016-09-11 - Sunday**
 
 
 ---------- ---------- ---------- ---------- ----------
 
 
-2016-10-31 - Monday
--------------------
+2016-11-05 - Saturday
+---------------------
 
 From initial September 11th overview email, the end of this October is the first deployment of the BoomCase applications in a state that they can be examined and looked at for discussion moving forward.
 
@@ -63,6 +63,7 @@ Currently different, and graphically on only one design. Utilization questions m
 
 As the textured version is unique I've utilized it so far for the app design:
 <https://pmd-boomcase.appspot.com/>
+<http://boomcase.productionmediadesign.com/>
 
 
 ### Links
@@ -119,6 +120,7 @@ Currently different, and which to use in header and footer
 
 To try and bring things together I've so far made a version here:
 <https://pmd-boomcase.appspot.com/>
+<http://boomcase.productionmediadesign.com/>
 
 
 ### Fonts
@@ -126,13 +128,14 @@ To try and bring things together I've so far made a version here:
 Currently different, and question of which to use to unify project 
 
 theboomcase.com font used is Abel:
-http://fonts.googleapis.com/css?family=Abel
+<http://fonts.googleapis.com/css?family=Abel>
 
 store.theboomcase.com font used is Clarendon:
 "Clarendon-Medium", "Clarendon-Light", "Clarendon-Xbold"
 
 As Clarendon is a pay font that is already rolled out, currently I'm utilizing that one in the app:
 <https://pmd-boomcase.appspot.com/>
+<http://boomcase.productionmediadesign.com/>
 
 
 ### Footer Design

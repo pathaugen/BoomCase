@@ -24,10 +24,98 @@
 		<!-- <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'> -->
 		<!-- PINGBACK -->
 		<!-- <link rel="pingback" href="http://theboomcase.com/xmlrpc.php" /> -->
-		<link rel="canonical" href="http://xxx" />
+		<link rel="canonical" href="<URL>" />
 		<!-- <link rel='shortlink' href='http://wp.me/P333Lk-eX' /> -->
+		
+		
+		<!-- You can use Open Graph tags to customize link previews.
+		Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+		<!-- https://developers.facebook.com/tools/debug/ -->
+		<meta property="og:url"           content="<URL>" />
+		<meta property="og:type"          content="product" /> <!-- https://developers.facebook.com/docs/reference/opengraph#object-type -->
+		<meta property="og:title"         content="<PAGETITLE> | The BoomCase©" /> <!-- My BoomCase Customized Case -->
+		<meta property="og:description"   content="My BoomCase Customized Case: Case type with speaker type." />
+		<meta property="og:image"         content="http://boomcase.productionmediadesign.com/caseuploads/blankcase1.jpg" />
+		<meta property="og:image:type"    content="image/jpeg" />
+		<meta property="og:image:width"   content="820" />
+		<meta property="og:image:height"  content="820" />
+		<meta property="fb:app_id"        content="1344445328921611" /> <!-- BoomCase APP ID -->
+		<meta property="og:locale"        content="en_US" />
+		
+		
+		<script src="resources/javascript/interact.min.js"></script>
+		<script src="resources/javascript/feedback-pmd.js"></script>
+		
+		
 	</head>
 	<body>
+		
+		
+		<!-- Load Facebook SDK for JavaScript -->
+		<div id="fb-root"></div>
+		<script>
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1344445328921611";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
+		
+		<script>
+		// target elements with the "draggable" class
+		interact('.draggable')
+			.draggable({
+				// enable inertial throwing
+				inertia: true,
+				// keep the element within the area of it's parent
+				restrict: {
+					restriction: "parent",
+					endOnly: true,
+					elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+				},
+				// enable autoScroll
+				autoScroll: true,
+				
+				// call this function on every dragmove event
+				onmove: dragMoveListener,
+				// call this function on every dragend event
+				onend: function (event) {
+					var textEl = event.target.querySelector('p');
+					
+					textEl && (textEl.textContent =
+						'moved a distance of '
+						+ (Math.sqrt(event.dx * event.dx +
+							event.dy * event.dy)|0) + 'px');
+				}
+			});
+			
+			function dragMoveListener (event) {
+				var target = event.target,
+					// keep the dragged position in the data-x/data-y attributes
+					x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+					y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+				
+				// translate the element
+				target.style.webkitTransform =
+				target.style.transform =
+					'translate(' + x + 'px, ' + y + 'px)';
+				
+				// update the posiion attributes
+				target.setAttribute('data-x', x);
+				target.setAttribute('data-y', y);
+			}
+			
+			// this is used later in the resizing and gesture demos
+			window.dragMoveListener = dragMoveListener;
+		</script>
+		
+		<script>
+			Feedback();
+		</script>
+		
+		
 		<div>
 			
 			
@@ -140,6 +228,17 @@
 			<div>
 				<div>
 					<CONTENT>
+				</div>
+			</div>
+			
+			
+			<!-- Your share button code -->
+			<div id="fb-share-button">
+				<div class="fb-share-button" 
+					data-href="<URL>" 
+					data-layout="button_count"
+					data-size="large"
+					data-mobile-iframe="true">
 				</div>
 			</div>
 			
@@ -260,6 +359,7 @@
 				</div>
 				<div id="copyright-container">
 					Copyright &copy; 2016 <a href="/">The BoomCase</a>
+					<a href="/"><img src="boomcase-logo.gif" /></a>
 				</div>
 			</div>
 			

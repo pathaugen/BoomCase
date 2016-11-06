@@ -1,7 +1,7 @@
 
 
 application: pmd-boomcase
-version: 2016-10-25-a
+version: 2016-11-06-a
 runtime: go
 api_version: go1
 
@@ -9,6 +9,9 @@ api_version: go1
 handlers:
 - url: /resources/stylesheets
   static_dir: resources/stylesheets
+  
+- url: /resources/javascript
+  static_dir: resources/javascript
   
 - url: /resources/external
   static_dir: resources/external
