@@ -23,14 +23,30 @@ Video Background Examples:
 
 * GitHub Project Repository: <https://github.com/pathaugen/boomcase>
 * Google App Engine URL: <https://pmd-boomcase.appspot.com/>
+* Design Firm Friendly URL: <https://boomcase.productionmediadesign.com/>
 
 ---------- ---------- ---------- ---------- ----------
 
 External Libraries and Resources Included in Application
-------------------------------------------
+--------------------------------------------------------
 
 * Font: Clarendon
 * Font Awesome 4.7.0: <http://fontawesome.io/>
+
+---------- ---------- ---------- ---------- ----------
+
+Feature List
+------------
+
+* Full video background: Autoplay web and mobile
+* Parralax effect on div image backgrounds
+* Mouseover div image zoom transitions
+* Animated transition on page anchor links
+* Adding speaker drivers to case custimization dynamically
+* Automatic price calculations based on drivers and features
+* Drag and drop visual customization of drivers on cases: Web and mobile
+* Responsive design combining look of two separate web properties
+* Dashboard for management of internal data and elements
 
 ---------- ---------- ---------- ---------- ----------
 

@@ -13,11 +13,16 @@ video#bgvid {
 	-moz-transform:		translateX(-50%) translateY(-50%);
 	-webkit-transform:	translateX(-50%) translateY(-50%);
 	transform:			translateX(-50%) translateY(-50%);
-	background:			url(polina.jpg) no-repeat;
-	background-size:	cover; 
+	background:			url('/polina.jpg');
+	background-repeat:	no-repeat;
+	
+	-moz-background-size:	cover;
+	-webkit-background-size:cover;
+	background-size:		cover;
 }
 
 
+/* ********** ********** ********** ********** ********** */
 #post-video {
 	/* margin-top:			50%; */
 	
@@ -42,13 +47,14 @@ video#bgvid {
 }
 #post-video #post-video-arrow {
 	position:			absolute;
-	bottom:				250px;
+	bottom:				300px;
 	width:				100%;
 	text-align:			center;
 	
 	color:				white;
     text-shadow:		rgba(0, 0, 0, 0.5) 0px 0px 4px;
 }
+/* ********** ********** ********** ********** ********** */
 
 
 #barrel-color {
@@ -64,4 +70,330 @@ video#bgvid {
 #barrel-color ul li:hover {
 	background-color:	yellow;
 }
+
+
+
+
+/* ********** ********** ********** ********** ********** */
+#boombarrel-title {
+	clear:				both;
+	text-align:			left;
+	
+	padding:			2%;
+	
+	background-color:	rgba(255, 255, 255, 0.8);
+	overflow:			hidden;
+}
+#boombarrel-title h1 {
+	/*color:				white;*/
+	font-size:			4.0em;
+	margin:				0px;
+}
+/* ********** ********** ********** ********** ********** */
+
+
+/* ********** ********** ********** ********** ********** */
+#boombarrel-menu {
+	clear:				both;
+	text-align:			right;
+	
+	background-color:	rgba(0, 0, 0, 1.0);
+	overflow:			hidden;
+	padding:			2%;
+}
+#boombarrel-menu ul {
+	margin:				0px;
+}
+#boombarrel-menu li {
+	display:			inline-block;
+}
+#boombarrel-menu a {
+	display:			inline-block;
+	margin-left:		20px;
+	padding:			10px;
+}
+#boombarrel-menu a:hover {
+	color:				white;
+	text-decoration:	none;
+}
+/* ********** ********** ********** ********** ********** */
+
+
+/* ********** ********** ********** ********** ********** */
+#boombarrel-peeking {
+	clear:				both;
+	background-color:	rgba(255, 255, 255, 1.0);
+	
+	background-image:		url('/barrel1.jpg');
+	background-repeat:		no-repeat;
+	
+	background-position:	center -100px;
+	/*background-size:		cover;*/
+	
+	min-height:			500px;
+	height:				500px;
+	
+	/*
+	-webkit-transform:	translateZ(0);
+	transform:			translateZ(0);
+	z-index:			4;
+	-webkit-transform-style:	preserve-3d;
+	transform-style:			preserve-3d;
+	*/
+}
+#boombarrel-peeking img {
+	/*
+	text-align:			center;
+	position:			absolute;
+	left:				50%;
+	top:				50%;
+	-webkit-transform:	translate(-50%, -50%);
+	transform:			translate(-50%, -50%);
+	*/
+	
+	/*
+	-webkit-transform:	translateZ(-600px) scale(3);
+	transform:			translateZ(-600px) scale(3);
+	z-index:			2;
+	-webkit-transform-style:	preserve-3d;
+	transform-style:	preserve-3d;
+	*/
+}
+/* ********** ********** ********** ********** ********** */
+
+
+
+/* ********** ********** ********** ********** ********** */
+#boombarrel-featuredin {
+	clear:				both;
+	background-color:	rgba(255, 255, 255, 0.95);
+	text-align:			center;
+	padding:			4% 0px 8% 0px;
+	font-size:			1.2em;
+}
+#boombarrel-featuredin h2 {
+	margin:				0px;
+	font-family:		Clarendon-Xbold;
+}
+#boombarrel-featuredin img {
+	display:			block;
+	margin:				4% auto;
+}
+/* ********** ********** ********** ********** ********** */
+
+
+/* ********** ********** ********** ********** ********** */
+#boombarrel-video {
+	clear:				both;
+	background-color:	rgba(255, 255, 255, 0.8);
+	
+	/*padding:			4% 2%;*/
+	
+	/*height:				500px;*/
+	overflow:			hidden;
+}
+#boombarrel-video #videoinfo {
+	float:				left;
+	width:				30%;
+	
+	padding:			18% 2% 10% 2%;
+	
+	/*height:				100%;*/
+}
+#boombarrel-video #videoinfo h2 {
+	font-family:		Clarendon-Xbold;
+}
+#boombarrel-video #videoinfo p {
+	line-height:		1.5em;
+}
+#boombarrel-video #videoimage {
+	float:				right;
+	width:				70%;
+	
+	padding:			14% 4% 14% 0px;
+	
+	/*height:				100%;*/
+	
+	/*
+	background-image:		url('/video1.png');
+	background-position:	center center;
+	background-repeat:		no-repeat;
+	background-size:		cover;
+	*/
+}
+#boombarrel-video #videoimage #videoimage-background {
+	position:			relative;
+	display:			block;
+	
+	width:				100%;
+	/*height:				100%;*/
+	
+	background-image:		url('/video1.png');
+	background-position:	center center;
+	background-repeat:		no-repeat;
+	background-size:		cover;
+	
+	overflow:			hidden;
+	
+	box-shadow:			rgba(0, 0, 0, 0.1) 0px 0px 4px;
+}
+#boombarrel-video #videoimage #videoimage-background:before {
+	content:			"";
+	display:			block;
+	/*padding-top:		100%;*/		/* initial ratio of 1:1*/
+	padding-top:		56.25%;		/*16:9 */
+}
+#boombarrel-video #videoimage #videoimage-foreground {
+	display:			block;
+	
+	position:			absolute;
+	top:				0px;
+	left:				0px;
+	bottom:				0px;
+	right:				0px;
+	
+	/*text-align:			center;*/
+	
+	background-color:	rgba(255, 255, 255, 0.3);
+}
+#boombarrel-video #videoimage #videoimage-foreground:hover {
+	background-color:	rgba(0, 0, 0, 0.1);
+}
+#boombarrel-video #videoimage #videoimage-foreground i#play {
+	position:			absolute;
+	top:				50%;
+    left:				50%;
+    transform:			translate(-50%, -50%);
+    
+    color:				white;
+    font-size:			4.0em;
+    
+    text-shadow:		rgba(255, 255, 255, 0.2) 0px 0px 4px;
+}
+#boombarrel-video #videoimage #videoimage-foreground i#youtube {
+	position:			absolute;
+	bottom:				2%;
+    right:				2%;
+    
+    color:				white;
+    font-size:			2.0em;
+    
+    text-shadow:		rgba(255, 255, 255, 0.2) 0px 0px 4px;
+}
+/*
+#boombarrel-video #videoimage img {
+	width:				100%;
+}
+*/
+/* ********** ********** ********** ********** ********** */
+
+
+/* ********** ********** ********** ********** ********** */
+#boombarrel-twopics {
+	clear:				both;
+	background-color:	rgba(255, 255, 255, 1.0);
+	height:				500px;
+	overflow:			hidden;
+}
+#boombarrel-twopics #leftpic {
+	position:			relative;
+	
+	float:				left;
+	width:				50%;
+	height:				100%;
+	
+	overflow:			hidden;
+}
+#boombarrel-twopics #leftpic > div {
+	position:			absolute;
+	height:				100%;
+	width:				100%;
+	
+	background-image:		url('/barrel3.jpg');
+	background-position:	center center;
+	background-repeat:		no-repeat;
+	
+	-moz-background-size:	cover;
+	-webkit-background-size:cover;
+	background-size:		cover;
+	
+	-moz-transition:	all 2.0s;
+	-webkit-transition:	all 2.0s;
+	transition:			all 2.0s;
+	-moz-transform:		scale(1,1);
+	-webkit-transform:	scale(1,1);
+	transform:			scale(1,1);
+	
+	/*z-index:			-1;*/
+}
+#boombarrel-twopics #leftpic:hover > div {
+	-moz-transform:		scale(1.1,1.1);
+	-webkit-transform:	scale(1.1,1.1);
+	transform:			scale(1.1,1.1);
+}
+#boombarrel-twopics #rightpic {
+	position:			relative;
+	
+	float:				right;
+	width:				50%;
+	height:				100%;
+	
+	overflow:			hidden;
+}
+#boombarrel-twopics #rightpic > div {
+	position:			absolute;
+	height:				100%;
+	width:				100%;
+	
+	background-image:		url('/barrel4.jpg');
+	background-position:	center center;
+	background-repeat:		no-repeat;
+	
+	-moz-background-size:	cover;
+	-webkit-background-size:cover;
+	background-size:		cover;
+	
+	-moz-transition:	all 2.0s;
+	-webkit-transition:	all 2.0s;
+	transition:			all 2.0s;
+	-moz-transform:		scale(1,1);
+	-webkit-transform:	scale(1,1);
+	transform:			scale(1,1);
+}
+#boombarrel-twopics #rightpic:hover > div {
+	-moz-transform:		scale(1.1,1.1);
+	-webkit-transform:	scale(1.1,1.1);
+	transform:			scale(1.1,1.1);
+}
+/* ********** ********** ********** ********** ********** */
+
+
+/* ********** ********** ********** ********** ********** */
+#boombarrel-quote {
+	clear:				both;
+	text-align:			center;
+	
+	/*background-color:	rgba(255, 255, 255, 0.8);*/
+	background-color:	white;
+	overflow:			hidden;
+	
+	padding:			4% 0px;
+}
+#boombarrel-quote h1 {
+	/*color:				white;*/
+	font-size:			4.0em;
+}
+/* ********** ********** ********** ********** ********** */
+
+
+
+
+
+
+
+
+
+
+
+
 
