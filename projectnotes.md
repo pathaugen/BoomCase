@@ -8,15 +8,15 @@ Project Notes
 
 Notes about the BoomCase project.
 
-* **2016-11-05 - Saturday**
+* **2016-11-06 - Sunday**
 * **2016-09-11 - Sunday**
 
 
 ---------- ---------- ---------- ---------- ----------
 
 
-2016-11-05 - Saturday
----------------------
+2016-11-06 - Sunday
+-------------------
 
 From initial September 11th overview email, the end of this October is the first deployment of the BoomCase applications in a state that they can be examined and looked at for discussion moving forward.
 

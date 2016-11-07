@@ -1,10 +1,21 @@
 
+Project Status: ALPHA
+
+---------- ---------- ---------- ---------- ----------
+
+Current Version Deployed to Google App Engine:
+2016-11-06-b
+
+Current Version in Development:
+2016-11-07-a
 
 ---------- ---------- ---------- ---------- ----------
 
 BoomCase
 ========
-BoomCase web applications in Golang on Google App Engine
+BoomCase web applications in Golang on Google App Engine.
+
+Created by Production Media Design (<http://www.productionmediadesign.com/>) to both help educate programmers in training as well as showcase talent to future clients.
 
 ---------- ---------- ---------- ---------- ----------
 
@@ -32,28 +43,41 @@ External Libraries and Resources Included in Application
 
 * Font: Clarendon
 * Font Awesome 4.7.0: <http://fontawesome.io/>
+* jQuery: X
 
 ---------- ---------- ---------- ---------- ----------
 
 Feature List
 ------------
 
-* Full video background: Autoplay web and mobile
-* Parralax effect on div image backgrounds
-* Mouseover div image zoom transitions
-* Animated transition on page anchor links
-* Adding speaker drivers to case custimization dynamically
-* Automatic price calculations based on drivers and features
-* Drag and drop visual customization of drivers on cases: Web and mobile
-* Responsive design combining look of two separate web properties
-* Dashboard for management of internal data and elements
+* Backend:
+  * Custom backend in Golang for hosting on Google App Engine
+  * Utilization of pure HTML/CSS/JS to keep future updates to app simple
+  * Login via Google credentials to backend dashboard
+  * Dashboard for management of internal data and elements
+
+* Frontend:
+  * Responsive design combining look of two separate web properties 
+
+* BoomBarrel Showcase:
+  * Full video background: Autoplay web and mobile
+  * TODO: Parralax effect on div image backgrounds
+  * Mouseover div image zoom transitions
+  * TODO: Animated transition on page anchor links
+
+* BoomCase Customizer:
+  * Adding speaker drivers to case custimization dynamically
+  * Automatic price calculations based on drivers and features
+  * Drag and drop visual customization of drivers on cases: Web and mobile
 
 ---------- ---------- ---------- ---------- ----------
 
 Resources
 ---------
 
-* <http://daringfireball.net/projects/markdown/syntax>
+* Google App Engine: x
+* Google Hosted Libraries: x
+* Markdown Syntax: <http://daringfireball.net/projects/markdown/syntax>
 
 ---------- ---------- ---------- ---------- ----------
 
