@@ -4,10 +4,10 @@ Project Status: ALPHA
 ---------- ---------- ---------- ---------- ----------
 
 Current Version Deployed to Google App Engine:
-2016-11-06-b
+2016-11-08-a
 
 Current Version in Development:
-2016-11-07-a
+2016-11-08-b
 
 ---------- ---------- ---------- ---------- ----------
 
@@ -43,7 +43,10 @@ External Libraries and Resources Included in Application
 
 * Font: Clarendon
 * Font Awesome 4.7.0: <http://fontawesome.io/>
-* jQuery: X
+* jQuery 3.1.1: <http://jquery.com/>
+* jQuery UI 1.12.1: <http://jqueryui.com/>
+* jQuery UI Touch Punch: <http://touchpunch.furf.com/>
+* (feedback - forked)
 
 ---------- ---------- ---------- ---------- ----------
 
@@ -75,8 +78,8 @@ Feature List
 Resources
 ---------
 
-* Google App Engine: x
-* Google Hosted Libraries: x
+* Google App Engine: <https://cloud.google.com/appengine/>
+* Google Hosted Libraries: <https://developers.google.com/speed/libraries/>
 * Markdown Syntax: <http://daringfireball.net/projects/markdown/syntax>
 
 ---------- ---------- ---------- ---------- ----------

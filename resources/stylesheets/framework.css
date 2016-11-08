@@ -256,6 +256,12 @@ a:hover {
 }
 
 
+#featured-in {
+	text-align:			center;
+	margin:				20% 0px;
+}
+
+
 #play-loud {
 	background-color:	white;
 	text-align:			center;

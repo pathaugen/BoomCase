@@ -12,12 +12,22 @@
 		<div id="case-image">
 			
 			
-			<img src="/caseuploads/blankcase1.jpg" />
-			
-			<div class="draggable">
-				<div class="draggable-inside"><p></p></div>
+			<div id="case-image-top">
+				<div id="case-image-container">
+					<img src="/caseuploads/blankcase3.jpg" />
+					
+					<a href="" class="btn btn-primary trigger-customize" id="case-image-customize" aria-label="Customize This BoomCase">
+						<i class="fa fa-cogs" aria-hidden="true"></i> Customize This BoomCase
+					</a>
+					
+					<!--
+					<div class="draggable" id="draggable">
+						<div class="draggable-inside"><p>111</p></div>
+					</div>
+					-->
+					
+				</div>
 			</div>
-			
 			
 			<div class="fb-share-button" 
 				data-href="<URL>" 
@@ -41,6 +51,17 @@
 			
 			
 			<div id="case-addspeaker">
+				
+				<a href="" class="btn btn-primary trigger-customize-close" aria-label="Close">
+					<i class="fa fa-times-circle" aria-hidden="true"></i> Close
+				</a>
+				<a href="" class="btn btn-primary trigger-customize-reset" aria-label="Reset">
+					<i class="fa fa-refresh" aria-hidden="true"></i> Reset
+				</a>
+				<a href="" class="btn btn-primary trigger-customize-save" aria-label="Save Customization">
+					<i class="fa fa-cloud" aria-hidden="true"></i> Save Customization
+				</a>
+				
 				<h1>Select Drivers to Add</h1>
 				
 				<h2>
@@ -59,7 +80,7 @@
 				
 				<div>
 					
-					<a href="" class="driver-info">
+					<a href="" class="driver-info driver-info-low" data-size="300">
 						<img src="/speakeruploads/low1.jpg" />
 						<span class="name-container">Speaker Name</span>
 						<span class="inch-container"><span class="watts">10</span>"</span>
@@ -68,7 +89,7 @@
 						<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 					</a>
 					
-					<a href="" class="driver-info">
+					<a href="" class="driver-info driver-info-low" data-size="300">
 						<img src="/speakeruploads/low2.jpg" />
 						<span class="name-container">Speaker Name</span>
 						<span class="inch-container"><span class="watts">12</span>"</span>
@@ -77,7 +98,7 @@
 						<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 					</a>
 					
-					<a href="" class="driver-info">
+					<a href="" class="driver-info driver-info-mid" data-size="200">
 						<img src="/speakeruploads/mid1.jpg" />
 						<span class="name-container">Speaker Name</span>
 						<span class="inch-container"><span class="watts">6</span>"</span>
@@ -86,7 +107,7 @@
 						<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 					</a>
 					
-					<a href="" class="driver-info">
+					<a href="" class="driver-info driver-info-mid" data-size="200">
 						<img src="/speakeruploads/mid2.jpg" />
 						<span class="name-container">Speaker Name</span>
 						<span class="inch-container"><span class="watts">8</span>"</span>
@@ -95,7 +116,7 @@
 						<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 					</a>
 					
-					<a href="" class="driver-info">
+					<a href="" class="driver-info driver-info-high" data-size="100">
 						<img src="/speakeruploads/high1.jpg" />
 						<span class="name-container">Speaker Name</span>
 						<span class="inch-container"><span class="watts">1</span>"</span>
@@ -104,7 +125,7 @@
 						<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 					</a>
 					
-					<a href="" class="driver-info">
+					<a href="" class="driver-info driver-info-high" data-size="100">
 						<img src="/speakeruploads/high2.jpg" />
 						<span class="name-container">Speaker Name</span>
 						<span class="inch-container"><span class="watts">2</span>"</span>
@@ -248,6 +269,11 @@
 			
 			<div>
 				<h2>Custom Driver Selections</h2>
+				
+				<a href="/cart" class="btn btn-primary trigger-customize" aria-label="Customize This BoomCase">
+					<i class="fa fa-cogs" aria-hidden="true"></i> Customize This BoomCase
+				</a>
+				
 				<div style="margin-top:4%;">
 					Low Range Woofers:
 					<div>

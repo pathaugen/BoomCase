@@ -46,14 +46,24 @@
 		<!-- Google Hosted Libraries - jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		
+		<!-- Google Hosted Libraries - jQuery UI -->
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		
+		<!-- jQuery UI Touch Punch -->
+		<script src="resources/javascript/jquery.ui.touch-punch.min.js"></script>
 		
 		<!-- interact.js -->
-		<script src="resources/javascript/interact.min.js"></script>
+		<!-- <script src="resources/javascript/interact.min.js"></script> -->
+		
 		<!-- Parallax.js -->
-		<script src="resources/javascript/parallax.min.js"></script>
+		<!-- <script src="resources/javascript/parallax.min.js"></script> -->
+		
 		<!-- PMD fork of feedback -->
 		<script src="resources/javascript/feedback-pmd.js"></script>
 		
+		<!-- PMD BoomCase JS -->
+		<script src="resources/javascript/pmd-boomcase.js"></script>
 		
 	</head>
 	<body>
@@ -71,6 +81,8 @@
 			}(document, 'script', 'facebook-jssdk'));
 		</script>
 		
+		<!-- Draggable via interact.js -->
+		<!--
 		<script>
 		// target elements with the "draggable" class
 		interact('.draggable')
@@ -118,11 +130,26 @@
 			// this is used later in the resizing and gesture demos
 			window.dragMoveListener = dragMoveListener;
 		</script>
+		-->
 		
+		<!-- PMD Custom JS -->
+		<!--
+		<script>
+			$(document).ready(function() {
+				$("#draggable").draggable();
+				$('body>div').bind("dragstart", function(event, ui) {
+					event.stopPropagation();
+				});
+			});
+		</script>
+		-->
+		
+		<!-- Feedback -->
+		<!--
 		<script>
 			Feedback();
 		</script>
-		
+		-->
 		
 		<div>
 			
@@ -372,7 +399,7 @@
 			</div>
 			
 			
-			<div style="text-align:center;margin:20% 0px;">
+			<div id="featured-in">
 				<img src="featuredin.png" />
 			</div>
 			

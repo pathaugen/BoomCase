@@ -27,7 +27,6 @@
 }
 
 #customize-container #case-image {
-	position:			relative;
 	float:				left;
 	
 	/*min-width:			500px;*/
@@ -35,13 +34,53 @@
 	width:				66%;
 	
 	margin-bottom:		2%;
+	
+	/*background-color:	lightblue;*/
 }
-#customize-container #case-image img {
-	width:				100%
+#customize-container #case-image #case-image-top {
+	padding:			8% 0px;
+	
+	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
+	background:			rgba(255, 255, 255, 1.0); /* 0.6 */
+}
+#customize-container #case-image #case-image-container {
+	position:			relative;
+	/*background-color:	lightgreen;*/
+	margin:				auto;
+	
+	width:				900px;
+}
+#customize-container #case-image #case-image-container img {
+	/*display:			block;*/
+	margin:				auto;
+	
+	width:				900px;
+}
+#customize-container #case-image #case-image-container a#case-image-customize {
+	/*
+	display:			inline-block;
+	background-color:	lightblue;
+	padding:			2%;
+	*/
+	
+	position:			absolute;
+	top:				75%;
+    left:				50%;
+    transform:			translate(-50%, -75%);
+    
+    font-size:			1.5em;
+}
+#customize-container #case-image #case-image-container a#case-image-customize:hover {
+	/*text-decoration:	none;*/
+}
+#customize-container #case-image #case-image-container a#case-image-customize h1 {
+	/*margin:				0px;*/
 }
 
 
 #customize-container #case-addspeaker {
+	display:			none;
+	
 	margin-bottom:		4%;
 }
 #customize-container #case-addspeaker h1 {
@@ -139,26 +178,31 @@
 	top:				2%;
 	left:				2%; /*40%*/
 	
-	
-	width:				25%; /*25%;*/
-	height:				auto; /*100%;*/
+	height:				auto; /* auto 100% */
 	/*min-height:			6.5em;*/
 	/*margin:				10%;*/
 	
 	/*background-color:	#29e;*/
 	color:				white;
 	
-	border-radius:		50%;
-	
 	padding:			4%;
 	
+	/*
 	-webkit-transform:	translate(0px, 0px);
 			transform:	translate(0px, 0px);
+	*/
 	
-	background-image:	url(/speakeruploads/mid2.jpg);
-	background-size:	contain; /*contain cover*/
+	/*background-color:	white;*/
+	/*background-image:	url('/speakeruploads/mid2.jpg');*/
+	background-repeat:	no-repeat;
 	
 	border:				1px solid black;
+	
+	/*
+	width:				200px; * 25% *
+	background-size:	200px; *contain cover*
+	border-radius:		100px;
+	*/
 }
 .draggable:before{
 	content:			"";
