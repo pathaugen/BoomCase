@@ -4,10 +4,10 @@ Project Status: ALPHA
 ---------- ---------- ---------- ---------- ----------
 
 Current Version Deployed to Google App Engine:
-2016-11-08-a
+2016-11-09-a
 
 Current Version in Development:
-2016-11-08-b
+2016-11-09-b
 
 ---------- ---------- ---------- ---------- ----------
 

@@ -80,10 +80,21 @@ $(document).ready(function() {
 	});
 	
 	
+	/* Reset - Remove all custom drivers and remove all line items and cost from total */
 	$( ".trigger-customize-reset" ).click(function() {
 		event.preventDefault();
 		
+		/* Remove all custom drivers */
 		$( ".draggable" ).remove();
+		
+		/* Remove all line items */
+		$("#low-add div").empty();
+		$("#mid-add div").empty();
+		$("#high-add div").empty();
+		
+		/* Reset the total cost back to base cost */
+		var basePrice = $("#base-price").html();
+		$("#total-price").html(basePrice);
 	});
 	
 	
@@ -125,6 +136,8 @@ $(document).ready(function() {
 	var iterationSpeaker = 1;
 	
 	$( ".driver-info" ).click(function() {
+		
+		
 		event.preventDefault();
 		
 		var imageSource = $(this).find('img').attr('src');
@@ -159,7 +172,113 @@ $(document).ready(function() {
 		*/
 
 		iterationSpeaker++;
+		
+		
+		/* Add speaker driver to line items for price calculations */
+		var driverName = $(this).find('.name-container').html();
+		var driverSize = $(this).find('.inch-container').find('.size').html();
+		var driverCost = $(this).find('.price-container').find('.price').html();
+		var drivertype = $(this).attr('data-type');
+		/* <div>INCHES" DRTIVERNAME + $COST</div> */
+		var elementLineItem = $("<div>", {
+			'html'	: driverSize+'" '+driverName+' + $'+driverCost
+		});
+		if (drivertype == "low") {
+			$("#low-add").append(elementLineItem);
+		}
+		if (drivertype == "mid") {
+			$("#mid-add").append(elementLineItem);
+		}
+		if (drivertype == "high") {
+			$("#high-add").append(elementLineItem);
+		}
+		
+		
+		/* Add the cost of the speaker driver to the total price */
+		var currentPrice = $("#total-price").html();
+		var newPrice = parseInt(currentPrice, 10) + parseInt(driverCost, 10);
+		$("#total-price").html(newPrice);
+		
+		
 	});
 });
+
+
+
+
+/* Checkbox - Checking the boxes for price options adds to total cost */
+$(document).ready(function() {
+	$( ".checkbox-option" ).click(function() {
+		if ( $(this).is(":checked") ) {
+			var currentPrice = $("#total-price").html();
+			var newPrice = parseInt(currentPrice, 10) + parseInt($(this).val(), 10);
+			$("#total-price").html(newPrice);
+		} else {
+			var currentPrice = $("#total-price").html();
+			var newPrice = parseInt(currentPrice, 10) - parseInt($(this).val(), 10);
+			$("#total-price").html(newPrice);
+		}
+	});
+});
+
+
+
+
+/* Driver Sorting - Selection of various categories of drivers and hiding the rest */
+$(document).ready(function() {
+	
+	$( "#select-drivers-all" ).css( "font-weight", "bold" );
+	
+	$( ".select-drivers" ).click(function() {
+			event.preventDefault();
+			
+			$( ".select-drivers" ).css( "font-weight", "normal" );
+			
+			$( "#select-drivers-all" ).click(function() {
+				$( "#select-drivers-all" ).css( "font-weight", "bold" );
+				
+				$( ".driver-info-low" ).show( function() {  });
+				$( ".driver-info-mid" ).show( function() {  });
+				$( ".driver-info-high" ).show( function() {  });
+			});
+			$( "#select-drivers-low" ).click(function() {
+				$( "#select-drivers-low" ).css( "font-weight", "bold" );
+				
+				$( ".driver-info-low" ).show( function() {  });
+				$( ".driver-info-mid" ).hide( function() {  });
+				$( ".driver-info-high" ).hide( function() {  });
+			});
+			$( "#select-drivers-mid" ).click(function() {
+				$( "#select-drivers-mid" ).css( "font-weight", "bold" );
+				
+				$( ".driver-info-low" ).hide( function() {  });
+				$( ".driver-info-mid" ).show( function() {  });
+				$( ".driver-info-high" ).hide( function() {  });
+			});
+			$( "#select-drivers-high" ).click(function() {
+				$( "#select-drivers-high" ).css( "font-weight", "bold" );
+				
+				$( ".driver-info-low" ).hide( function() {  });
+				$( ".driver-info-mid" ).hide( function() {  });
+				$( ".driver-info-high" ).show( function() {  });
+			});
+	});
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

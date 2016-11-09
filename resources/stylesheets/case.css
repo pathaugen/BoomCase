@@ -21,9 +21,11 @@
 	margin-bottom:		0px;
 }
 #customize-container #case-title h2 {
-	margin-top:			0px;
+	margin:				0px 0px 4% 0px;
 	font-weight:		normal;
 	font-size:			3.0em;
+}
+#customize-container #case-title a {
 }
 
 #customize-container #case-image {
