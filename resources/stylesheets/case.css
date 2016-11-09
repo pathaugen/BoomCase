@@ -38,6 +38,8 @@
 	margin-bottom:		2%;
 	
 	/*background-color:	lightblue;*/
+	
+	min-width:			900px;
 }
 #customize-container #case-image #case-image-top {
 	padding:			8% 0px;
