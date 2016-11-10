@@ -230,3 +230,16 @@
 	font-weight:		bold;
 }
 
+
+
+@media screen and (max-width: 1400px) /* and (orientation: portrait) */ {
+	#customize-container #case-image {
+		width:			100%;
+	}
+	#customize-container #case-information {
+		width:			100%;
+	}
+}
+
+
+

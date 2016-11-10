@@ -3,6 +3,12 @@ package main
 
 import (
     //"fmt"
+    "net/http"
+    
+	//"appengine"
+	//"appengine/datastore"
+	//"appengine/user"
+    
     //"os"
     "io/ioutil"
     "strings"
@@ -10,7 +16,18 @@ import (
 
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func drawPage(pageRequestedString string) (string) {
+//func drawPage(pageRequestedString string) (string) {
+func drawPage(r *http.Request) (string) {
+	pageRequestedString := r.URL.Path[1:]
+	
+	
+	// ========== ========== ========== ========== ==========
+	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
+	// [START new_context]
+	//c := appengine.NewContext(r) // c or ctx
+	// [END new_context]
+	// ========== ========== ========== ========== ==========
+	
 	
 	s := strings.Split(pageRequestedString, "/")
 	//pageRequested, pageRequestedData := s[0], s[1]
@@ -104,6 +121,11 @@ func drawPage(pageRequestedString string) (string) {
     output = strings.Replace(output, "<URL>", "http://boomcase.productionmediadesign.com/"+pageRequested, -1)
     
     
+    if pageRequested == "customize" {
+		output = strings.Replace(output, "<CASE>", uploadCase(), -1)
+    }
+    
+    
 	if pageRequested == "case" || pageRequested == "404" {
 		pageRequestedVariables1 := ""
 		pageRequestedVariables2 := ""
@@ -121,9 +143,11 @@ func drawPage(pageRequestedString string) (string) {
 		
 		output = strings.Replace(output, "<CASENAME>", "Case Name", -1)
 		output = strings.Replace(output, "<CASEOVERVIEW>", "Hard to find Gator Samsonite suitcase featuring a gold rimmed 15\" White Woofer and a Wide Excursion Horn.", -1)
+		
 		output = strings.Replace(output, "<CASELENGTH>", "18", -1)
 		output = strings.Replace(output, "<CASEWIDTH>", "6", -1)
 		output = strings.Replace(output, "<CASEHEIGHT>", "12", -1)
+		
 		output = strings.Replace(output, "<CASEWEIGHT>", "20", -1)
 		output = strings.Replace(output, "<CASEBATTERY>", "18", -1)
 		output = strings.Replace(output, "<CASEPRICE>", "550", -1)
