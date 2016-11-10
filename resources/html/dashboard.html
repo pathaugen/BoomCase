@@ -90,71 +90,97 @@
 				<span class="price-container">$<span class="price">500</span></span>
 			</a>
 		</div>
-		<form>
+		
+		
+		<!-- ---------- ---------- ---------- ---------- ---------- -->
+		<form action="/savecase" method="post">
 			<fieldset>
 				<legend>Selected Case: NONE</legend>
 				<div>
 					<label for="casename">Case Name</label>
 					Clever description of case.
-					<input id="casename" type="text" />
+					<input id="casename" name="casename" type="text" />
 				</div>
 				<div>
-					<label for="">Overview</label>
+					<label for="caseoverview">Overview</label>
 					Long detailed description of actual case and any drivers, etc.
-					<textarea id=""></textarea>
+					<textarea id="caseoverview" name="caseoverview"></textarea>
 				</div>
 				<div>
-					<label for="">Featuring</label>
+					<label for="casefeaturing">Featuring</label>
 					List drivers or "Customize as you wish!"
-					<textarea id=""></textarea>
+					<textarea id="casefeaturing" name="casefeaturing"></textarea>
 				</div>
 				<div>
-					<label for="">Frequency Response</label>
+					<label for="casefrequencyresponse">Frequency Response</label>
 					#hz - #khz
-					<input id="" type="text" />
+					<input id="casefrequencyresponse" name="casefrequencyresponse" type="text" />
 				</div>
 				<div>
-					<label for="">Dimensions</label>
+					<h2>Dimensions</h2>
 					#" x #" x #"
-					<input id="" type="text" />
+					
+					<label for="caselength">Length</label>
+					<input id="caselength" name="caselength" type="text" />
+					
+					<label for="casewidth">Width</label>
+					<input id="casewidth" name="casewidth" type="text" />
+					
+					<label for="caseheight">Height</label>
+					<input id="caseheight" name="caseheight" type="text" />
 				</div>
 				<div>
-					<label for="">Weight</label>
+					<label for="caseweight">Weight</label>
 					# lbs
-					<input id="" type="text" />
+					<input id="caseweight" name="caseweight" type="text" />
 				</div>
 				<div>
-					<label for="">Battery Life</label>
+					<label for="casebattery">Battery Life</label>
 					#+ Hours
-					<input id="" type="text" />
+					<input id="casebattery" name="casebattery" type="text" />
 				</div>
 				<div>
-					<label for="">Notes</label>
-					<textarea id=""></textarea>
+					<label for="casenotes">Notes</label>
+					<textarea id="casenotes" name="casenotes"></textarea>
 				</div>
 				<div>
 					<img src="/caseuploads/blankcase1.jpg" style="height:300px;margin:1% 0px -1% 0px;" />
 					<label for="">Front View Image</label>
 					Dead-on photo.
-					<input id="" type="text" />
+					<input id="" name="" type="text" />
 				</div>
 				<div>
 					<img src="/caseuploads/blankcase1.jpg" style="height:300px;margin:1% 0px -1% 0px;" />
 					<label for="">3/4 View Image</label>
 					45 degree Angle Shot
-					<input id="" type="text" />
+					<input id="" name="" type="text" />
 				</div>
 				<div>
-					<label for="">Base Price</label>
+					<label for="caseprice">Base Price</label>
 					$###
-					<input id="" type="text" />
+					<input id="caseprice" name="caseprice" type="text" />
 				</div>
 				<div>
-					<label for="">Mark as Sold</label>
-					<input id="" type="text" />
+					<label for="casesold">Mark as Sold</label>
+					<input id="casesold" name="casesold" type="text" />
 				</div>
+				
+				
+				<div>
+					<input type="submit" value="Submit">
+					<!--
+					<a href="/dashboard" class="btn btn-primary" aria-label="Save this case to the database">
+						<i class="fa fa-cloud" aria-hidden="true"></i> Save New Case
+					</a>
+					-->
+				</div>
+				
+				
 			</fieldset>
 		</form>
+		<!-- ---------- ---------- ---------- ---------- ---------- -->
+		
+		
 	</div>
 	<!-- ---------- ---------- ---------- ---------- ---------- -->
 	

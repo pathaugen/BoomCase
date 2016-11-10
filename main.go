@@ -23,7 +23,7 @@ func main() {
 // GAE config handlers for URIs
 func init() {
 	
-	http.HandleFunc("/uploadCase", handlerUploadCase)
+	http.HandleFunc("/savecase", handlerSaveCase)
 	
     http.HandleFunc("/", handlerRoot)
     
@@ -32,8 +32,8 @@ func init() {
 
 
 // ========== ========== ========== ========== ==========
-// GAE handler - handlerUploadCase
-func handlerUploadCase(w http.ResponseWriter, r *http.Request) {
+// GAE handler - handlerSaveCase
+func handlerSaveCase(w http.ResponseWriter, r *http.Request) {
 	
 	
 	// ========== ========== ========== ========== ==========
@@ -60,7 +60,7 @@ func handlerUploadCase(w http.ResponseWriter, r *http.Request) {
 	`
 	*/
     //fmt.Fprint(w, drawPage(r.URL.Path[1:]))
-    fmt.Fprint(w, drawPage(r))
+    fmt.Fprint(w, saveCase(r))
 }
 // ========== ========== ========== ========== ==========
 
