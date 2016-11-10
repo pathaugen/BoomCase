@@ -24,7 +24,7 @@ func drawPage(r *http.Request) (string) {
 	// ========== ========== ========== ========== ==========
 	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
 	// [START new_context]
-	//c := appengine.NewContext(r) // c or ctx
+	//ctx := appengine.NewContext(r) // c or ctx
 	// [END new_context]
 	// ========== ========== ========== ========== ==========
 	
@@ -122,7 +122,7 @@ func drawPage(r *http.Request) (string) {
     
     
     if pageRequested == "customize" {
-		output = strings.Replace(output, "<CASE>", uploadCase(), -1)
+		output = strings.Replace(output, "<CASE>", drawCase(r), -1)
     }
     
     
