@@ -5,9 +5,11 @@ import (
     //"fmt"
     "net/http"
     
-	//"appengine"
+	"appengine"
 	//"appengine/datastore"
-	//"appengine/user"
+	"appengine/user"
+	
+	"appengine/blobstore"
     
     //"os"
     "io/ioutil"
@@ -24,10 +26,9 @@ func drawPage(r *http.Request) (string) {
 	// ========== ========== ========== ========== ==========
 	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
 	// [START new_context]
-	//ctx := appengine.NewContext(r) // c or ctx
+	ctx := appengine.NewContext(r) // c or ctx
 	// [END new_context]
 	// ========== ========== ========== ========== ==========
-	
 	
 	s := strings.Split(pageRequestedString, "/")
 	//pageRequested, pageRequestedData := s[0], s[1]
@@ -120,6 +121,30 @@ func drawPage(r *http.Request) (string) {
     output = strings.Replace(output, "<PAGETITLE>", pageRequestedTitle, -1)
     output = strings.Replace(output, "<URL>", "http://boomcase.productionmediadesign.com/"+pageRequested, -1)
     
+    
+	// ========== ========== ========== ========== ==========
+	if pageRequested == "dashboard" {
+		// [START if_user]
+		if u := user.Current(ctx); u != nil {
+			//g.Author = u.String()
+			output = "TEST"
+		} else {
+			//output = "TEST"
+		}
+		// [END if_user]
+		
+		uploadURL, err := blobstore.UploadURL(ctx, "/savecase", nil)
+		if err != nil {
+			/*
+			serveError(ctx, w, err)
+			return
+			*/
+		} else {
+		    output = strings.Replace(output, "<FORMACTION>", uploadURL.String(), -1)
+		}
+	}
+	// ========== ========== ========== ========== ==========
+	
     
     if pageRequested == "customize" {
 		output = strings.Replace(output, "<CASE>", drawCase(r), -1)

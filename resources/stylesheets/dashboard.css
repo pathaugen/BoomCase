@@ -40,25 +40,56 @@
 
 
 .dashboard-section {
-	margin:			0px 2% 0px 2%;
+	/*font-size:		0.8em;*/
+	/*margin:			0px 2% 0px 2%;*/
+	margin:				auto;
+	
+	width:				75%;
+	/*min-width:		600px;*/
 }
-.dashboard-section legend {
-	font-size:		2.0em;
-	color:			black;
+.dashboard-section form {
 }
-.dashboard-section label {
-	font-size:		1.5em;
-	display:		block;
-	color:			black;
-	margin-top:		1%;
+.dashboard-section form h2 {
+	margin:				0px;
+	padding-top:		1%;
 }
-.dashboard-section input,
-.dashboard-section textarea {
-	font-size:		1.5em;
-	width:			100%;
-	padding:		1%;
+.dashboard-section form fieldset {
+	background-color:	rgba(255, 255, 255, 0.25);
+	border-radius:		5px;
 }
-.dashboard-section textarea {
-	height:			100px;
+.dashboard-section form legend {
+	font-size:			2.0em;
+	color:				black;
+}
+.dashboard-section form label {
+	clear:				both;
+	
+	font-size:			1.5em;
+	display:			block;
+	color:				black;
+	
+	padding-top:		2%;
+}
+.dashboard-section form input,
+.dashboard-section form textarea {
+	font-size:			1.5em;
+	width:				100%;
+	padding:			1%;
+}
+.dashboard-section form textarea {
+	height:				100px;
+}
+.dashboard-section form input[type=submit] {
+	margin-top:			4%;
+}
+.dashboard-section form input[type=checkbox] {
+	float: left;
+	
+	/* Double-sized Checkboxes */
+	-ms-transform: scale(2); /* IE */
+	-moz-transform: scale(2); /* FF */
+	-webkit-transform: scale(2); /* Safari and Chrome */
+	-o-transform: scale(2); /* Opera */
+	padding: 10px;
 }
 

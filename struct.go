@@ -36,19 +36,19 @@ type Case struct {
 	Featuring			string
 	FrequencyResponse	string
 	
-	Length				string
-	Width				string
-	Height				string
+	Length				int
+	Width				int
+	Height				int
 	
-	Weight				string
-	Battery				string
+	Weight				int
+	Battery				int
 	Notes				string
 	
-	Price				string
+	Price				int
 	
-	Sold				string // Mark as sold
+	Sold				bool // Mark as sold
 	
-	// image
+	BlobKey				string
 	
 	DateAdded			time.Time
 }
@@ -69,14 +69,21 @@ func caseKey(ctx appengine.Context) *datastore.Key {
 type Driver struct {
 	Name				string
 	FrequencyResponse	string
-	Width				string
-	Price				string
+	Width				int
+	Price				int
 	
-	// image
+	BlobKey				string
 	
 	DateAdded			time.Time
 }
 // [END driver_struct]
+// ========== ========== ========== ========== ==========
+// ========== ========== ========== ========== ==========
+// driverKey returns the key used for all case entries.
+func driverKey(ctx appengine.Context) *datastore.Key {
+	// The string "default_case" here could be varied to have multiple guestbooks.
+	return datastore.NewKey(ctx, "Driver", "default_driver", 0, nil)
+}
 // ========== ========== ========== ========== ==========
 
 
