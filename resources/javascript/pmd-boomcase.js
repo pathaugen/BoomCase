@@ -1,5 +1,7 @@
 
 
+
+/* ********** ********** ********** ********** ********** */
 /* x */
 $(document).ready(function() {
 	$("#draggable").draggable();
@@ -7,14 +9,21 @@ $(document).ready(function() {
 		event.stopPropagation();
 	});
 });
+/* ********** ********** ********** ********** ********** */
 
 
+
+
+/* ********** ********** ********** ********** ********** */
 /* x */
 $(document).ready(function() {
 	Feedback();
 });
+/* ********** ********** ********** ********** ********** */
 
 
+
+/* ********** ********** ********** ********** ********** */
 /* Customize Button - Clicking the BoomCase customize button sets off various actions */
 $(document).ready(function() {
 	
@@ -128,8 +137,11 @@ $(document).ready(function() {
 	
 	
 });
+/* ********** ********** ********** ********** ********** */
 
 
+
+/* ********** ********** ********** ********** ********** */
 /* Driver Adding - Clicking a driver adds it to the speaker case to drag around */
 $(document).ready(function() {
 	
@@ -202,10 +214,11 @@ $(document).ready(function() {
 		
 	});
 });
+/* ********** ********** ********** ********** ********** */
 
 
 
-
+/* ********** ********** ********** ********** ********** */
 /* Checkbox - Checking the boxes for price options adds to total cost */
 $(document).ready(function() {
 	$( ".checkbox-option" ).click(function() {
@@ -220,10 +233,11 @@ $(document).ready(function() {
 		}
 	});
 });
+/* ********** ********** ********** ********** ********** */
 
 
 
-
+/* ********** ********** ********** ********** ********** */
 /* Driver Sorting - Selection of various categories of drivers and hiding the rest */
 $(document).ready(function() {
 	
@@ -233,42 +247,80 @@ $(document).ready(function() {
 			event.preventDefault();
 			
 			$( ".select-drivers" ).css( "font-weight", "normal" );
-			
-			$( "#select-drivers-all" ).click(function() {
-				$( "#select-drivers-all" ).css( "font-weight", "bold" );
-				
-				$( ".driver-info-low" ).show( function() {  });
-				$( ".driver-info-mid" ).show( function() {  });
-				$( ".driver-info-high" ).show( function() {  });
-			});
-			$( "#select-drivers-low" ).click(function() {
-				$( "#select-drivers-low" ).css( "font-weight", "bold" );
-				
-				$( ".driver-info-low" ).show( function() {  });
-				$( ".driver-info-mid" ).hide( function() {  });
-				$( ".driver-info-high" ).hide( function() {  });
-			});
-			$( "#select-drivers-mid" ).click(function() {
-				$( "#select-drivers-mid" ).css( "font-weight", "bold" );
-				
-				$( ".driver-info-low" ).hide( function() {  });
-				$( ".driver-info-mid" ).show( function() {  });
-				$( ".driver-info-high" ).hide( function() {  });
-			});
-			$( "#select-drivers-high" ).click(function() {
-				$( "#select-drivers-high" ).css( "font-weight", "bold" );
-				
-				$( ".driver-info-low" ).hide( function() {  });
-				$( ".driver-info-mid" ).hide( function() {  });
-				$( ".driver-info-high" ).show( function() {  });
-			});
+	});
+	$( "#select-drivers-all" ).click(function() {
+		$( "#select-drivers-all" ).css( "font-weight", "bold" );
+		
+		$( ".driver-info-low" ).show( function() {  });
+		$( ".driver-info-mid" ).show( function() {  });
+		$( ".driver-info-high" ).show( function() {  });
+	});
+	$( "#select-drivers-low" ).click(function() {
+		$( "#select-drivers-low" ).css( "font-weight", "bold" );
+		
+		$( ".driver-info-low" ).show( function() {  });
+		$( ".driver-info-mid" ).hide( function() {  });
+		$( ".driver-info-high" ).hide( function() {  });
+	});
+	$( "#select-drivers-mid" ).click(function() {
+		$( "#select-drivers-mid" ).css( "font-weight", "bold" );
+		
+		$( ".driver-info-low" ).hide( function() {  });
+		$( ".driver-info-mid" ).show( function() {  });
+		$( ".driver-info-high" ).hide( function() {  });
+	});
+	$( "#select-drivers-high" ).click(function() {
+		$( "#select-drivers-high" ).css( "font-weight", "bold" );
+		
+		$( ".driver-info-low" ).hide( function() {  });
+		$( ".driver-info-mid" ).hide( function() {  });
+		$( ".driver-info-high" ).show( function() {  });
 	});
 });
+/* ********** ********** ********** ********** ********** */
 
 
 
+/* ********** ********** ********** ********** ********** */
+/* Dashboard Section Flipping - Changing the dashboard sections */
+$(document).ready(function() {
+	
+	/* $( "#select-dashboard-case" ).css( "font-weight", "bold" ); */
+	
+	$( ".select-dashboard" ).click(function() {
+			event.preventDefault();
+			
+			$( ".select-dashboard" ).css( "font-weight", "normal" );
+	});
+	$( "#select-dashboard-case" ).click(function() {
+		$( "#select-dashboard-case" ).css( "font-weight", "bold" );
+		
+		$( "#dashboard-section-case" ).show( function() {  });
+		$( "#dashboard-section-driver" ).hide( function() {  });
+	});
+	$( "#select-dashboard-driver" ).click(function() {
+		$( "#select-dashboard-driver" ).css( "font-weight", "bold" );
+
+		$( "#dashboard-section-case" ).hide( function() {  });
+		$( "#dashboard-section-driver" ).show( function() {  });
+	});
+});
+/* ********** ********** ********** ********** ********** */
 
 
+/* ********** ********** ********** ********** ********** */
+/* Admin - Add Custom Case */
+$(document).ready(function() {
+	
+	$( "#case-container #page-formcasedriver" ).css( "display", "none" );
+	
+	$( "#case-container #admin-add-case" ).click(function() {
+			event.preventDefault();
+			
+			$( "#case-container #page-formcasedriver" ).toggle();
+	});
+});
+/* ********** ********** ********** ********** ********** */
 
 
 

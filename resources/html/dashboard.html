@@ -1,12 +1,28 @@
 
 
-<div>
+<div id="page-dashboard">
 	
 	
 	<!-- ---------- ---------- ---------- ---------- ---------- -->
-	<div class="dashboard-section">
-		<h1>Boomcase Custom Case Management</h1>
-		<div style="height:400px;overflow-y:scroll;background-color:white;text-align:center;">
+	<div class="dashboard-section" style="text-align:center;">
+		<h1>BoomCase Internal Web Management Dashboard</h1>
+		<div>
+			<h2>
+				<a href="" class="select-dashboard" id="select-dashboard-case">Add Custom Case</a> &middot;
+				<a href="" class="select-dashboard" id="select-dashboard-driver">Add Driver Option</a>
+			</h2>
+		</div>
+	</div>
+	<!-- ---------- ---------- ---------- ---------- ---------- -->
+	
+	
+	<!-- ---------- ---------- ---------- ---------- ---------- -->
+	<div class="dashboard-section" id="dashboard-section-case" style="display:none;">
+		<h1>BoomCase Custom Case Creation</h1>
+		
+		
+		<!-- ---------- ---------- ---------- ---------- ---------- -->
+		<div style="height:400px;overflow-y:scroll;background-color:white;text-align:center;display:none;">
 			<!--
 			<ul style="margin:0px;padding:0px;">
 				<li><a href="">Case 1</a></li>
@@ -29,6 +45,8 @@
 				<li><a href="">Case 9</a></li>
 			</ul>
 			-->
+			
+			<!--
 			<a href="case" class="case-block">
 				<img src="/caseuploads/blankcase1.jpg" />
 				<span class="name-container">Case Name</span>
@@ -89,72 +107,12 @@
 				<span class="watt-container"><span class="watts">123</span> Watt BoomCase</span>
 				<span class="price-container">$<span class="price">500</span></span>
 			</a>
+			-->
 		</div>
-		<form>
-			<fieldset>
-				<legend>Selected Case: NONE</legend>
-				<div>
-					<label for="casename">Case Name</label>
-					Clever description of case.
-					<input id="casename" type="text" />
-				</div>
-				<div>
-					<label for="">Overview</label>
-					Long detailed description of actual case and any drivers, etc.
-					<textarea id=""></textarea>
-				</div>
-				<div>
-					<label for="">Featuring</label>
-					List drivers or "Customize as you wish!"
-					<textarea id=""></textarea>
-				</div>
-				<div>
-					<label for="">Frequency Response</label>
-					#hz - #khz
-					<input id="" type="text" />
-				</div>
-				<div>
-					<label for="">Dimensions</label>
-					#" x #" x #"
-					<input id="" type="text" />
-				</div>
-				<div>
-					<label for="">Weight</label>
-					# lbs
-					<input id="" type="text" />
-				</div>
-				<div>
-					<label for="">Battery Life</label>
-					#+ Hours
-					<input id="" type="text" />
-				</div>
-				<div>
-					<label for="">Notes</label>
-					<textarea id=""></textarea>
-				</div>
-				<div>
-					<img src="/caseuploads/blankcase1.jpg" style="height:300px;margin:1% 0px -1% 0px;" />
-					<label for="">Front View Image</label>
-					Dead-on photo.
-					<input id="" type="text" />
-				</div>
-				<div>
-					<img src="/caseuploads/blankcase1.jpg" style="height:300px;margin:1% 0px -1% 0px;" />
-					<label for="">3/4 View Image</label>
-					45 degree Angle Shot
-					<input id="" type="text" />
-				</div>
-				<div>
-					<label for="">Base Price</label>
-					$###
-					<input id="" type="text" />
-				</div>
-				<div>
-					<label for="">Mark as Sold</label>
-					<input id="" type="text" />
-				</div>
-			</fieldset>
-		</form>
+		<!-- ---------- ---------- ---------- ---------- ---------- -->
+		
+		<FORMCASE>
+		
 	</div>
 	<!-- ---------- ---------- ---------- ---------- ---------- -->
 	
@@ -163,6 +121,7 @@
 	
 	
 	<!-- ---------- ---------- ---------- ---------- ---------- -->
+	<!--
 	<div class="dashboard-section">
 		<h1>Boomcase Custom Case Upload</h1>
 		<form>
@@ -176,6 +135,7 @@
 			<input />
 		</form>
 	</div>
+	-->
 	<!-- ---------- ---------- ---------- ---------- ---------- -->
 	
 	
@@ -183,6 +143,7 @@
 	
 	
 	<!-- ---------- ---------- ---------- ---------- ---------- -->
+	<!--
 	<div class="dashboard-section">
 		<h1>Boombarrel Video Background</h1>
 		<form>
@@ -193,6 +154,16 @@
 			.webm Video File (less than 5MB)
 			<input />
 		</form>
+	</div>
+	-->
+	<!-- ---------- ---------- ---------- ---------- ---------- -->
+	
+	<!-- ---------- ---------- ---------- ---------- ---------- -->
+	<div class="dashboard-section" id="dashboard-section-driver" style="display:none;">
+		<h1>BoomCase Driver Option Addition</h1>
+		
+		<FORMDRIVER>
+		
 	</div>
 	<!-- ---------- ---------- ---------- ---------- ---------- -->
 	

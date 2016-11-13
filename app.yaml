@@ -1,7 +1,7 @@
 
 
 application: pmd-boomcase
-version: 2016-11-09-b
+version: 2016-11-13-a
 runtime: go
 api_version: go1
 

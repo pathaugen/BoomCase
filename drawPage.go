@@ -3,6 +3,16 @@ package main
 
 import (
     //"fmt"
+    "net/http"
+    
+    //"x/net/context"
+    
+	"appengine"
+	//"appengine/datastore"
+	"appengine/user"
+	
+	"appengine/blobstore"
+    
     //"os"
     "io/ioutil"
     "strings"
@@ -10,110 +20,139 @@ import (
 
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func drawPage(pageRequestedString string) (string) {
-	
-	s := strings.Split(pageRequestedString, "/")
-	//pageRequested, pageRequestedData := s[0], s[1]
-	
-	/*
-	pageRequested := ""
-	if string(s[0]) != "" {
-		pageRequested = s[0]
-	} else {
-		pageRequested = pageRequestedString
-	}
-	*/
-	pageRequested := s[0]
-	
-	// Load template
-	//loadedTemplate := ReadFile("resources/html/framework.html", string) ([]byte, error)
-	loadedTemplate, err := ioutil.ReadFile("resources/html/framework.html")
-	templateContent := "[CONTENT]"
-	if err != nil {
-		panic(err)
-	}
-	templateContent = string(loadedTemplate)
-	
+func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Context
 	
 	// ========== ========== ========== ========== ==========
+	// Calculate the page that was requested
+	pageRequestedString := r.URL.Path[1:]
+	s := strings.Split(pageRequestedString, "/")
+	pageRequested := s[0]
+	// ========== ========== ========== ========== ==========
+	
+	// ========== ========== ========== ========== ==========
+	// Load the HTML framework template
+	loadedTemplate, err := ioutil.ReadFile("resources/html/framework.html")
+	templateContent := "[CONTENT]"
+	if err != nil { panic(err) }
+	templateContent = string(loadedTemplate)
+	// ========== ========== ========== ========== ==========
+	
+	// ========== ========== ========== ========== ==========
+	// [START if_user]
+	u := user.Current(ctx)
+	if u != nil {
+		url, _ := user.LogoutURL(ctx, "/")
+		adminBar := `
+			<div style="text-align:center;background-color:yellow;font-weight:bold;padding:2%;">
+				Welcome `+u.String()+`! (<a href="`+url+`">sign out</a>)
+			</div>`
+	    templateContent = strings.Replace(templateContent, "<ADMINBAR>", adminBar, -1)
+	}
+	// [END if_user]
+	// ========== ========== ========== ========== ==========
+	
+	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	stylesheetLink := ""
 	htmlContent := `<div style="text-align:center;"><h1>ERROR LOADING PAGE</h1></div>`
 	
-	if pageRequested == "" {
-		pageRequested = "home"
-	}
+	// ========== ========== ========== ========== ==========
+	if pageRequested == "" { pageRequested = "home" }
+	// ========== ========== ========== ========== ==========
 	
+	// ========== ========== ========== ========== ==========
 	pageRequestedTitle := pageRequested
-	//pageRequested404 := ""
-	/* Using the pageRequested, pull the .html and .css for the selected resource else send a 404 .html/.css */
+	
+	// Using the pageRequested, pull the .html and .css for the selected resource else send a 404 .html/.css
 	pageRequestedData, err := ioutil.ReadFile("resources/html/"+pageRequested+".html")
 	if err != nil {
-		/* panic(err) */ /* else it uses "ERROR LOADING PAGE" */
+		// panic(err) // else it uses "ERROR LOADING PAGE"
 		pageRequested404, err := ioutil.ReadFile("resources/html/404.html")
-		if err != nil {
-			/*panic(err)*/
-		} else {
-			stylesheetLink = `<link rel="stylesheet" type="text/css" href="/resources/stylesheets/404.css" />`
+		if err != nil { /* panic(err) */ } else {
+			stylesheetLink += `<link rel="stylesheet" type="text/css" href="/resources/stylesheets/404.css" />`
 			htmlContent = string(pageRequested404)
-			//pageRequestedTitle = "404"
 			pageRequested = "404"
 		}
 	} else {
-		stylesheetLink = `<link rel="stylesheet" type="text/css" href="/resources/stylesheets/`+pageRequested+`.css" />`
+		stylesheetLink += `<link rel="stylesheet" type="text/css" href="/resources/stylesheets/`+pageRequested+`.css" />`
 		htmlContent = string(pageRequestedData)
 	}
+	// ========== ========== ========== ========== ==========
 	
-	/*
-	if pageRequested == "" {
-		htmlContent = `
-			<div style="text-align:center;">
-				<h1>TESTING 222</h1>
-				<h1><a href="customize">Boomcase Customize</a></h1>
-				<h1><a href="boombarrel">Boom Barrel</a></h1>
-			</div>
-		`
-	    //fmt.Fprint(htmlContent)
-	} else if pageRequested == "customize" {
-		loadedCustomize, err := ioutil.ReadFile("resources/html/customize.html")
-		if err != nil {
-			panic(err)
-		}
-		stylesheetLink = `<link rel="stylesheet" type="text/css" href="resources/stylesheets/customize.css" />`
-		htmlContent = string(loadedCustomize)
-	} else if pageRequested == "boombarrel" {
-		loadedBoombarrel, err := ioutil.ReadFile("resources/html/boombarrel.html")
-		if err != nil {
-			panic(err)
-		}
-		stylesheetLink = `<link rel="stylesheet" type="text/css" href="resources/stylesheets/boombarrel.css" />`
-		htmlContent = string(loadedBoombarrel)
-	} else {
-		htmlContent = "PAGE COULD NOT BE FOUND: "+pageRequested
-	}
-	*/
-	
-    // ========== ========== ========== ========== ==========
+	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
     
     
+	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
     output := templateContent
-    //output = strings.Replace(htmlContent, "Home", "TEST", -1)
-    output = strings.Replace(output, "<STYLESHEET>", stylesheetLink, -1)
     output = strings.Replace(output, "<CONTENT>", htmlContent, -1)
-    //output = strings.Replace(output, "<DELETECASE>", `<span>Delete Item</span>`, -1)
     output = strings.Replace(output, "<PAGETITLE>", pageRequestedTitle, -1)
     output = strings.Replace(output, "<URL>", "http://boomcase.productionmediadesign.com/"+pageRequested, -1)
+	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
     
     
+	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+	if pageRequested == "dashboard" {
+	} else if pageRequested == "customize" {
+		output = strings.Replace(output, "<CASE>", drawCase(r), -1)
+		// ========== ========== ========== ========== ==========
+		// [START if_user]
+		u := user.Current(ctx)
+		if u != nil {
+			formCaseButton := `
+				<div>
+					<a href="" class="btn btn-primary" id="admin-add-case" aria-label="ADMIN: Add New Custom Case">
+						<i class="fa fa-plus-circle" aria-hidden="true"></i> ADMIN: Add New Custom Case
+					</a>
+				</div>`
+			output = strings.Replace(output, "<FORMCASE>", formCaseButton+"<FORMCASE>", -1)
+		} else { output = strings.Replace(output, "<FORMCASE>", "", -1) }
+		// [END if_user]
+		// ========== ========== ========== ========== ==========
+    }
+	if pageRequested == "dashboard" || pageRequested == "customize" {
+		// ========== ========== ========== ========== ==========
+		// [START if_user]
+		u := user.Current(ctx)
+		if u != nil {
+			// ========== ========== ========== ========== ==========
+			// Load in modular forms - usable throughout the webapp
+			formCase, _ := ioutil.ReadFile("resources/html/formcase.html")
+		    output = strings.Replace(output, "<FORMCASE>", string(formCase), -1)
+		    
+			formDriver, _ := ioutil.ReadFile("resources/html/formdriver.html")
+		    output = strings.Replace(output, "<FORMDRIVER>", string(formDriver), -1)
+			// ========== ========== ========== ========== ==========
+			
+			// ========== ========== ========== ========== ==========
+			// Generation of URL to save Case or Driver
+			uploadURLCase, err := blobstore.UploadURL(ctx, "/savecasedriver", nil)
+			if err != nil { /* serveError(ctx, w, err); return */ } else { output = strings.Replace(output, "<FORMACTIONCASEDRIVER>", uploadURLCase.String(), -1) }
+			// ========== ========== ========== ========== ==========
+			
+			// Stylesheet for the case/driver form
+			stylesheetLink += `<link rel="stylesheet" type="text/css" href="/resources/stylesheets/formcasedriver.css" />`
+		} else {
+			url, _ := user.LoginURL(ctx, "/")
+			loginLink := `
+				<div style="font-size:2.0em;text-align:center;padding:2%;">
+					<a href="`+url+`">Sign into BoomCase</a>
+				</div>`
+		    output = strings.Replace(output, "<FORMCASE>", loginLink, -1)
+		    output = strings.Replace(output, "<FORMDRIVER>", loginLink, -1)
+		}
+		// [END if_user]
+		// ========== ========== ========== ========== ==========
+	}
+	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+    
+    
+	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	if pageRequested == "case" || pageRequested == "404" {
 		pageRequestedVariables1 := ""
 		pageRequestedVariables2 := ""
-		//if string(s[1]) != "" {
-		if len(s) > 1 {
-			pageRequestedVariables1 = string(s[1])
-		}
-		if len(s) > 2 {
-			pageRequestedVariables2 = string(s[2])
-		}
+		
+		if len(s) > 1 { pageRequestedVariables1 = string(s[1]) }
+		if len(s) > 2 { pageRequestedVariables2 = string(s[2]) }
+		
 	    output = strings.Replace(output, "<PAGEVARIABLES1>", pageRequestedVariables1, -1)
 	    output = strings.Replace(output, "<PAGEVARIABLES2>", pageRequestedVariables2, -1)
 	    
@@ -121,13 +160,21 @@ func drawPage(pageRequestedString string) (string) {
 		
 		output = strings.Replace(output, "<CASENAME>", "Case Name", -1)
 		output = strings.Replace(output, "<CASEOVERVIEW>", "Hard to find Gator Samsonite suitcase featuring a gold rimmed 15\" White Woofer and a Wide Excursion Horn.", -1)
+		
 		output = strings.Replace(output, "<CASELENGTH>", "18", -1)
 		output = strings.Replace(output, "<CASEWIDTH>", "6", -1)
 		output = strings.Replace(output, "<CASEHEIGHT>", "12", -1)
+		
 		output = strings.Replace(output, "<CASEWEIGHT>", "20", -1)
 		output = strings.Replace(output, "<CASEBATTERY>", "18", -1)
 		output = strings.Replace(output, "<CASEPRICE>", "550", -1)
 	}
+	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+	
+	
+	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+    output = strings.Replace(output, "<STYLESHEET>", stylesheetLink, -1)
+	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
     
     
     return output

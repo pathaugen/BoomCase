@@ -5,30 +5,30 @@
 }
 
 
-#customize-container {
+#page-case {
 	text-align:			center;
 	
 	padding:			0px 1% 0px 1%;
 }
-#customize-container h1 {
+#page-case h1 {
     /*font-family:		Clarendon-Light;*/
 }
 
-#customize-container #case-title {
+#page-case #case-title {
 	margin-bottom:		2%;
 }
-#customize-container #case-title h1 {
+#page-case #case-title h1 {
 	margin-bottom:		0px;
 }
-#customize-container #case-title h2 {
+#page-case #case-title h2 {
 	margin:				0px 0px 4% 0px;
 	font-weight:		normal;
 	font-size:			3.0em;
 }
-#customize-container #case-title a {
+#page-case #case-title a {
 }
 
-#customize-container #case-image {
+#page-case #case-image {
 	float:				left;
 	
 	/*min-width:			500px;*/
@@ -38,27 +38,29 @@
 	margin-bottom:		2%;
 	
 	/*background-color:	lightblue;*/
+	
+	min-width:			900px;
 }
-#customize-container #case-image #case-image-top {
+#page-case #case-image #case-image-top {
 	padding:			8% 0px;
 	
 	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
 	background:			rgba(255, 255, 255, 1.0); /* 0.6 */
 }
-#customize-container #case-image #case-image-container {
+#page-case #case-image #case-image-container {
 	position:			relative;
 	/*background-color:	lightgreen;*/
 	margin:				auto;
 	
 	width:				900px;
 }
-#customize-container #case-image #case-image-container img {
+#page-case #case-image #case-image-container img {
 	/*display:			block;*/
 	margin:				auto;
 	
 	width:				900px;
 }
-#customize-container #case-image #case-image-container a#case-image-customize {
+#page-case #case-image #case-image-container a#case-image-customize {
 	/*
 	display:			inline-block;
 	background-color:	lightblue;
@@ -72,29 +74,29 @@
     
     font-size:			1.5em;
 }
-#customize-container #case-image #case-image-container a#case-image-customize:hover {
+#page-case #case-image #case-image-container a#case-image-customize:hover {
 	/*text-decoration:	none;*/
 }
-#customize-container #case-image #case-image-container a#case-image-customize h1 {
+#page-case #case-image #case-image-container a#case-image-customize h1 {
 	/*margin:				0px;*/
 }
 
 
-#customize-container #case-addspeaker {
+#page-case #case-addspeaker {
 	display:			none;
 	
 	margin-bottom:		4%;
 }
-#customize-container #case-addspeaker h1 {
+#page-case #case-addspeaker h1 {
 	margin-bottom:		0px;
 	font-size:			1.6em;
 }
-#customize-container #case-addspeaker h2 {
+#page-case #case-addspeaker h2 {
 	margin-top:			0px;
 	font-size:			1.2em;
 }
 
-#customize-container #case-addspeaker .driver-info {
+#page-case #case-addspeaker .driver-info {
 	text-decoration:	none;
 	
 	display:			inline-block;
@@ -105,41 +107,41 @@
 	/* float:				left; */
 	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
 }
-#customize-container #case-addspeaker .driver-info img {
+#page-case #case-addspeaker .driver-info img {
 	width:				150px;
 	height:				150px;
 }
-#customize-container #case-addspeaker .driver-info:hover {
+#page-case #case-addspeaker .driver-info:hover {
 	/* background-color:	yellow; */
 }
-#customize-container #case-addspeaker .driver-info .name-container {
+#page-case #case-addspeaker .driver-info .name-container {
 	color:				black;
 	font-size:			1.5em;
 	display:			block;
 	margin-top:			5px;
 }
-#customize-container #case-addspeaker .driver-info .watt-container {
+#page-case #case-addspeaker .driver-info .watt-container {
 	font-size:			0.9em;
 	display:			block;
 	margin-top:			5px;
 }
-#customize-container #case-addspeaker .driver-info .price-container {
+#page-case #case-addspeaker .driver-info .price-container {
 	font-size:			1.2em;
 	display:			block;
 	margin-top:			5px;
 }
-#customize-container #case-addspeaker .driver-info .add-container {
+#page-case #case-addspeaker .driver-info .add-container {
 	font-size:			2.0em;
 	display:			block;
 	margin-top:			5px;
 }
 
-#customize-container #case-addspeaker .driver-picker {
+#page-case #case-addspeaker .driver-picker {
 	/*display:			none;*/
 }
 
 
-#customize-container #case-information {
+#page-case #case-information {
 	float:				right;
 	
 	padding:			2%;
@@ -157,23 +159,23 @@
 	
 	margin-bottom:		2%;
 }
-#customize-container #case-information h1 {
+#page-case #case-information h1 {
 	margin-top:			0;
 	font-weight:		normal;
 	font-family:		Clarendon-Light;
 }
-#customize-container #case-information h2 {
+#page-case #case-information h2 {
 	font-size:			1.3em;
 	font-weight:		normal;
 	color:				black;
 	margin-bottom:		0px;
 }
-#customize-container #case-information hr {
+#page-case #case-information hr {
 	margin:				10% 0px;
 }
 
 
-.draggable {
+#page-case .draggable {
 	/*float:				left;*/
 	
 	position:			absolute;
@@ -206,15 +208,15 @@
 	border-radius:		100px;
 	*/
 }
-.draggable:before{
+#page-case .draggable:before{
 	content:			"";
 	display:			block;
 	padding-top:		100%; /* initial ratio of 1:1*/
 }
-.draggable:hover {
+#page-case .draggable:hover {
 	border:				1px solid yellow;
 }
-.draggable-inside {
+#page-case .draggable-inside {
 	position:			absolute;
 	top:				0;
 	left:				0;
@@ -223,8 +225,21 @@
 }
 
 
-#drag-me::before {
+#page-case #drag-me::before {
 	content:			"#" attr(id);
 	font-weight:		bold;
 }
+
+
+
+@media screen and (max-width: 1400px) /* and (orientation: portrait) */ {
+	#page-case #case-image {
+		width:			100%;
+	}
+	#page-case #case-information {
+		width:			100%;
+	}
+}
+
+
 
