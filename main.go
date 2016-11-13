@@ -44,6 +44,7 @@ func handlerSaveCase(w http.ResponseWriter, r *http.Request) {
 	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
 	// [START new_context]
 	ctx := appengine.NewContext(r) // c or ctx
+	// Send to func via: (c context.Context)
 	// [END new_context]
 	// ========== ========== ========== ========== ==========
 	
@@ -64,19 +65,20 @@ func handlerSaveCase(w http.ResponseWriter, r *http.Request) {
 	*/
     //fmt.Fprint(w, drawPage(r.URL.Path[1:]))
     w.Header().Set("Content-Type", "text/html")
-    fmt.Fprint(w, saveCase(r))
+    fmt.Fprint(w, saveCase(r, ctx))
 }
 // ========== ========== ========== ========== ==========
 
 
 // ========== ========== ========== ========== ==========
-// GAE handler - handlerSaveDRiver
+// GAE handler - handlerSaveDriver
 func handlerSaveDriver(w http.ResponseWriter, r *http.Request) {
 	
 	// ========== ========== ========== ========== ==========
 	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
 	// [START new_context]
 	ctx := appengine.NewContext(r) // c or ctx
+	// Send to func via: (c context.Context)
 	// [END new_context]
 	// ========== ========== ========== ========== ==========
 	
@@ -97,7 +99,7 @@ func handlerSaveDriver(w http.ResponseWriter, r *http.Request) {
 	*/
     //fmt.Fprint(w, drawPage(r.URL.Path[1:]))
     w.Header().Set("Content-Type", "text/html")
-    fmt.Fprint(w, saveDriver(r))
+    fmt.Fprint(w, saveDriver(r, ctx))
 }
 // ========== ========== ========== ========== ==========
 
@@ -118,6 +120,7 @@ func handlerRoot(w http.ResponseWriter, r *http.Request) {
 	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
 	// [START new_context]
 	ctx := appengine.NewContext(r) // c or ctx
+	// Send to func via: (c context.Context)
 	// [END new_context]
 	// ========== ========== ========== ========== ==========
 	
@@ -140,7 +143,7 @@ func handlerRoot(w http.ResponseWriter, r *http.Request) {
 	*/
     //fmt.Fprint(w, drawPage(r.URL.Path[1:]))
     w.Header().Set("Content-Type", "text/html")
-    fmt.Fprint(w, drawPage(r))
+    fmt.Fprint(w, drawPage(r, ctx))
 }
 // ========== ========== ========== ========== ==========
 

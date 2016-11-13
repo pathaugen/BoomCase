@@ -5,6 +5,8 @@ import (
     //"fmt"
     "net/http"
     
+    //"x/net/context"
+    
 	"appengine"
 	//"appengine/datastore"
 	"appengine/user"
@@ -19,16 +21,8 @@ import (
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 //func drawPage(pageRequestedString string) (string) {
-func drawPage(r *http.Request) (string) {
+func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Context
 	pageRequestedString := r.URL.Path[1:]
-	
-	
-	// ========== ========== ========== ========== ==========
-	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
-	// [START new_context]
-	ctx := appengine.NewContext(r) // c or ctx
-	// [END new_context]
-	// ========== ========== ========== ========== ==========
 	
 	s := strings.Split(pageRequestedString, "/")
 	//pageRequested, pageRequestedData := s[0], s[1]
@@ -80,7 +74,6 @@ func drawPage(r *http.Request) (string) {
 		stylesheetLink = `<link rel="stylesheet" type="text/css" href="/resources/stylesheets/`+pageRequested+`.css" />`
 		htmlContent = string(pageRequestedData)
 	}
-	
 	/*
 	if pageRequested == "" {
 		htmlContent = `
@@ -109,7 +102,6 @@ func drawPage(r *http.Request) (string) {
 		htmlContent = "PAGE COULD NOT BE FOUND: "+pageRequested
 	}
 	*/
-	
     // ========== ========== ========== ========== ==========
     
     
@@ -133,15 +125,32 @@ func drawPage(r *http.Request) (string) {
 		}
 		// [END if_user]
 		
-		uploadURL, err := blobstore.UploadURL(ctx, "/savecase", nil)
+		// ========== ========== ========== ========== ==========
+		// Saving Case
+		uploadURLCase, err := blobstore.UploadURL(ctx, "/savecase", nil)
 		if err != nil {
 			/*
 			serveError(ctx, w, err)
 			return
 			*/
 		} else {
-		    output = strings.Replace(output, "<FORMACTION>", uploadURL.String(), -1)
+		    output = strings.Replace(output, "<FORMACTIONCASE>", uploadURLCase.String(), -1)
 		}
+		// ========== ========== ========== ========== ==========
+		
+		// ========== ========== ========== ========== ==========
+		// Saving Driver
+		uploadURLDriver, err := blobstore.UploadURL(ctx, "/savedriver", nil)
+		if err != nil {
+			/*
+			serveError(ctx, w, err)
+			return
+			*/
+		} else {
+		    output = strings.Replace(output, "<FORMACTIONDRIVER>", uploadURLDriver.String(), -1)
+		}
+		// ========== ========== ========== ========== ==========
+		
 	}
 	// ========== ========== ========== ========== ==========
 	

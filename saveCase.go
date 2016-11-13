@@ -18,22 +18,12 @@ import (
 
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func saveCase(r *http.Request) (string) {
+func saveCase(r *http.Request, ctx appengine.Context) (string) {
 	output := ""
-	
-	
-	// ========== ========== ========== ========== ==========
-	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
-	// [START new_context]
-	//ctx := appengine.NewContext(r) // c or ctx
-	// [END new_context]
-	// ========== ========== ========== ========== ==========
-	
 	
 	//output += "<div>PRE: saveCaseBlobstore()</div>"
 	blobkey := saveCaseBlobstore(r)
 	//output += "<div>POST: saveCaseBlobstore()</div>"
-	
 	
 	// ========== ========== ========== ========== ==========
 	// Pull the POST form fields into a Golang struct
@@ -95,12 +85,10 @@ func saveCase(r *http.Request) (string) {
 	}
 	// ========== ========== ========== ========== ==========
 	
-	
-	output += "<div>PRE: saveCaseDatastore()</div>"
-	output += saveCaseDatastore(r, caseData)
+	//output += "<div>PRE: saveCaseDatastore()</div>"
+	output += saveCaseDatastore(r, ctx, caseData)
 	//output += string(caseData.Name)
-	output += "<div>POST: saveCaseDatastore()</div>"
-	
+	//output += "<div>POST: saveCaseDatastore()</div>"
 	
     return output
 }
@@ -112,13 +100,6 @@ func saveCaseBlobstore(r *http.Request) (string) {
 	output := ""
 	
 	// ========== ========== ========== ========== ==========
-	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
-	// [START new_context]
-	//ctx := appengine.NewContext(r) // c or ctx
-	// [END new_context]
-	// ========== ========== ========== ========== ==========
-	
-	// ========== ========== ========== ========== ==========
 	// Store the image in the blobstore
 	blobs, _, err := blobstore.ParseUpload(r)
 	if err != nil {
@@ -126,7 +107,7 @@ func saveCaseBlobstore(r *http.Request) (string) {
 		serveError(ctx, w, err)
 		return
 		*/
-		output += "<h1>ERROR: "+err.Error()+"</h1>"
+		//output += "<h1>ERROR: "+err.Error()+"</h1>"
 	}
 	file := blobs["file"]
 	
@@ -140,12 +121,13 @@ func saveCaseBlobstore(r *http.Request) (string) {
 	//output += "<div>LEN(FILE): ["+string(len(file))+"]</div>"
 	
 	if len(file) == 0 {
-		output += "<h1>WARNING: No image file uploaded to blobstore</h1>"
 		/*
 		log.Errorf(ctx, "no file uploaded")
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 		*/
+		//output += "<h1>WARNING: No image file uploaded to blobstore</h1>"
+		output = ""
 	} else {
 		//http.Redirect(w, r, "/serve/?blobKey="+string(file[0].BlobKey), http.StatusFound)
 		//output += "BLOBKEY: "+string(file[0].BlobKey)
@@ -161,15 +143,8 @@ func saveCaseBlobstore(r *http.Request) (string) {
 
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func saveCaseDatastore(r *http.Request, caseData Case) (string) {
+func saveCaseDatastore(r *http.Request, ctx appengine.Context, caseData Case) (string) {
 	output := ""
-	
-	// ========== ========== ========== ========== ==========
-	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
-	// [START new_context]
-	ctx := appengine.NewContext(r) // c or ctx
-	// [END new_context]
-	// ========== ========== ========== ========== ==========
 	
 	// ========== ========== ========== ========== ==========
 	// Store Golang struct in the datastore
@@ -183,7 +158,11 @@ func saveCaseDatastore(r *http.Request, caseData Case) (string) {
 		output += "<h1>ERROR: datastore failed</h1>"
 	} else {
 		output += "<h1>SUCCESS: Created datastore entry for new case</h1>"
-		output += "<img src=\"/serve/?blobKey="+caseData.BlobKey+"\" />"
+		if caseData.BlobKey != "" {
+			output += "<img src=\"/serve/?blobKey="+caseData.BlobKey+"\" />"
+		} else {
+			output += "<h1>No image was uploaded</h1>"
+		}
 	}
 	// ========== ========== ========== ========== ==========
 	
