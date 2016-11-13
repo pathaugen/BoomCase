@@ -1,0 +1,106 @@
+
+
+<div id="page-formcasedriver">
+	<!-- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- -->
+	<form action="<FORMACTIONCASEDRIVER>" method="post" enctype="multipart/form-data">
+		<fieldset>
+			<legend>New BoomCase Custom Case</legend>
+			<div>
+				<label for="casename">Case Name</label>
+				Short and clever description of case.
+				<input id="casename" name="casename" type="text" placeholder="Mendel Tweed" />
+			</div>
+			<div>
+				<label for="caseoverview">Overview</label>
+				Long detailed description of actual case history and looks as well as any drivers, etc.
+				<textarea id="caseoverview" name="caseoverview" placeholder="Our most popular sized Boomcase in a hard to find turquoise blue color. With 50 Watts of power it's perfect for playing music indoors and compact enough to go anywhere outdoors."></textarea>
+			</div>
+			<div>
+				<label for="casefeaturing">Featuring</label>
+				List drivers in this case or state "Customize as you wish!"
+				<textarea id="casefeaturing" name="casefeaturing" placeholder="50 Watt Amplifier
+Two - 6.5 inch Woofers
+Two - Dome Tweeters
+One - Mid Range"></textarea>
+			</div>
+			<div>
+				<label for="casefrequencyresponse">Frequency Response</label>
+				"__hz - __khz"
+				<input id="casefrequencyresponse" name="casefrequencyresponse" type="text" placeholder="70hz - 20khz" />
+			</div>
+			
+			
+			<div>
+				<h2>Dimensions</h2>
+				<div>
+					__" x __" x __" (length x width x height)
+				</div>
+				
+				<div style="width:30%;float:left;">
+					<label for="caselength">Length</label>
+					<input id="caselength" name="caselength" type="text" placeholder="24" />
+				</div>
+				<div style="width:30%;float:left;margin-left:5%;">
+					<label for="casewidth">Width</label>
+					<input id="casewidth" name="casewidth" type="text" placeholder="6" />
+				</div>
+				<div style="width:30%;float:left;margin-left:5%;">
+					<label for="caseheight">Height</label>
+					<input id="caseheight" name="caseheight" type="text" placeholder="16" />
+				</div>
+			</div>
+			
+			
+			<div style="">
+				<div style="width:45%;float:left;">
+					<label for="caseweight">Weight</label>
+					__ lbs
+					<input id="caseweight" name="caseweight" type="text" placeholder="12" />
+				</div>
+				<div style="width:45%;float:left;margin-left:10%;">
+					<label for="casebattery">Battery Life</label>
+					__+ Hours
+					<input id="casebattery" name="casebattery" type="text" placeholder="18" />
+				</div>
+			</div>
+			
+			
+			<div>
+				<label for="casenotes">Notes</label>
+				e.g. All BoomCases are rechargeable. Comes with battery charger and audio cable. Includes NEW LITHIUM BATTERY! This BoomCase Ships Within two weeks. Rush Delivery Available.
+				<textarea id="casenotes" name="casenotes" placeholder="All BoomCases are rechargeable. Comes with battery charger and audio cable. Includes NEW LITHIUM BATTERY! This BoomCase Ships Within two weeks. Rush Delivery Available."></textarea>
+			</div>
+			<div>
+				<!-- <img src="/caseuploads/blankcase1.jpg" style="height:300px;margin:1% 0px -1% 0px;" /> -->
+				<label for="file">Front View Image</label>
+				Dead-on photo.
+				<input id="file" type="file" name="file" />
+			</div>
+			<div>
+				<label for="caseprice">Base Price</label>
+				$___
+				<input id="caseprice" name="caseprice" type="text" placeholder="550" />
+			</div>
+			<div>
+				<label for="casesold" style="float:left;">
+					Mark as Sold
+					<input id="casesold" name="casesold" type="checkbox" value="true" />
+				</label>
+			</div>
+			
+			
+			<div>
+				<input type="submit" value="Submit">
+				<!--
+				<a href="/dashboard" class="btn btn-primary" aria-label="Save this case to the database">
+					<i class="fa fa-cloud" aria-hidden="true"></i> Save New Case
+				</a>
+				-->
+			</div>
+			
+			
+		</fieldset>
+	</form>
+	<!-- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- -->
+</div>
+

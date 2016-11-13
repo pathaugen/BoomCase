@@ -1,11 +1,14 @@
 
 
+/*@import url("/resources/stylesheets/formcasedriver.css");*/
+
+
 #fb-share-button {
 	display:			none;
 }
 
 
-.case-block {
+#page-dashboard .case-block {
 	display:			inline-block;
 	text-align:			center;
 	background-color:	white;
@@ -14,82 +17,31 @@
 	/* float:				left; */
 	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
 }
-.case-block img {
+#page-dashboard .case-block img {
 	width:				200px;
 	height:				200px;
 }
-.case-block:hover {
+#page-dashboard .case-block:hover {
 	/* background-color:	yellow; */
 }
-.case-block .name-container {
+#page-dashboard .case-block .name-container {
 	color:				black;
 	font-size:			1.5em;
 	display:			block;
 	margin-top:			5px;
 }
-.case-block .watt-container {
+#page-dashboard .case-block .watt-container {
 	font-size:			0.9em;
 	display:			block;
 	margin-top:			5px;
 }
-.case-block .price-container {
+#page-dashboard .case-block .price-container {
 	font-size:			1.2em;
 	display:			block;
 	margin-top:			5px;
 }
 
-
-.dashboard-section {
-	/*font-size:		0.8em;*/
-	/*margin:			0px 2% 0px 2%;*/
-	margin:				auto;
-	
-	width:				75%;
-	/*min-width:		600px;*/
-}
-.dashboard-section form {
-}
-.dashboard-section form h2 {
-	margin:				0px;
-	padding-top:		1%;
-}
-.dashboard-section form fieldset {
-	background-color:	rgba(255, 255, 255, 0.25);
-	border-radius:		5px;
-}
-.dashboard-section form legend {
-	font-size:			2.0em;
-	color:				black;
-}
-.dashboard-section form label {
-	clear:				both;
-	
-	font-size:			1.5em;
-	display:			block;
-	color:				black;
-	
-	padding-top:		2%;
-}
-.dashboard-section form input,
-.dashboard-section form textarea {
-	font-size:			1.5em;
-	width:				100%;
-	padding:			1%;
-}
-.dashboard-section form textarea {
-	height:				100px;
-}
-.dashboard-section form input[type=submit] {
-	margin-top:			4%;
-}
-.dashboard-section form input[type=checkbox] {
-	float: left;
-	
-	/* Double-sized Checkboxes */
-	-ms-transform: scale(2); /* IE */
-	-moz-transform: scale(2); /* FF */
-	-webkit-transform: scale(2); /* Safari and Chrome */
-	-o-transform: scale(2); /* Opera */
-	padding: 10px;
+#page-dashboard .dashboard-section {
+	text-align:			center;
 }
 

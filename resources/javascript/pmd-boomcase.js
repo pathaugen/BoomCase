@@ -308,7 +308,19 @@ $(document).ready(function() {
 /* ********** ********** ********** ********** ********** */
 
 
-
+/* ********** ********** ********** ********** ********** */
+/* Admin - Add Custom Case */
+$(document).ready(function() {
+	
+	$( "#page-formcasedriver" ).css( "display", "none" );
+	
+	$( "#admin-add-case" ).click(function() {
+			event.preventDefault();
+			
+			$( "#page-formcasedriver" ).toggle();
+	});
+});
+/* ********** ********** ********** ********** ********** */
 
 
 

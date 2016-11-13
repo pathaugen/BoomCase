@@ -1,6 +1,6 @@
 
 
-video#bgvid { 
+#page-boombarrel video#bgvid { 
 	position:			fixed;
 	top:				50%;
 	left:				50%;
@@ -23,7 +23,7 @@ video#bgvid {
 
 
 /* ********** ********** ********** ********** ********** */
-#post-video {
+#page-boombarrel #post-video {
 	/* margin-top:			50%; */
 	
 	/*
@@ -38,14 +38,14 @@ video#bgvid {
 	
 	position:			relative;
 }
-#post-video h1 {
+#page-boombarrel #post-video h1 {
 	font-size:			5.0em;
 	text-align:			center;
 	
 	color:				white;
     text-shadow:		rgba(0, 0, 0, 0.5) 0px 0px 4px;
 }
-#post-video #post-video-arrow {
+#page-boombarrel #post-video #post-video-arrow {
 	position:			absolute;
 	bottom:				300px;
 	width:				100%;
@@ -57,17 +57,17 @@ video#bgvid {
 /* ********** ********** ********** ********** ********** */
 
 
-#barrel-color {
+#page-boombarrel #barrel-color {
 	background-color:	lightgreen;
 }
-#barrel-color ul {
+#page-boombarrel #barrel-color ul {
 }
-#barrel-color ul li {
+#page-boombarrel #barrel-color ul li {
 	background-color:	lightblue;
 	display:			inline-block;
 	padding:			2%;
 }
-#barrel-color ul li:hover {
+#page-boombarrel #barrel-color ul li:hover {
 	background-color:	yellow;
 }
 
@@ -75,7 +75,7 @@ video#bgvid {
 
 
 /* ********** ********** ********** ********** ********** */
-#boombarrel-title {
+#page-boombarrel #boombarrel-title {
 	clear:				both;
 	text-align:			left;
 	
@@ -84,7 +84,7 @@ video#bgvid {
 	background-color:	rgba(255, 255, 255, 0.8);
 	overflow:			hidden;
 }
-#boombarrel-title h1 {
+#page-boombarrel #boombarrel-title h1 {
 	/*color:				white;*/
 	font-size:			4.0em;
 	margin:				0px;
@@ -93,7 +93,7 @@ video#bgvid {
 
 
 /* ********** ********** ********** ********** ********** */
-#boombarrel-menu {
+#page-boombarrel #boombarrel-menu {
 	clear:				both;
 	text-align:			right;
 	
@@ -101,18 +101,18 @@ video#bgvid {
 	overflow:			hidden;
 	padding:			2%;
 }
-#boombarrel-menu ul {
+#page-boombarrel #boombarrel-menu ul {
 	margin:				0px;
 }
-#boombarrel-menu li {
+#page-boombarrel #boombarrel-menu li {
 	display:			inline-block;
 }
-#boombarrel-menu a {
+#page-boombarrel #boombarrel-menu a {
 	display:			inline-block;
 	margin-left:		20px;
 	padding:			10px;
 }
-#boombarrel-menu a:hover {
+#page-boombarrel #boombarrel-menu a:hover {
 	color:				white;
 	text-decoration:	none;
 }
@@ -120,7 +120,7 @@ video#bgvid {
 
 
 /* ********** ********** ********** ********** ********** */
-#boombarrel-peeking {
+#page-boombarrel #boombarrel-peeking {
 	clear:				both;
 	background-color:	rgba(255, 255, 255, 1.0);
 	
@@ -141,7 +141,7 @@ video#bgvid {
 	transform-style:			preserve-3d;
 	*/
 }
-#boombarrel-peeking img {
+#page-boombarrel #boombarrel-peeking img {
 	/*
 	text-align:			center;
 	position:			absolute;
@@ -164,18 +164,18 @@ video#bgvid {
 
 
 /* ********** ********** ********** ********** ********** */
-#boombarrel-featuredin {
+#page-boombarrel #boombarrel-featuredin {
 	clear:				both;
 	background-color:	rgba(255, 255, 255, 0.95);
 	text-align:			center;
 	padding:			4% 0px 8% 0px;
 	font-size:			1.2em;
 }
-#boombarrel-featuredin h2 {
+#page-boombarrel #boombarrel-featuredin h2 {
 	margin:				0px;
 	font-family:		Clarendon-Xbold;
 }
-#boombarrel-featuredin img {
+#page-boombarrel #boombarrel-featuredin img {
 	display:			block;
 	margin:				4% auto;
 }
@@ -183,7 +183,7 @@ video#bgvid {
 
 
 /* ********** ********** ********** ********** ********** */
-#boombarrel-video {
+#page-boombarrel #boombarrel-video {
 	clear:				both;
 	background-color:	rgba(255, 255, 255, 0.8);
 	
@@ -192,7 +192,7 @@ video#bgvid {
 	/*height:				500px;*/
 	overflow:			hidden;
 }
-#boombarrel-video #videoinfo {
+#page-boombarrel #boombarrel-video #videoinfo {
 	float:				left;
 	width:				30%;
 	
@@ -200,13 +200,13 @@ video#bgvid {
 	
 	/*height:				100%;*/
 }
-#boombarrel-video #videoinfo h2 {
+#page-boombarrel #boombarrel-video #videoinfo h2 {
 	font-family:		Clarendon-Xbold;
 }
-#boombarrel-video #videoinfo p {
+#page-boombarrel #boombarrel-video #videoinfo p {
 	line-height:		1.5em;
 }
-#boombarrel-video #videoimage {
+#page-boombarrel #boombarrel-video #videoimage {
 	float:				right;
 	width:				70%;
 	
@@ -221,7 +221,7 @@ video#bgvid {
 	background-size:		cover;
 	*/
 }
-#boombarrel-video #videoimage #videoimage-background {
+#page-boombarrel #boombarrel-video #videoimage #videoimage-background {
 	position:			relative;
 	display:			block;
 	
@@ -237,13 +237,13 @@ video#bgvid {
 	
 	box-shadow:			rgba(0, 0, 0, 0.1) 0px 0px 4px;
 }
-#boombarrel-video #videoimage #videoimage-background:before {
+#page-boombarrel #boombarrel-video #videoimage #videoimage-background:before {
 	content:			"";
 	display:			block;
 	/*padding-top:		100%;*/		/* initial ratio of 1:1*/
 	padding-top:		56.25%;		/*16:9 */
 }
-#boombarrel-video #videoimage #videoimage-foreground {
+#page-boombarrel #boombarrel-video #videoimage #videoimage-foreground {
 	display:			block;
 	
 	position:			absolute;
@@ -256,10 +256,10 @@ video#bgvid {
 	
 	background-color:	rgba(255, 255, 255, 0.3);
 }
-#boombarrel-video #videoimage #videoimage-foreground:hover {
+#page-boombarrel #boombarrel-video #videoimage #videoimage-foreground:hover {
 	background-color:	rgba(0, 0, 0, 0.1);
 }
-#boombarrel-video #videoimage #videoimage-foreground i#play {
+#page-boombarrel #boombarrel-video #videoimage #videoimage-foreground i#play {
 	position:			absolute;
 	top:				50%;
     left:				50%;
@@ -270,7 +270,7 @@ video#bgvid {
     
     text-shadow:		rgba(255, 255, 255, 0.2) 0px 0px 4px;
 }
-#boombarrel-video #videoimage #videoimage-foreground i#youtube {
+#page-boombarrel #boombarrel-video #videoimage #videoimage-foreground i#youtube {
 	position:			absolute;
 	bottom:				2%;
     right:				2%;
@@ -289,13 +289,13 @@ video#bgvid {
 
 
 /* ********** ********** ********** ********** ********** */
-#boombarrel-twopics {
+#page-boombarrel #boombarrel-twopics {
 	clear:				both;
 	background-color:	rgba(255, 255, 255, 1.0);
 	height:				500px;
 	overflow:			hidden;
 }
-#boombarrel-twopics #leftpic {
+#page-boombarrel #boombarrel-twopics #leftpic {
 	position:			relative;
 	
 	float:				left;
@@ -304,7 +304,7 @@ video#bgvid {
 	
 	overflow:			hidden;
 }
-#boombarrel-twopics #leftpic > div {
+#page-boombarrel #boombarrel-twopics #leftpic > div {
 	position:			absolute;
 	height:				100%;
 	width:				100%;
@@ -326,12 +326,12 @@ video#bgvid {
 	
 	/*z-index:			-1;*/
 }
-#boombarrel-twopics #leftpic:hover > div {
+#page-boombarrel #boombarrel-twopics #leftpic:hover > div {
 	-moz-transform:		scale(1.1,1.1);
 	-webkit-transform:	scale(1.1,1.1);
 	transform:			scale(1.1,1.1);
 }
-#boombarrel-twopics #rightpic {
+#page-boombarrel #boombarrel-twopics #rightpic {
 	position:			relative;
 	
 	float:				right;
@@ -340,7 +340,7 @@ video#bgvid {
 	
 	overflow:			hidden;
 }
-#boombarrel-twopics #rightpic > div {
+#page-boombarrel #boombarrel-twopics #rightpic > div {
 	position:			absolute;
 	height:				100%;
 	width:				100%;
@@ -360,7 +360,7 @@ video#bgvid {
 	-webkit-transform:	scale(1,1);
 	transform:			scale(1,1);
 }
-#boombarrel-twopics #rightpic:hover > div {
+#page-boombarrel #boombarrel-twopics #rightpic:hover > div {
 	-moz-transform:		scale(1.1,1.1);
 	-webkit-transform:	scale(1.1,1.1);
 	transform:			scale(1.1,1.1);
@@ -369,7 +369,7 @@ video#bgvid {
 
 
 /* ********** ********** ********** ********** ********** */
-#boombarrel-quote {
+#page-boombarrel #boombarrel-quote {
 	clear:				both;
 	text-align:			center;
 	
@@ -379,7 +379,7 @@ video#bgvid {
 	
 	padding:			4% 0px;
 }
-#boombarrel-quote h1 {
+#page-boombarrel #boombarrel-quote h1 {
 	/*color:				white;*/
 	font-size:			4.0em;
 }
