@@ -4,13 +4,23 @@
 
 
 
+# https://cloud.google.com/appengine/docs/python/config/indexref
 
 
 indexes:
-- kind: Greeting
+
+
+- kind: Case
   ancestor: yes
   properties:
-  - name: Date
+  - name: DateAdded
+    direction: desc
+
+
+- kind: Driver
+  ancestor: yes
+  properties:
+  - name: DateAdded
     direction: desc
 
 

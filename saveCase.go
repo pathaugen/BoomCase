@@ -18,12 +18,19 @@ import (
 
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func saveCase(r *http.Request, ctx appengine.Context) (string) {
+//func saveCase(r *http.Request, ctx appengine.Context) (string) {
+func saveCase(r *http.Request) (string) {
 	output := ""
 	
-	//output += "<div>PRE: saveCaseBlobstore()</div>"
+	ctx := appengine.NewContext(r)
+	
+	// ========== ========== ========== ========== ==========
+	output += "<div>PRE: saveCaseBlobstore()</div>"
 	blobkey := saveCaseBlobstore(r)
-	//output += "<div>POST: saveCaseBlobstore()</div>"
+	//blobkey := ""
+	output += "<h1>blobkey = ["+blobkey+"]</h1>"
+	output += "<div>POST: saveCaseBlobstore()</div>"
+	// ========== ========== ========== ========== ==========
 	
 	// ========== ========== ========== ========== ==========
 	// Pull the POST form fields into a Golang struct
@@ -85,10 +92,29 @@ func saveCase(r *http.Request, ctx appengine.Context) (string) {
 	}
 	// ========== ========== ========== ========== ==========
 	
-	//output += "<div>PRE: saveCaseDatastore()</div>"
-	output += saveCaseDatastore(r, ctx, caseData)
-	//output += string(caseData.Name)
-	//output += "<div>POST: saveCaseDatastore()</div>"
+	
+	// ========== ========== ========== ========== ==========
+	output += "<h1>r.FormValue(\"casename\") = ["+r.FormValue("casename")+"]</h1>"
+	output += "<h1>caseData.Name = ["+caseData.Name+"]</h1>"
+	output += saveCaseDatastore(r, caseData)
+	if caseData.Name != "" {
+		//output += "<div>PRE: saveCaseDatastore()</div>"
+		output += saveCaseDatastore(r, caseData)
+		//output += string(caseData.Name)
+		//output += "<div>POST: saveCaseDatastore()</div>"
+	} else if caseData.BlobKey != "" {
+		// ========== ========== ========== ========== ==========
+		// Delete blobstore entry
+		//deleteBlobKey := "EUG76sbkgL8CDsNUokKcRQ=="
+		output += "<div>Prepare to delete from blobstore: "+caseData.BlobKey+"</div>"
+		blobstore.Delete(ctx, appengine.BlobKey(caseData.BlobKey)) // https://cloud.google.com/appengine/docs/go/blobstore/reference#Delete
+		output += "<div>Finished deleting from blobstore</div>"
+		// ========== ========== ========== ========== ==========
+	} else {
+		output += "<h1>Form was submitted blank</h1>"
+	}
+	// ========== ========== ========== ========== ==========
+	
 	
     return output
 }
@@ -110,6 +136,8 @@ func saveCaseBlobstore(r *http.Request) (string) {
 		//output += "<h1>ERROR: "+err.Error()+"</h1>"
 	}
 	file := blobs["file"]
+	
+	//output += "casename: "+blobs["casename"]
 	
 	//output += "<div>LEN(FILE): "+string(len(file))+"</div>"
 	//output += "<div>LEN(FILE): "+string(file[0].BlobKey)+"</div>"
@@ -143,8 +171,11 @@ func saveCaseBlobstore(r *http.Request) (string) {
 
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func saveCaseDatastore(r *http.Request, ctx appengine.Context, caseData Case) (string) {
+//func saveCaseDatastore(r *http.Request, ctx appengine.Context, caseData Case) (string) {
+func saveCaseDatastore(r *http.Request, caseData Case) (string) {
 	output := ""
+	
+	ctx := appengine.NewContext(r)
 	
 	// ========== ========== ========== ========== ==========
 	// Store Golang struct in the datastore

@@ -127,14 +127,14 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 		
 		// ========== ========== ========== ========== ==========
 		// Saving Case
-		uploadURLCase, err := blobstore.UploadURL(ctx, "/savecase", nil)
+		uploadURLCase, err := blobstore.UploadURL(ctx, "/savecasedriver", nil)
 		if err != nil {
 			/*
 			serveError(ctx, w, err)
 			return
 			*/
 		} else {
-		    output = strings.Replace(output, "<FORMACTIONCASE>", uploadURLCase.String(), -1)
+		    output = strings.Replace(output, "<FORMACTIONCASEDRIVER>", uploadURLCase.String(), -1)
 		}
 		// ========== ========== ========== ========== ==========
 		
@@ -157,6 +157,8 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
     
     if pageRequested == "customize" {
 		output = strings.Replace(output, "<CASE>", drawCase(r), -1)
+		
+		output = strings.Replace(output, "<CASEADD>", "FORM FOR ADDING A CASE IF LOGGED IN", -1)
     }
     
     

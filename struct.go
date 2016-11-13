@@ -69,7 +69,7 @@ func caseKey(ctx appengine.Context) *datastore.Key {
 type Driver struct {
 	Name				string
 	FrequencyResponse	string
-	Width				int
+	Diameter			int
 	Price				int
 	
 	BlobKey				string

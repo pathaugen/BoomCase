@@ -21,14 +21,9 @@ func saveDriver(r *http.Request, ctx appengine.Context) (string) {
 	output := ""
 	
 	// ========== ========== ========== ========== ==========
-	// Delete blobstore entry
-	output += "<div>Prepare to delete from blobstore</div>"
-	deleteBlobKey := "EUG76sbkgL8CDsNUokKcRQ=="
-	blobstore.Delete(ctx, appengine.BlobKey(deleteBlobKey)) // https://cloud.google.com/appengine/docs/go/blobstore/reference#Delete
-	output += "<div>Finished deleting from blobstore</div>"
-	// ========== ========== ========== ========== ==========
-	
 	blobkey := saveDriverBlobstore(r)
+	output += "<h1>blobkey = ["+blobkey+"]</h1>"
+	// ========== ========== ========== ========== ==========
 	
 	// ========== ========== ========== ========== ==========
 	// Pull the POST form fields into a Golang struct
@@ -44,15 +39,15 @@ func saveDriver(r *http.Request, ctx appengine.Context) (string) {
 		DateAdded			time.Time
 	}
 	*/
-	casewidth, _	:= strconv.Atoi(r.FormValue("casewidth"))
-	caseprice, _	:= strconv.Atoi(r.FormValue("caseprice"))
+	driverdiameter, _		:= strconv.Atoi(r.FormValue("driverdiameter"))
+	driverprice, _			:= strconv.Atoi(r.FormValue("driverprice"))
 	
 	driverData := Driver {
-		Name:				r.FormValue("casename"),
-		FrequencyResponse:	r.FormValue("casefrequencyresponse"),
+		Name:				r.FormValue("drivername"),
+		FrequencyResponse:	r.FormValue("driverfrequencyresponse"),
 		
-		Width:				casewidth, // int
-		Price:				caseprice, // int
+		Diameter:			driverdiameter, // int
+		Price:				driverprice, // int
 		
 		BlobKey:			blobkey,
 		
@@ -60,7 +55,25 @@ func saveDriver(r *http.Request, ctx appengine.Context) (string) {
 	}
 	// ========== ========== ========== ========== ==========
 	
-	output += saveDriverDatastore(r, ctx, driverData)
+	
+	// ========== ========== ========== ========== ==========
+	output += "<h1>r.FormValue(\"drivername\") = ["+r.FormValue("drivername")+"]</h1>"
+	output += "<h1>driverData.Name = ["+driverData.Name+"]</h1>"
+	if driverData.Name != "" {
+		output += saveDriverDatastore(r, ctx, driverData)
+	} else if driverData.BlobKey != "" {
+		// ========== ========== ========== ========== ==========
+		// Delete blobstore entry
+		//deleteBlobKey := "EUG76sbkgL8CDsNUokKcRQ=="
+		output += "<div>Prepare to delete from blobstore: "+driverData.BlobKey+"</div>"
+		blobstore.Delete(ctx, appengine.BlobKey(driverData.BlobKey)) // https://cloud.google.com/appengine/docs/go/blobstore/reference#Delete
+		output += "<div>Finished deleting from blobstore</div>"
+		// ========== ========== ========== ========== ==========
+	} else {
+		output += "<h1>Form was submitted blank</h1>"
+	}
+	// ========== ========== ========== ========== ==========
+	
 	
     return output
 }

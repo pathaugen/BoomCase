@@ -24,14 +24,50 @@ func main() {
 // ========== ========== ========== ========== ==========
 // GAE config handlers for URIs
 func init() {
+	http.HandleFunc("/savecasedriver",	handlerSaveCaseDriver)
+	http.HandleFunc("/savecase",		handlerSaveCase)
+	http.HandleFunc("/savedriver",		handlerSaveDriver)
 	
-	http.HandleFunc("/savecase", handlerSaveCase)
-	http.HandleFunc("/savedriver", handlerSaveDriver)
+	http.HandleFunc("/serve/",			handlerServe)
 	
-	http.HandleFunc("/serve/", handlerServe)
+    http.HandleFunc("/",				handlerRoot)
+}
+// ========== ========== ========== ========== ==========
+
+
+// ========== ========== ========== ========== ==========
+// GAE handler - handlerSaveCaseDriver
+func handlerSaveCaseDriver(w http.ResponseWriter, r *http.Request) {
+	output := ""
 	
-    http.HandleFunc("/", handlerRoot)
+	output += "<h1>handlerSaveCaseDriver()</h1>"
+	
+	// ========== ========== ========== ========== ==========
+	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
+	// [START new_context]
+	ctx := appengine.NewContext(r) // c or ctx
+	// Can send to func via: (c context.Context)
+	// [END new_context]
+	// ========== ========== ========== ========== ==========
+	
+	// ========== ========== ========== ========== ==========
+	// [START if_user]
+	if u := user.Current(ctx); u != nil {
+		//g.Author = u.String()
+	}
+	// [END if_user]
+	// ========== ========== ========== ========== ==========
+	
+    w.Header().Set("Content-Type", "text/html; charset=utf-8")
     
+    output += "<h1>START: saveCaseDriverBlobstore()</h1>"
+    //blobkey := saveCaseDriverBlobstore(r)
+    blobkey := ""
+    
+    output += "<h1>START: saveCaseDriverDatastore()</h1>"
+    output += saveCaseDriverDatastore(r, ctx, blobkey)
+    
+    fmt.Fprint(w, output)
 }
 // ========== ========== ========== ========== ==========
 
@@ -65,7 +101,8 @@ func handlerSaveCase(w http.ResponseWriter, r *http.Request) {
 	*/
     //fmt.Fprint(w, drawPage(r.URL.Path[1:]))
     w.Header().Set("Content-Type", "text/html")
-    fmt.Fprint(w, saveCase(r, ctx))
+    //fmt.Fprint(w, saveCase(r, ctx))
+    fmt.Fprint(w, saveCase(r))
 }
 // ========== ========== ========== ========== ==========
 
