@@ -37,6 +37,20 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 	templateContent = string(loadedTemplate)
 	// ========== ========== ========== ========== ==========
 	
+	// ========== ========== ========== ========== ==========
+	// [START if_user]
+	u := user.Current(ctx)
+	if u != nil {
+		url, _ := user.LogoutURL(ctx, "/")
+		adminBar := `
+			<div style="text-align:center;background-color:yellow;font-weight:bold;padding:2%;">
+				Welcome `+u.String()+`! (<a href="`+url+`">sign out</a>)
+			</div>`
+	    templateContent = strings.Replace(templateContent, "<ADMINBAR>", adminBar, -1)
+	}
+	// [END if_user]
+	// ========== ========== ========== ========== ==========
+	
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	stylesheetLink := ""
 	htmlContent := `<div style="text-align:center;"><h1>ERROR LOADING PAGE</h1></div>`

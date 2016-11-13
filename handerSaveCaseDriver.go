@@ -34,8 +34,6 @@ func handlerSaveCaseDriver(w http.ResponseWriter, r *http.Request) {
 	}
 	// [END if_user]
 	// ========== ========== ========== ========== ==========
-	
-    w.Header().Set("Content-Type", "text/html; charset=utf-8")
     
     output += "<h1>START: saveCaseDriverBlobstore()</h1>"
     //blobkey := saveCaseDriverBlobstore(r)
@@ -44,6 +42,7 @@ func handlerSaveCaseDriver(w http.ResponseWriter, r *http.Request) {
     output += "<h1>START: saveCaseDriverDatastore()</h1>"
     output += saveCaseDriverDatastore(r, ctx, blobkey)
     
+    w.Header().Set("Content-Type", "text/html; charset=utf-8")
     fmt.Fprint(w, output)
 }
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
