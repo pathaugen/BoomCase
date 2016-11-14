@@ -33,6 +33,8 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 	if err != nil { panic(err) }
 	templateContent = string(loadedTemplate)
 	
+	
+	
 	// ========== ========== ========== ========== ==========
 	// Draw Admin Bar
 	// [START if_user]
@@ -55,6 +57,8 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 	}
 	// [END if_user]
 	// ========== ========== ========== ========== ==========
+	
+	
 	
 	
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
@@ -81,6 +85,8 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
     
     
+    
+    
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
     output := templateContent
     output = strings.Replace(output, "<CONTENT>", htmlContent, -1)
@@ -89,9 +95,12 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
     
     
+    
+    
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	pageRequestedVariables1 := ""
 	pageRequestedVariables2 := ""
+	blobkey := ""
 	
 	if pageRequested == "case" || pageRequested == "404" {
 		
@@ -102,13 +111,38 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 	    output = strings.Replace(output, "<PAGEVARIABLES2>", pageRequestedVariables2, -1)
 	    
 	    // drawPageCase.go
-		if pageRequested == "case" { output = drawPageCase(ctx, output, pageRequestedVariables1) }
+		if pageRequested == "case" { output, blobkey = drawPageCase(ctx, output, pageRequestedVariables1) }
 	}
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	
     
+    
+    
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	if pageRequested == "dashboard" {
+		
+		// ========== ========== ========== ========== ==========
+		// If blobkey query string is set, display the image from the datastore
+		blobkey = r.FormValue("blobkey")
+		blobkeyHtml := ""
+		
+		if blobkey != "" {
+			blobkeyHtml = `
+				<div style="">
+					<h1>Image Successfully Uploaded!</h1>
+					<div><img src="/serve/?blobKey=`+blobkey+`" style="width:500px;" /></div>
+					Now add this image as a Custom Case or Driver Option by selecting an option.
+				</div>
+			`
+		} else {
+			// if blobkey doesn't exist, replace editing forms with image upload forms
+			output = strings.Replace(output, "<FORMCASE>", "<FORMIMAGE>", -1)
+			output = strings.Replace(output, "<FORMDRIVER>", "<FORMIMAGE>", -1)
+		}
+		
+		output = strings.Replace(output, "<BLOBKEYIMAGE>", blobkeyHtml, -1)
+		// ========== ========== ========== ========== ==========
+		
 	} else if pageRequested == "customize" {
 		// drawPageCustomize.go
 		output = drawPageCustomize(ctx, output)
@@ -125,19 +159,30 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 		    
 			formDriver, _ := ioutil.ReadFile("resources/html/formdriver.html")
 		    output = strings.Replace(output, "<FORMDRIVER>", string(formDriver), -1)
+		    
+			formImage, _ := ioutil.ReadFile("resources/html/formimage.html")
+		    output = strings.Replace(output, "<FORMIMAGE>", string(formImage), -1)
 			// ========== ========== ========== ========== ==========
 			
 			// ========== ========== ========== ========== ==========
 			// Generation of URL to save Case or Driver
-			uploadURLCase, err := blobstore.UploadURL(ctx, "/savecasedriver", nil)
-			if err != nil { /* serveError(ctx, w, err); return */ } else { output = strings.Replace(output, "<FORMACTIONCASEDRIVER>", uploadURLCase.String(), -1) }
+			uploadURLCaseDriver, err := blobstore.UploadURL(ctx, "/savecasedriver", nil)
+			if err != nil { /* serveError(ctx, w, err); return */ } else { output = strings.Replace(output, "<FORMACTIONCASEDRIVER>", uploadURLCaseDriver.String(), -1) }
+			
+			uploadURLImage, err := blobstore.UploadURL(ctx, "/saveimage", nil)
+			if err != nil { /* serveError(ctx, w, err); return */ } else { output = strings.Replace(output, "<FORMACTIONIMAGE>", uploadURLImage.String(), -1) }
 			// ========== ========== ========== ========== ==========
 			
+			// Slip the blobkey into the forms
+			//if r.FormValue("blobkey") != "" { output = strings.Replace(output, "<BLOBKEY>", r.FormValue("blobkey"), -1) }
+			if blobkey != "" { output = strings.Replace(output, "<BLOBKEY>", blobkey, -1) }
+			
 			// Stylesheet for the case/driver form
-			stylesheetLink += `<link rel="stylesheet" type="text/css" href="/resources/stylesheets/formcasedriver.css" />`
+			stylesheetLink += `<link rel="stylesheet" type="text/css" href="/resources/stylesheets/formcasedriverimage.css" />`
 			
 			// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 			// Fill in the form with values for editing, else eliminate the values
+			valueExistingDataStoreId	:= ""
 			valueCaseName				:= ""
 			valueCaseOverview			:= ""
 			valueCaseFeaturing			:= ""
@@ -151,6 +196,7 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 			valueCasePrice				:= ""
 			valueCaseSold				:= ""
 			
+			// ========== ========== ========== ========== ==========
 			if pageRequested == "case" {
 				
 				// Array to hold the results
@@ -164,10 +210,11 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 				// ========== ========== ========== ========== ==========
 				for i, c := range caseArray {
 					key := keys[i]
-					id := uint64(key.IntID())
+					id := int64(key.IntID())
 					
 					if strconv.Itoa(int(id)) == pageRequestedVariables1 {
 						// Populate the form with current values from datastore
+						valueExistingDataStoreId	= strconv.Itoa(int(id))
 						valueCaseName				= c.Name
 						valueCaseOverview			= c.Overview
 						valueCaseFeaturing			= c.Featuring
@@ -184,7 +231,10 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 				}
 				// ========== ========== ========== ========== ==========
 			}
+			// ========== ========== ========== ========== ==========
+			
 			// Replace the HTML placeholders with blank values, or ones from datastore
+		    output = strings.Replace(output, "<EXISTINGDATASTOREID>",			valueExistingDataStoreId, -1)
 		    output = strings.Replace(output, "<VALUECASENAME>",					valueCaseName, -1)
 		    output = strings.Replace(output, "<VALUECASEOVERVIEW>",				valueCaseOverview, -1)
 		    output = strings.Replace(output, "<VALUECASEFEATURING>",			valueCaseFeaturing, -1)
@@ -212,10 +262,14 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 	}
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
     
+    
+    
 	
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
     output = strings.Replace(output, "<STYLESHEET>", stylesheetLink, -1)
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+    
+    
     
     
     return output

@@ -1,10 +1,17 @@
 
 
-<div id="page-formcasedriver">
+<div id="page-formcase">
 	<!-- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- -->
 	<form action="<FORMACTIONCASEDRIVER>" method="post" enctype="multipart/form-data">
+		
+		<!-- Used to trigger an overwrite of data in datastore vs new entry created -->
+		<input id="existingdatastoreid" name="existingdatastoreid" type="hidden" value="<EXISTINGDATASTOREID>" />
+		
+		<!-- Used to transmit blobkey from an uploaded image -->
+		<input id="blobkey" name="blobkey" type="hidden" value="<BLOBKEY>" />
+		
 		<fieldset>
-			<legend>New BoomCase Custom Case</legend>
+			<legend>Edit BoomCase Custom Case Details</legend>
 			<div>
 				<label for="casename">Case Name</label>
 				Short and clever description of case.

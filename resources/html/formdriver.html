@@ -1,25 +1,34 @@
 
 
-<div id="page-formcasedriver">
+<div id="page-formdriver">
 	<!-- ---------- ---------- ---------- ---------- ---------- -->
 	<form action="<FORMACTIONCASEDRIVER>" method="post" enctype="multipart/form-data">
+	
+		<!-- Used to trigger an overwrite of data in datastore vs new entry created -->
+		<input id="existingdatastoreid" name="existingdatastoreid" type="hidden" value="<EXISTINGDATASTOREID>" />
+		
+		<!-- Used to transmit blobkey from an uploaded image -->
+		<input id="blobkey" name="blobkey" type="hidden" value="<BLOBKEY>" />
+		
 		<fieldset>
-			<legend>New BoomCase Driver Option</legend>
+			<legend>Edit BoomCase Driver Details</legend>
 			
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
 			<div>
 				<label for="drivername">Driver Name</label>
 				Short and clever description of driver.
-				<input id="drivername" name="drivername" type="text" placeholder="JBL Boom" />
+				<input id="drivername" name="drivername" type="text" placeholder="JBL Boom" value="<VALUEDRIVERNAME>" />
 			</div>
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
 			
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			<!--
 			<div>
 				<label for="file">Driver Front View Image</label>
 				Dead-on photo.
 				<input id="file" type="file" name="file" />
 			</div>
+			-->
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
 			
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
@@ -27,12 +36,12 @@
 				<div style="width:45%;float:left;">
 					<label for="driverdiameter">Diameter in Inches</label>
 					__ " (inches)
-					<input id="driverdiameter" name="driverdiameter" type="text" placeholder="12" />
+					<input id="driverdiameter" name="driverdiameter" type="text" placeholder="12" value="<VALUEDRIVERDIAMETER>" />
 				</div>
 				<div style="width:45%;float:left;margin-left:10%;">
 					<label for="driverfrequencyresponse">Frequency Response</label>
 					"__hz - __khz"
-					<input id="driverfrequencyresponse" name="driverfrequencyresponse" type="text" placeholder="70hz - 20khz" />
+					<input id="driverfrequencyresponse" name="driverfrequencyresponse" type="text" placeholder="70hz - 20khz" value="<VALUEDRIVERFREQUENCYRESPONSE>" />
 				</div>
 			</div>
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
@@ -41,7 +50,7 @@
 			<div>
 				<label for="driverprice">Base Price</label>
 				$___
-				<input id="driverprice" name="driverprice" type="text" placeholder="45" />
+				<input id="driverprice" name="driverprice" type="text" placeholder="45" value="<VALUEDRIVERPRICE>" />
 			</div>
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
 			

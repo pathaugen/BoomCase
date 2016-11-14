@@ -1,0 +1,81 @@
+
+
+#page-formcase,
+#page-formdriver,
+#page-formimage {
+	clear:				both;
+	/*font-size:		0.8em;*/
+	/*margin:			0px 2% 0px 2%;*/
+	margin:				auto;
+	
+	width:				75%;
+	/*min-width:		600px;*/
+	
+	text-align:			left;
+}
+#page-formcase		form,
+#page-formdriver	form,
+#page-formimage		form {
+}
+#page-formcase		form h2,
+#page-formdriver	form h2,
+#page-formimage		form h2 {
+	margin:				0px;
+	padding-top:		1%;
+}
+#page-formcase		form fieldset,
+#page-formdriver	form fieldset,
+#page-formimage		form fieldset {
+	background-color:	rgba(255, 255, 255, 0.25);
+	border-radius:		5px;
+}
+#page-formcase		form legend,
+#page-formdriver	form legend,
+#page-formimage		form legend {
+	font-size:			2.0em;
+	color:				black;
+}
+#page-formcase		form label,
+#page-formdriver	form label,
+#page-formimage		form label {
+	clear:				both;
+	
+	font-size:			1.5em;
+	display:			block;
+	color:				black;
+	
+	padding-top:		2%;
+}
+#page-formcase		form input,
+#page-formdriver	form input,
+#page-formimage		form input,
+#page-formcase		form textarea,
+#page-formdriver	form textarea,
+#page-formimage		form textarea {
+	font-size:			1.5em;
+	width:				100%;
+	padding:			1%;
+}
+#page-formcase		form textarea,
+#page-formdriver	form textarea,
+#page-formimage		form textarea {
+	height:				100px;
+}
+#page-formcase		form input[type=submit],
+#page-formdriver	form input[type=submit],
+#page-formimage		form input[type=submit] {
+	margin-top:			4%;
+}
+#page-formcase		form input[type=checkbox],
+#page-formdriver	form input[type=checkbox],
+#page-formimage		form input[type=checkbox] {
+	float: left;
+	
+	/* Double-sized Checkboxes */
+	-ms-transform:		scale(2); /* IE */
+	-moz-transform:		scale(2); /* FF */
+	-webkit-transform:	scale(2); /* Safari and Chrome */
+	-o-transform:		scale(2); /* Opera */
+	padding:			10px;
+}
+

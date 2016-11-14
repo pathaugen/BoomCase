@@ -130,7 +130,7 @@ func saveCase(r *http.Request) (string) {
 		Battery:			int8(casebattery), // int
 		Notes:				r.FormValue("casenotes"),
 		
-		Price:				int16(caseprice), // int
+		Price:				int32(caseprice), // int
 		
 		Sold:				casesold, // bool
 		

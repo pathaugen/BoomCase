@@ -44,7 +44,7 @@ type Case struct {
 	Battery				int8	// uint8 = 0-255
 	Notes				string
 	
-	Price				int16	// uint16 = 0-65,535
+	Price				int32	// uint16 = 0-65,535
 	Watts				int16
 	Sold				bool	// bool - Mark as sold
 	
@@ -92,7 +92,7 @@ type Driver struct {
 	Name				string
 	FrequencyResponse	string
 	Diameter			int8	// uint8 = 0-255
-	Price				int16	// uint16 = 0-65,535
+	Price				int32	// uint16 = 0-65,535
 	
 	BlobKey				string
 	

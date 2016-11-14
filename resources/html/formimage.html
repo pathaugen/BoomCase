@@ -1,0 +1,31 @@
+
+
+<div id="page-formimage">
+	<!-- ---------- ---------- ---------- ---------- ---------- -->
+	<form action="<FORMACTIONIMAGE>" method="post" enctype="multipart/form-data">
+	
+		<!-- Used to trigger an overwrite of data in datastore vs new entry created -->
+		<input id="existingblobstoreid" name="existingblobstoreid" type="hidden" value="<EXISTINGBLOBSTOREID>" />
+		
+		<fieldset>
+			<legend>Start by Uploading a New Image</legend>
+			
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			<div>
+				<label for="file">Driver Front View Image</label>
+				Dead-on photo.
+				<input id="file" type="file" name="file" />
+			</div>
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			<div>
+				<input type="submit" value="Submit">
+			</div>
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			
+		</fieldset>
+	</form>
+	<!-- ---------- ---------- ---------- ---------- ---------- -->
+</div>
+

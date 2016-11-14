@@ -75,7 +75,7 @@ func drawPageCustomize(ctx appengine.Context, output string) (string) {
 	outputCases := ""
 	for i, c := range caseArray {
 		key := keys[i]
-		id := uint64(key.IntID())
+		id := int64(key.IntID())
 		
 		// Pull the image from blobstore
 		/*
@@ -88,7 +88,7 @@ func drawPageCustomize(ctx appengine.Context, output string) (string) {
 		
 		outputCases += `
 			<a href="/case/`+strconv.Itoa(int(id))+`" class="case-block">
-				<img src=\"/serve/?blobKey=`+c.BlobKey+`\" />
+				<img src="/serve/?blobKey=`+c.BlobKey+`" />
 				<span class="name-container">`+c.Name+`</span>
 				<!-- <span class="watt-container"><span class="watts">`+strconv.Itoa(int(c.Watts))+`</span> Watt BoomCase</span> -->
 				<span class="">Customize this Case</span>
@@ -114,8 +114,9 @@ func drawPageCustomize(ctx appengine.Context, output string) (string) {
 					<i class="fa fa-plus-circle" aria-hidden="true"></i> ADMIN: Add New Custom Case
 				</a>
 			</div>`
-		output = strings.Replace(output, "<FORMCASE>", formCaseButton+"<FORMCASE>", -1)
-	} else { output = strings.Replace(output, "<FORMCASE>", "", -1) }
+		//output = strings.Replace(output, "<FORMCASE>", formCaseButton+"<FORMCASE>", -1)
+		output = strings.Replace(output, "<FORMIMAGE>", formCaseButton+"<FORMIMAGE>", -1)
+	} else { output = strings.Replace(output, "<FORMIMAGE>", "", -1) }
 	// [END if_user]
 	// ========== ========== ========== ========== ==========
     
