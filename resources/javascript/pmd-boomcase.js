@@ -312,12 +312,12 @@ $(document).ready(function() {
 /* Admin - Add Custom Case */
 $(document).ready(function() {
 	
-	$( "#case-container #page-formcasedriver" ).css( "display", "none" );
+	$( "#page-formcasedriver" ).css( "display", "none" );
 	
-	$( "#case-container #admin-add-case" ).click(function() {
+	$( "#case-container #admin-add-case, #page-case #admin-edit-case" ).click(function() {
 			event.preventDefault();
 			
-			$( "#case-container #page-formcasedriver" ).toggle();
+			$( "#page-formcasedriver" ).toggle();
 	});
 });
 /* ********** ********** ********** ********** ********** */

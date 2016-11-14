@@ -1,4 +1,52 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MIGRATED TO SAVECASEDRIVER.GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package main
 
 import (
@@ -74,15 +122,15 @@ func saveCase(r *http.Request) (string) {
 		Featuring:			r.FormValue("casefeaturing"),
 		FrequencyResponse:	r.FormValue("casefrequencyresponse"),
 		
-		Length:				caseLength, // int
-		Width:				casewidth, // int
-		Height:				caseheight, // int
+		Length:				int8(caseLength), // int
+		Width:				int8(casewidth), // int
+		Height:				int8(caseheight), // int
 		
-		Weight:				caseweight, // int
-		Battery:			casebattery, // int
+		Weight:				int8(caseweight), // int
+		Battery:			int8(casebattery), // int
 		Notes:				r.FormValue("casenotes"),
 		
-		Price:				caseprice, // int
+		Price:				int16(caseprice), // int
 		
 		Sold:				casesold, // bool
 		

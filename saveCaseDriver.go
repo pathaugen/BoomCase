@@ -24,15 +24,11 @@ func saveCaseDriverBlobstore(r *http.Request) (string) {
 	// ========== ========== ========== ========== ==========
 	// Store the image in the blobstore
 	blobs, _, err := blobstore.ParseUpload(r)
-	if err != nil {
-	}
+	if err != nil {  }
 	file := blobs["file"]
 	
-	if len(file) == 0 {
-		output = ""
-	} else {
-		output = string(file[0].BlobKey)
-	}
+	if len(file) == 0 { output = ""
+	} else { output = string(file[0].BlobKey) }
 	// ========== ========== ========== ========== ==========
 	
     return output
@@ -61,6 +57,7 @@ func saveCaseDriverDatastore(r *http.Request, ctx appengine.Context, blobkey str
 	caseheight, _	:= strconv.Atoi(r.FormValue("caseheight"))
 	caseweight, _	:= strconv.Atoi(r.FormValue("caseweight"))
 	casebattery, _	:= strconv.Atoi(r.FormValue("casebattery"))
+	casewatts, _	:= strconv.Atoi(r.FormValue("casewatts"))
 	caseprice, _	:= strconv.Atoi(r.FormValue("caseprice"))
 	
 	casesold, _		:= strconv.ParseBool(r.FormValue("casesold"))
@@ -71,16 +68,16 @@ func saveCaseDriverDatastore(r *http.Request, ctx appengine.Context, blobkey str
 		Featuring:			r.FormValue("casefeaturing"),
 		FrequencyResponse:	r.FormValue("casefrequencyresponse"),
 		
-		Length:				caseLength, // int
-		Width:				casewidth, // int
-		Height:				caseheight, // int
+		Length:				int8(caseLength), // int8
+		Width:				int8(casewidth), // int8
+		Height:				int8(caseheight), // int8
 		
-		Weight:				caseweight, // int
-		Battery:			casebattery, // int
+		Weight:				int8(caseweight), // int8
+		Battery:			int8(casebattery), // int8
 		Notes:				r.FormValue("casenotes"),
 		
-		Price:				caseprice, // int
-		
+		Price:				int16(caseprice), // int16
+		Watts:				int16(casewatts), // int16
 		Sold:				casesold, // bool
 		
 		BlobKey:			blobkey,
@@ -119,7 +116,7 @@ func saveCaseDriverDatastore(r *http.Request, ctx appengine.Context, blobkey str
 		key := datastore.NewIncompleteKey(ctx, "Case", caseKey(ctx))
 		_, err := datastore.Put(ctx, key, &caseData)
 		if err != nil {
-			output += "<h1>ERROR: datastore failed</h1>"
+			output += "<h1>ERROR: datastore failed: "+err.Error()+"</h1>"
 		} else {
 			output += "<h1>SUCCESS: Created datastore entry for new case</h1>"
 			if caseData.BlobKey != "" {
