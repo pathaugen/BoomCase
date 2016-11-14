@@ -1,19 +1,26 @@
 
 
-<div id="page-formcasedriver">
+<div id="page-formcase">
 	<!-- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- -->
 	<form action="<FORMACTIONCASEDRIVER>" method="post" enctype="multipart/form-data">
+		
+		<!-- Used to trigger an overwrite of data in datastore vs new entry created -->
+		<input id="existingdatastoreid" name="existingdatastoreid" type="hidden" value="<EXISTINGDATASTOREID>" />
+		
+		<!-- Used to transmit blobkey from an uploaded image -->
+		<input id="blobkey" name="blobkey" type="hidden" value="<BLOBKEY>" />
+		
 		<fieldset>
-			<legend>New BoomCase Custom Case</legend>
+			<legend>Edit BoomCase Custom Case Details</legend>
 			<div>
 				<label for="casename">Case Name</label>
 				Short and clever description of case.
-				<input id="casename" name="casename" type="text" placeholder="Mendel Tweed" />
+				<input id="casename" name="casename" type="text" placeholder="Mendel Tweed" value="<VALUECASENAME>" />
 			</div>
 			<div>
 				<label for="caseoverview">Overview</label>
 				Long detailed description of actual case history and looks as well as any drivers, etc.
-				<textarea id="caseoverview" name="caseoverview" placeholder="Our most popular sized Boomcase in a hard to find turquoise blue color. With 50 Watts of power it's perfect for playing music indoors and compact enough to go anywhere outdoors."></textarea>
+				<textarea id="caseoverview" name="caseoverview" placeholder="Our most popular sized Boomcase in a hard to find turquoise blue color. With 50 Watts of power it's perfect for playing music indoors and compact enough to go anywhere outdoors."><VALUECASEOVERVIEW></textarea>
 			</div>
 			<div>
 				<label for="casefeaturing">Featuring</label>
@@ -21,12 +28,12 @@
 				<textarea id="casefeaturing" name="casefeaturing" placeholder="50 Watt Amplifier
 Two - 6.5 inch Woofers
 Two - Dome Tweeters
-One - Mid Range"></textarea>
+One - Mid Range"><VALUECASEFEATURING></textarea>
 			</div>
 			<div>
 				<label for="casefrequencyresponse">Frequency Response</label>
-				"__hz - __khz"
-				<input id="casefrequencyresponse" name="casefrequencyresponse" type="text" placeholder="70hz - 20khz" />
+				"__hz - __khz" or "Depends on customization options."
+				<input id="casefrequencyresponse" name="casefrequencyresponse" type="text" placeholder="70hz - 20khz" value="<VALUECASEFREQUENCYRESPONSE>" />
 			</div>
 			
 			
@@ -38,15 +45,15 @@ One - Mid Range"></textarea>
 				
 				<div style="width:30%;float:left;">
 					<label for="caselength">Length</label>
-					<input id="caselength" name="caselength" type="text" placeholder="24" />
+					<input id="caselength" name="caselength" type="text" placeholder="24" value="<VALUECASELENGTH>" />
 				</div>
 				<div style="width:30%;float:left;margin-left:5%;">
 					<label for="casewidth">Width</label>
-					<input id="casewidth" name="casewidth" type="text" placeholder="6" />
+					<input id="casewidth" name="casewidth" type="text" placeholder="6" value="<VALUECASEWIDTH>" />
 				</div>
 				<div style="width:30%;float:left;margin-left:5%;">
 					<label for="caseheight">Height</label>
-					<input id="caseheight" name="caseheight" type="text" placeholder="16" />
+					<input id="caseheight" name="caseheight" type="text" placeholder="16" value="<VALUECASEHEIGHT>" />
 				</div>
 			</div>
 			
@@ -55,12 +62,12 @@ One - Mid Range"></textarea>
 				<div style="width:45%;float:left;">
 					<label for="caseweight">Weight</label>
 					__ lbs
-					<input id="caseweight" name="caseweight" type="text" placeholder="12" />
+					<input id="caseweight" name="caseweight" type="text" placeholder="12" value="<VALUECASEWEIGHT>" />
 				</div>
 				<div style="width:45%;float:left;margin-left:10%;">
 					<label for="casebattery">Battery Life</label>
 					__+ Hours
-					<input id="casebattery" name="casebattery" type="text" placeholder="18" />
+					<input id="casebattery" name="casebattery" type="text" placeholder="18" value="<VALUECASEBATTERY>" />
 				</div>
 			</div>
 			
@@ -68,23 +75,25 @@ One - Mid Range"></textarea>
 			<div>
 				<label for="casenotes">Notes</label>
 				e.g. All BoomCases are rechargeable. Comes with battery charger and audio cable. Includes NEW LITHIUM BATTERY! This BoomCase Ships Within two weeks. Rush Delivery Available.
-				<textarea id="casenotes" name="casenotes" placeholder="All BoomCases are rechargeable. Comes with battery charger and audio cable. Includes NEW LITHIUM BATTERY! This BoomCase Ships Within two weeks. Rush Delivery Available."></textarea>
+				<textarea id="casenotes" name="casenotes" placeholder="All BoomCases are rechargeable. Comes with battery charger and audio cable. Includes NEW LITHIUM BATTERY! This BoomCase Ships Within two weeks. Rush Delivery Available."><VALUECASENOTES></textarea>
 			</div>
+			<!--
 			<div>
-				<!-- <img src="/caseuploads/blankcase1.jpg" style="height:300px;margin:1% 0px -1% 0px;" /> -->
+				!-- <img src="/caseuploads/blankcase1.jpg" style="height:300px;margin:1% 0px -1% 0px;" /> --
 				<label for="file">Front View Image</label>
 				Dead-on photo.
 				<input id="file" type="file" name="file" />
 			</div>
+			-->
 			<div>
 				<label for="caseprice">Base Price</label>
 				$___
-				<input id="caseprice" name="caseprice" type="text" placeholder="550" />
+				<input id="caseprice" name="caseprice" type="text" placeholder="550" value="<VALUECASEPRICE>" />
 			</div>
 			<div>
 				<label for="casesold" style="float:left;">
 					Mark as Sold
-					<input id="casesold" name="casesold" type="checkbox" value="true" />
+					<input id="casesold" name="casesold" type="checkbox" value="true" <VALUECASESOLD> /> <!-- checked -->
 				</label>
 			</div>
 			

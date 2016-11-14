@@ -1,4 +1,54 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MIGRATED TO SAVECASEDRIVER.GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package main
 
 import (
@@ -46,8 +96,8 @@ func saveDriver(r *http.Request, ctx appengine.Context) (string) {
 		Name:				r.FormValue("drivername"),
 		FrequencyResponse:	r.FormValue("driverfrequencyresponse"),
 		
-		Diameter:			driverdiameter, // int
-		Price:				driverprice, // int
+		Diameter:			int8(driverdiameter), // int
+		Price:				int32(driverprice), // int
 		
 		BlobKey:			blobkey,
 		

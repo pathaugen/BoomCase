@@ -26,10 +26,12 @@ $(document).ready(function() {
 /* ********** ********** ********** ********** ********** */
 /* Customize Button - Clicking the BoomCase customize button sets off various actions */
 $(document).ready(function() {
-	
+
+	$( "#page-formdriver-button" ).css( "display", "none" );
 	
 	$( ".trigger-customize" ).click(function() {
 		event.preventDefault();
+		
 		$( "#case-information" ).hide( function() {  });
 		$( "#case-addspeaker" ).show( function() {  });
 		$( ".trigger-customize" ).hide( function() {  });
@@ -54,10 +56,14 @@ $(document).ready(function() {
 		$( "#footer-container-2" ).hide( function() {  });
 		$( "#featured-in" ).hide( function() {  });
 		$( "#play-loud" ).hide( function() {  });
+		
+		$( "#page-formdriver-button" ).hide( function() {  }); /*TODO*/
+		$( "#page-formcase-button" ).hide( function() {  });
+		$( "#page-formcase" ).hide( function() {  });
 	});
 	
 
-	$( ".trigger-customize-close" ).click(function() {
+	$( ".trigger-customize-close, .trigger-customize-save" ).click(function() {
 		event.preventDefault();
 		
 		$( "#case-information" ).show( function() {  });
@@ -79,6 +85,9 @@ $(document).ready(function() {
 		$( "#footer-container-2" ).show( function() {  });
 		$( "#featured-in" ).show( function() {  });
 		$( "#play-loud" ).show( function() {  });
+
+		$( "#page-formdriver-button" ).hide( function() {  });
+		$( "#page-formcase-button" ).show( function() {  });
 		
 		/*$( "#case-image-customize" ).removeProp( "font-size" );*/
 		$( "#case-image-customize" ).css( "top", "auto" );
@@ -106,7 +115,7 @@ $(document).ready(function() {
 		$("#total-price").html(basePrice);
 	});
 	
-	
+	/*
 	$( ".trigger-customize-save" ).click(function() {
 		event.preventDefault();
 
@@ -134,7 +143,7 @@ $(document).ready(function() {
 		$( "#case-image-customize" ).css( "transform", "none" );
 		$( "#case-image-customize" ).css( "position", "static" );
 	});
-	
+	*/
 	
 });
 /* ********** ********** ********** ********** ********** */
@@ -291,6 +300,8 @@ $(document).ready(function() {
 			event.preventDefault();
 			
 			$( ".select-dashboard" ).css( "font-weight", "normal" );
+			
+			$( "#page-formcase, #page-formdriver, #page-formimage" ).show();
 	});
 	$( "#select-dashboard-case" ).click(function() {
 		$( "#select-dashboard-case" ).css( "font-weight", "bold" );
@@ -312,12 +323,18 @@ $(document).ready(function() {
 /* Admin - Add Custom Case */
 $(document).ready(function() {
 	
-	$( "#case-container #page-formcasedriver" ).css( "display", "none" );
+	$( "#page-formcase, #page-formdriver, #page-formimage" ).css( "display", "none" );
 	
-	$( "#case-container #admin-add-case" ).click(function() {
+	$( "#case-container #admin-add-case, #page-case #admin-edit-case" ).click(function() {
 			event.preventDefault();
 			
-			$( "#case-container #page-formcasedriver" ).toggle();
+			$( "#page-formcase, #page-formimage" ).toggle();
+	});
+
+	$( "#case-container #admin-add-driver, #page-case #admin-edit-driver" ).click(function() {
+			event.preventDefault();
+			
+			$( "#page-formdriver, #page-formimage" ).toggle();
 	});
 });
 /* ********** ********** ********** ********** ********** */

@@ -2,7 +2,7 @@
 package main
 
 import (
-    "fmt"
+    //"fmt"
     "net/http"
     
 	"appengine"
@@ -13,10 +13,10 @@ import (
 )
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func handlerSaveCaseDriver(w http.ResponseWriter, r *http.Request) {
+func handlerSaveImage(w http.ResponseWriter, r *http.Request) {
 	output := ""
 	
-	output += "<h1>handlerSaveCaseDriver()</h1>"
+	output += "<h1>handlerSaveImage()</h1>"
 	
 	// ========== ========== ========== ========== ==========
 	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
@@ -34,15 +34,17 @@ func handlerSaveCaseDriver(w http.ResponseWriter, r *http.Request) {
 	// [END if_user]
 	// ========== ========== ========== ========== ==========
     
-    //output += "<h1>START: saveImage()</h1>"
-    //blobkey := saveImage(r)
+    output += "<h1>START: saveImage()</h1>"
+    blobkey := saveImage(r)
+    output += "<h1>blobkey: "+blobkey+"</h1>"
     //blobkey := ""
     
-    output += "<h1>START: saveCaseDriver()</h1>"
+    //output += "<h1>START: saveCaseDriver()</h1>"
     //output += saveCaseDriver(r, ctx, blobkey)
-    output += saveCaseDriver(r, ctx)
     
-    w.Header().Set("Content-Type", "text/html; charset=utf-8")
-    fmt.Fprint(w, output)
+    //w.Header().Set("Content-Type", "text/html; charset=utf-8")
+    //fmt.Fprint(w, output)
+    
+    http.Redirect(w, r, "/dashboard?blobkey="+blobkey, http.StatusFound)
 }
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========

@@ -18,32 +18,15 @@ import (
 
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func saveCaseDriverBlobstore(r *http.Request) (string) {
-	output := ""
-	
-	// ========== ========== ========== ========== ==========
-	// Store the image in the blobstore
-	blobs, _, err := blobstore.ParseUpload(r)
-	if err != nil {
-	}
-	file := blobs["file"]
-	
-	if len(file) == 0 {
-		output = ""
-	} else {
-		output = string(file[0].BlobKey)
-	}
-	// ========== ========== ========== ========== ==========
-	
-    return output
-}
-// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-
-
-// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 //func saveCaseDatastore(r *http.Request, ctx appengine.Context, caseData Case) (string) {
-func saveCaseDriverDatastore(r *http.Request, ctx appengine.Context, blobkey string) (string) {
+//func saveCaseDriverDatastore(r *http.Request, ctx appengine.Context, blobkey string) (string) {
+//func saveCaseDriver(r *http.Request, ctx appengine.Context, blobkey string) (string) {
+func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 	output := ""
+	
+	// Capture the blobkey from query string
+	blobkey := r.FormValue("blobkey")
+	output += "<h1>blobkey: "+blobkey+"</h1>"
 	
 	// ========== ========== ========== ========== ==========
 	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
@@ -61,6 +44,7 @@ func saveCaseDriverDatastore(r *http.Request, ctx appengine.Context, blobkey str
 	caseheight, _	:= strconv.Atoi(r.FormValue("caseheight"))
 	caseweight, _	:= strconv.Atoi(r.FormValue("caseweight"))
 	casebattery, _	:= strconv.Atoi(r.FormValue("casebattery"))
+	casewatts, _	:= strconv.Atoi(r.FormValue("casewatts"))
 	caseprice, _	:= strconv.Atoi(r.FormValue("caseprice"))
 	
 	casesold, _		:= strconv.ParseBool(r.FormValue("casesold"))
@@ -71,22 +55,25 @@ func saveCaseDriverDatastore(r *http.Request, ctx appengine.Context, blobkey str
 		Featuring:			r.FormValue("casefeaturing"),
 		FrequencyResponse:	r.FormValue("casefrequencyresponse"),
 		
-		Length:				caseLength, // int
-		Width:				casewidth, // int
-		Height:				caseheight, // int
+		Length:				int8(caseLength), // int8
+		Width:				int8(casewidth), // int8
+		Height:				int8(caseheight), // int8
 		
-		Weight:				caseweight, // int
-		Battery:			casebattery, // int
+		Weight:				int8(caseweight), // int8
+		Battery:			int8(casebattery), // int8
 		Notes:				r.FormValue("casenotes"),
 		
-		Price:				caseprice, // int
-		
+		Price:				int32(caseprice), // int16
+		Watts:				int16(casewatts), // int16
 		Sold:				casesold, // bool
 		
 		BlobKey:			blobkey,
 		
 		DateAdded:			time.Now(),
 	}
+	
+	// Protection of blobkey from accidental manipulation
+	//if blobkey != "" && blobkey != "<BLOBKEY>" { caseData.BlobKey = blobkey }
 	// ========== ========== ========== ========== ==========
 	
 	// ========== ========== ========== ========== ==========
@@ -114,21 +101,51 @@ func saveCaseDriverDatastore(r *http.Request, ctx appengine.Context, blobkey str
 	output += "<h1>r.FormValue(\"casename\") = ["+r.FormValue("casename")+"]</h1>"
 	output += "<h1>caseData.Name = ["+caseData.Name+"]</h1>"
 	if caseData.Name != "" {
-		// ========== ========== ========== ========== ==========
+		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 		// Store Golang struct in the datastore
-		key := datastore.NewIncompleteKey(ctx, "Case", caseKey(ctx))
-		_, err := datastore.Put(ctx, key, &caseData)
+		
+		// Use a new generated key, or replace with existing key to overwrite data
+		newKey := datastore.NewIncompleteKey(ctx, "Case", caseKey(ctx))
+		
+		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+		if r.FormValue("existingdatastoreid") != "" {
+			// Datastore query to get the key of existing entry to overwrite
+			
+			// Array to hold the results
+			var caseArray []Case
+			
+			// Datastore query
+			q := datastore.NewQuery("Case").Ancestor(caseKey(ctx)) //.Filter("ID =", "5488762045857792") //.Filter("Featuring =", "featuring") //.Filter("ID=", pageRequestedVariables1) //.Ancestor(caseKey(c)).Order("-Date").Limit(10)
+			keys, err := q.GetAll(ctx, &caseArray)
+			if err != nil { /*log.Errorf(ctx, "fetching case: %v", err);return*/ /*http.Error(w, err.Error(), http.StatusInternalServerError);return*/  }
+			
+			// ========== ========== ========== ========== ==========
+			//outputCases := ""
+			for i, _ := range caseArray {
+				key := keys[i]
+				id := int64(key.IntID())
+				
+				if strconv.Itoa(int(id)) == r.FormValue("existingdatastoreid") {
+					// Store the key to use
+					newKey = key
+				}
+			}
+			// ========== ========== ========== ========== ==========
+			//if queryKey { newKey = queryKey }
+		}
+		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+		
+		_, err := datastore.Put(ctx, newKey, &caseData)
 		if err != nil {
-			output += "<h1>ERROR: datastore failed</h1>"
+			output += "<h1>ERROR: datastore failed: "+err.Error()+"</h1>"
 		} else {
 			output += "<h1>SUCCESS: Created datastore entry for new case</h1>"
+			output += `<h1><a href="/">Return Home</a></h1>`
 			if caseData.BlobKey != "" {
 				output += "<img src=\"/serve/?blobKey="+caseData.BlobKey+"\" />"
-			} else {
-				output += "<h1>No image was uploaded</h1>"
-			}
+			} else { output += "<h1>No image was uploaded</h1>" }
 		}
-		// ========== ========== ========== ========== ==========
+		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	} else if caseData.BlobKey != "" {
 		// ========== ========== ========== ========== ==========
 		// Delete blobstore entry
@@ -137,9 +154,7 @@ func saveCaseDriverDatastore(r *http.Request, ctx appengine.Context, blobkey str
 		blobstore.Delete(ctx, appengine.BlobKey(caseData.BlobKey)) // https://cloud.google.com/appengine/docs/go/blobstore/reference#Delete
 		output += "<div>Finished deleting from blobstore</div>"
 		// ========== ========== ========== ========== ==========
-	} else {
-		output += "<h1>Form was submitted blank</h1>"
-	}
+	} else { output += "<h1>Form was submitted blank</h1>" }
 	// ========== ========== ========== ========== ==========
 	
 	

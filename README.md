@@ -1,13 +1,10 @@
 
-Project Status: ALPHA
+Project Status: BETA
 
 ---------- ---------- ---------- ---------- ----------
 
 Current Version Deployed to Google App Engine:
-2016-11-13-a
-
-Current Version in Development:
-2016-11-13-b
+2016-11-14-a (first release in BETA)
 
 ---------- ---------- ---------- ---------- ----------
 
