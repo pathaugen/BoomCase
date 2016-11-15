@@ -4,7 +4,7 @@ Project Status: BETA
 ---------- ---------- ---------- ---------- ----------
 
 Current Version Deployed to Google App Engine:
-2016-11-14-a (first release in BETA)
+2016-11-14-a
 
 ---------- ---------- ---------- ---------- ----------
 

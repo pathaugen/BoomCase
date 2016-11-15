@@ -1,9 +1,7 @@
 
-
 #fb-share-button {
 	display:			none;
 }
-
 
 #page-case {
 	text-align:			center;
@@ -18,16 +16,18 @@
 	margin-bottom:		2%;
 }
 #page-case #case-title h1 {
-	margin-bottom:		0px;
+	margin:				2% 0px 0px 0px;
 }
 #page-case #case-title h2 {
-	margin:				0px 0px 4% 0px;
+	margin:				0px 0px 2% 0px;
 	font-weight:		normal;
 	font-size:			3.0em;
 }
 #page-case #case-title a {
 }
 
+
+/* Image and Drivers are in this container*/
 #page-case #case-image {
 	float:				left;
 	
@@ -39,26 +39,33 @@
 	
 	/*background-color:	lightblue;*/
 	
-	min-width:			900px;
+	min-width:			800px; /* CHANGE 1/4 */
 }
+
+
+/* ********** ********** ********** ********** ********** ********** ********** ********** ********** ********** */
 #page-case #case-image #case-image-top {
-	padding:			8% 0px;
+	padding:			0 0;
 	
-	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
-	background:			rgba(255, 255, 255, 1.0); /* 0.6 */
+	/*box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;*/
+	/*background:			rgba(255, 255, 255, 1.0);*/ /* 0.6 */
 }
 #page-case #case-image #case-image-container {
 	position:			relative;
 	/*background-color:	lightgreen;*/
 	margin:				auto;
 	
-	width:				900px;
+	width:				800px; /* CHANGE 2/4 */
 }
 #page-case #case-image #case-image-container img {
 	/*display:			block;*/
 	margin:				auto;
 	
-	width:				900px;
+	box-shadow:			rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-webkit-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-moz-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	
+	width:				800px; /* CHANGE 3/4 */
 }
 #page-case #case-image #case-image-container a#case-image-customize {
 	/*
@@ -80,12 +87,24 @@
 #page-case #case-image #case-image-container a#case-image-customize h1 {
 	/*margin:				0px;*/
 }
+/* ********** ********** ********** ********** ********** ********** ********** ********** ********** ********** */
 
 
+
+
+/* ********** ********** ********** ********** ********** ********** ********** ********** ********** ********** */
 #page-case #case-addspeaker {
 	display:			none;
 	
+	/*
+	float:				right;
+	width:				33%;
+	*/
+	
 	margin-bottom:		4%;
+	
+	/* min-width:			500px; */
+	margin-left:		800px; /* CHANGE 4/4 */
 }
 #page-case #case-addspeaker h1 {
 	margin-bottom:		0px;
@@ -105,7 +124,10 @@
 	padding:			1%;
 	margin:				1%;
 	/* float:				left; */
-	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
+	
+	box-shadow:			rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-webkit-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-moz-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
 }
 #page-case #case-addspeaker .driver-info img {
 	width:				150px;
@@ -113,6 +135,9 @@
 }
 #page-case #case-addspeaker .driver-info:hover {
 	/* background-color:	yellow; */
+}
+#page-case #case-addspeaker .driver-info:hover .name-container  {
+	text-decoration:	underline;
 }
 #page-case #case-addspeaker .driver-info .name-container {
 	color:				black;
@@ -134,13 +159,21 @@
 	font-size:			2.0em;
 	display:			block;
 	margin-top:			5px;
+	
+	display:			none;
 }
 
 #page-case #case-addspeaker .driver-picker {
 	/*display:			none;*/
 }
+/* ********** ********** ********** ********** ********** ********** ********** ********** ********** ********** */
 
 
+
+
+
+
+/* ********** ********** ********** ********** ********** ********** ********** ********** ********** ********** */
 #page-case #case-information {
 	float:				right;
 	
@@ -150,7 +183,10 @@
 	-moz-box-sizing:	border-box; /* Firefox, other Gecko */
 	box-sizing:			border-box; /* Opera/IE 8+ */
 	
-	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
+	box-shadow:			rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-webkit-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-moz-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	
 	background:			rgba(255, 255, 255, 0.9); /* 0.6 */
 	
 	text-align:			left;
@@ -165,14 +201,25 @@
 	font-family:		Clarendon-Light;
 }
 #page-case #case-information h2 {
-	font-size:			1.3em;
+	font-size:			1.1em;
 	font-weight:		normal;
 	color:				black;
 	margin-bottom:		0px;
 }
 #page-case #case-information hr {
-	margin:				10% 0px;
+	display:			block;
+    height:				1px;
+    border:				0;
+    border-top:			1px solid #ccc;
+    margin:				1em 0;
+    padding:			0;
 }
+/* ********** ********** ********** ********** ********** ********** ********** ********** ********** ********** */
+
+
+
+
+
 
 
 #page-case .draggable {
@@ -231,15 +278,28 @@
 }
 
 
-
-@media screen and (max-width: 1400px) /* and (orientation: portrait) */ {
+@media screen and (max-width: 1240px) /* and (orientation: portrait) */ {
 	#page-case #case-image {
 		width:			100%;
 	}
 	#page-case #case-information {
-		width:			100%;
+		width:			60%;
+		padding:		4%;
+		
+		clear:			both;
+		float:			none;
+		margin:			auto;
 	}
 }
-
-
+@media screen and (max-width: 1270px) {
+	#page-case #case-image {
+		width:			100%;
+		/*float:			none;*/
+		/*clear:			both;*/
+	}
+	#page-case #case-addspeaker {
+		clear:			both;
+		margin-left:	0px;
+	}
+}
 

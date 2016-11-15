@@ -1,34 +1,12 @@
 
 package main
-
 import (
-	//"html/template"
-	//"net/http"
 	"time"
-	
 	"appengine"
 	"appengine/datastore"
-	//"appengine/user"
 )
 
-
-
-
-// ========== ========== ========== ========== ==========
-// [START greeting_struct]
-/*
-type Greeting struct {
-	Author  string
-	Content string
-	Date    time.Time
-}
-*/
-// [END greeting_struct]
-// ========== ========== ========== ========== ==========
-
-
-
-// ========== ========== ========== ========== ==========
+// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 // [START case_struct]
 type Case struct {
 	Name				string
@@ -53,18 +31,14 @@ type Case struct {
 	DateAdded			time.Time
 }
 // [END case_struct]
-// ========== ========== ========== ========== ==========
-// ========== ========== ========== ========== ==========
 // caseKey returns the key used for all case entries.
 func caseKey(ctx appengine.Context) *datastore.Key {
 	// The string "default_case" here could be varied to have multiple types of cases.
 	return datastore.NewKey(ctx, "Case", "default_case", 0, nil)
 }
-// ========== ========== ========== ========== ==========
+// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 
-
-
-// ========== ========== ========== ========== ==========
+// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 // Images for each Case, and marking which one can be customized
 // [START image_struct]
 type CaseImage struct {
@@ -76,17 +50,13 @@ type CaseImage struct {
 	DateAdded			time.Time
 }
 // [END image_struct]
-// ========== ========== ========== ========== ==========
-// ========== ========== ========== ========== ==========
 // imageKey returns the key used for all case entries.
 func caseImageKey(ctx appengine.Context) *datastore.Key {
 	return datastore.NewKey(ctx, "CaseImage", "default_caseimage", 0, nil)
 }
-// ========== ========== ========== ========== ==========
+// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 
-
-
-// ========== ========== ========== ========== ==========
+// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 // [START driver_struct]
 type Driver struct {
 	Name				string
@@ -99,30 +69,8 @@ type Driver struct {
 	DateAdded			time.Time
 }
 // [END driver_struct]
-// ========== ========== ========== ========== ==========
-// ========== ========== ========== ========== ==========
 // driverKey returns the key used for all case entries.
 func driverKey(ctx appengine.Context) *datastore.Key {
 	return datastore.NewKey(ctx, "Driver", "default_driver", 0, nil)
 }
-// ========== ========== ========== ========== ==========
-
-
-
-
-// ========== ========== ========== ========== ==========
-// Return holds values returned from the datastore but keeps the key and Id for reference
-// [START return_struct]
-/*
-type Return struct {
-	Key					*datastore.Key
-	Id					uint64 // datastore IDs = 4,767,482,418,036,736 -> uint32 = 4,294,967,295 -> uint64 = 18,446,744,073,709,551,615
-	Data				interface{}
-}
-*/
-// [END return_struct]
-// ========== ========== ========== ========== ==========
-
-
-
-
+// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========

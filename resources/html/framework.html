@@ -1,14 +1,12 @@
 <!DOCTYPE HTML>
-
 <html lang="en-US">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title><PAGETITLE> | The BoomCase©</title>
 		
 		<link rel="stylesheet" type="text/css" href="/resources/stylesheets/framework.css" />
 		<STYLESHEET>
 		<link rel="stylesheet" href="/resources/external/font-awesome-4.7.0/css/font-awesome.min.css">
-		
-		<title><PAGETITLE> | The BoomCase©</title>
 		
 		<!-- FAVICON -->
 		<link rel="shortcut icon" href="http://theboomcase.com/wp-content/uploads/2013/01/stunnerboomcasesmall.jpg" type="image/x-icon" />
@@ -66,7 +64,6 @@
 	</head>
 	<body>
 		
-		
 		<!-- Load Facebook SDK for JavaScript -->
 		<div id="fb-root"></div>
 		<script>
@@ -79,78 +76,7 @@
 			}(document, 'script', 'facebook-jssdk'));
 		</script>
 		
-		<!-- Draggable via interact.js -->
-		<!--
-		<script>
-		// target elements with the "draggable" class
-		interact('.draggable')
-			.draggable({
-				// enable inertial throwing
-				inertia: true,
-				// keep the element within the area of it's parent
-				restrict: {
-					restriction: "parent",
-					endOnly: true,
-					elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-				},
-				// enable autoScroll
-				autoScroll: true,
-				
-				// call this function on every dragmove event
-				onmove: dragMoveListener,
-				// call this function on every dragend event
-				onend: function (event) {
-					var textEl = event.target.querySelector('p');
-					
-					textEl && (textEl.textContent =
-						'moved a distance of '
-						+ (Math.sqrt(event.dx * event.dx +
-							event.dy * event.dy)|0) + 'px');
-				}
-			});
-			
-			function dragMoveListener (event) {
-				var target = event.target,
-					// keep the dragged position in the data-x/data-y attributes
-					x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-					y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-				
-				// translate the element
-				target.style.webkitTransform =
-				target.style.transform =
-					'translate(' + x + 'px, ' + y + 'px)';
-				
-				// update the posiion attributes
-				target.setAttribute('data-x', x);
-				target.setAttribute('data-y', y);
-			}
-			
-			// this is used later in the resizing and gesture demos
-			window.dragMoveListener = dragMoveListener;
-		</script>
-		-->
-		
-		<!-- PMD Custom JS -->
-		<!--
-		<script>
-			$(document).ready(function() {
-				$("#draggable").draggable();
-				$('body>div').bind("dragstart", function(event, ui) {
-					event.stopPropagation();
-				});
-			});
-		</script>
-		-->
-		
-		<!-- Feedback -->
-		<!--
-		<script>
-			Feedback();
-		</script>
-		-->
-		
 		<div>
-			
 			<ADMINBAR>
 			
 			<div id="header-container">
@@ -224,31 +150,34 @@
 					<ul>
 						<!-- <li><a href="/">Home</a></li> -->
 						
-						<li><a href="/available-boomcases">BoomCases</a></li>
+						<li><a href="http://store.theboomcase.com/available-boomcases">BoomCases</a></li>
 						<li><a href="/boombarrel">BoomBarrel</a></li>
 						<!-- <li><a href="/available-cases">Cases</a></li> -->
 						<li><a href="/customize">Custom Case</a></li>
 						
-						<li><a href="/about">About</a></li>
+						<li><a href="http://theboomcase.com/about">About</a></li>
 						
-						<li><a href="/blog">Blog</a></li>
-						<li><a href="/gallery">Gallery</a></li>
+						<li><a href="http://theboomcase.com/blog">Blog</a></li>
+						<li><a href="http://theboomcase.com/gallery">Gallery</a></li>
 						
-						<li><a href="/rentals">Rentals</a></li>
-						<li><a href="/video">Video</a></li>
+						<li><a href="http://theboomcase.com/rentals">Rentals</a></li>
+						<li><a href="http://theboomcase.com/video">Video</a></li>
 						
-						<li><a href="/press">Press</a></li>
+						<li><a href="http://theboomcase.com/press">Press</a></li>
 						
-						<li><a href="/reviews">Reviews</a></li>
-						<li><a href="/faq">FAQ</a></li>
+						<li><a href="http://theboomcase.com/reviews">Reviews</a></li>
+						<li><a href="http://theboomcase.com/faq">FAQ</a></li>
 						
-						<li><a href="/contact">Contact</a></li>
-						<li><a href="/cart"><i class="fa fa-shopping-cart"></i><span style="display:none;">Cart</span></a></li>
+						<li><a href="http://theboomcase.com/contact">Contact</a></li>
+						<li><a href="http://store.theboomcase.com/cart"><i class="fa fa-shopping-cart"></i><span style="display:none;">Cart</span></a></li>
 					</ul>
 				</div>
 				
 			</div>
-			<div id="stylesheet-picker">
+			
+			
+			<!-- Switch between stylesheets -->
+			<div id="stylesheet-picker" style="display:none;">
 				<form>
 					<select>
 						<option>Style 1</option>
@@ -284,29 +213,32 @@
 					<ul>
 						<li><a href="/">Home</a></li>
 						
-						<li><a href="/available-boomcases">BoomCases</a></li>
+						<li><a href="http://store.theboomcase.com/available-boomcases">BoomCases</a></li>
 						<!-- <li><a href="/available-cases">Cases</a></li> -->
 						
 						<li><a href="/boombarrel">BoomBarrel</a></li>
 						<li><a href="/customize">Custom Case</a></li>
 						
-						<li><a href="/about">About</a></li>
+						<li><a href="http://theboomcase.com/about">About 1</a></li>
+						<li><a href="http://store.theboomcase.com/about-the-boomcase">About 2</a></li>
 						
-						<li><a href="/blog">Blog</a></li>
-						<li><a href="/gallery">Gallery</a></li>
+						<li><a href="http://theboomcase.com/blog">Blog</a></li>
+						<li><a href="http://theboomcase.com/gallery">Gallery</a></li>
 						
 						<li><a href="/customize">Custom</a></li>
 						
-						<li><a href="/rentals">Rentals</a></li>
-						<li><a href="/video">Video</a></li>
+						<li><a href="http://theboomcase.com/rentals">Rentals</a></li>
+						<li><a href="http://theboomcase.com/video">Video</a></li>
 						
-						<li><a href="/press">Press</a></li>
+						<li><a href="http://theboomcase.com/press">Press 1</a></li>
+						<li><a href="http://store.theboomcase.com/press">Press 2</a></li>
 						
-						<li><a href="/reviews">Reviews</a></li>
-						<li><a href="/faq">FAQ</a></li>
+						<li><a href="http://theboomcase.com/reviews">Reviews</a></li>
+						<li><a href="http://theboomcase.com/faq">FAQ</a></li>
 						
-						<li><a href="/contact">Contact</a></li>
-						<li><a href="/cart">Cart</a></li>
+						<li><a href="http://theboomcase.com/contact">Contact1</a></li>
+						<li><a href="http://store.theboomcase.com/contact">Contact2</a></li>
+						<li><a href="http://store.theboomcase.com/cart">Cart</a></li>
 					</ul>
 				</div>
 				<div class="three-column" id="follow-us">
