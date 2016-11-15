@@ -1,8 +1,21 @@
 
 
+#page-customize {
+}
+#page-customize h1 {
+	margin-bottom:		0;
+}
+#page-customize h2 {
+}
+
 
 #page-customize #case-container {
+	background-color:	white;
 	text-align:			center;
+	
+	box-shadow:			rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-webkit-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-moz-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
 }
 
 
@@ -13,14 +26,29 @@
 	padding:			1%;
 	margin:				1%;
 	/* float:				left; */
-	box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;
+	
+	/*
+	box-shadow:			rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-webkit-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-moz-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	*/
 }
 #page-customize .case-block img {
-	width:				200px;
+	width:				300px;
 	/*height:				200px;*/
 }
 #page-customize .case-block:hover {
 	/* background-color:	yellow; */
+	text-decoration:	none;
+}
+#page-customize .case-block:hover img {
+	box-shadow:			rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-webkit-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-moz-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
+}
+#page-customize .case-block:hover .name-container {
+	/* background-color:	yellow; */
+	text-decoration:	underline;
 }
 #page-customize .case-block .name-container {
 	color:				black;

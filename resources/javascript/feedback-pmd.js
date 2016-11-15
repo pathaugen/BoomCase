@@ -733,7 +733,7 @@ window.Feedback.Screenshot.prototype.render = function() {
         // let's load html2canvas library while user is writing message
 
         script = document.createElement("script");
-        script.src = options.h2cPath || "resources/javascript/html2canvas.js"; /*PMD*/
+        script.src = options.h2cPath || "/resources/javascript/html2canvas.js"; /*PMD*/
         script.onerror = function() {
             log("Failed to load html2canvas library, check that the path is correctly defined");
         };
