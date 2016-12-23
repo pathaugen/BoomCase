@@ -1,10 +1,29 @@
 
 
 application: pmd-boomcase
-version: 2016-11-15-a
 runtime: go
 api_version: go1
 
+# ---------- ---------- ---------- ---------- ----------
+
+version: 2016-12-xx-a
+# Note: Incompatible with past versions of datastore (new structs)
+# Changelog: Major Changes
+# Break out cases and drivers frequency response into frequencylow/frequencyhigh
+# TODO: Drivers utilizing 10x pixels per inch of diameter (12" = 120px)
+# TODO: Driver Multiplier on cases: Adjusts size of drivers on cases
+# Changelog: Minor Changes
+# Add to Cart changed to "Purchase Now"
+# When clicking to edit case, add driver, or edit driver, the others hide properly.
+# TODO: New Extra Options for cases (bigger battery, bottle opener, USB, AC power)
+# TODO: Battery life does not display if blank (used to display zero)
+# TODO: Speaker grills option which calculates $15 per woofer added to case
+# TODO: When a case does not exist, forwards to case selection: /case/5418393301680128 -> /case
+# TODO: Sold Out appears when case is marked as sold (also hides Purchase Now button)
+# TODO: When adding drivers, take low/high frequencies and add to case being built
+# TODO: When saving a custom case, drivers are no longer interactable.
+
+# ---------- ---------- ---------- ---------- ----------
 
 handlers:
 - url: /resources/stylesheets

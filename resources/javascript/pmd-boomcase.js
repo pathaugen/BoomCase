@@ -71,9 +71,13 @@ $(document).ready(function() {
 		/*$( "#page-case #case-image #case-image-container" ).css( "float", "left" );*/
 	});
 	
-
+	/* Saving or Closing the Customization Area */
 	$( ".trigger-customize-close, .trigger-customize-save" ).click(function() {
 		event.preventDefault();
+		
+		/* Hide the driver adding and editing sections */
+		$( "#page-formdriver" ).css( "display", "none" );
+		$( "#page-formimage" ).css( "display", "none" );
 		
 		$( "#case-information" ).show( function() {  });
 		$( "#case-addspeaker" ).hide( function() {  });
@@ -345,11 +349,17 @@ $(document).ready(function() {
 /* Admin - Add or Edit Custom Case or Driver */
 $(document).ready(function() {
 	$( "#page-formcase, #page-formdriver, #page-formimage" ).css( "display", "none" );
-	
-	$( "#case-container #admin-add-case, #page-case #admin-edit-case" ).click(function() {
+
+	$( "#case-container #admin-add-case" ).click(function() {
 			event.preventDefault();
-			$( "#page-formcase, #page-formimage" ).toggle();
+			$( "#page-formimage" ).toggle();
 	});
+	
+	$( "#page-case #admin-edit-case" ).click(function() {
+		event.preventDefault();
+		$( "#page-formcase" ).toggle();
+	});
+	
 	$( "#page-case #admin-add-driver" ).click(function() {
 		event.preventDefault();
 		$( "#page-formdriver" ).css( "display", "none" );
