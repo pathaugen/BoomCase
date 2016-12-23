@@ -102,7 +102,7 @@ func saveDriver(r *http.Request, ctx appengine.Context) (string) {
 		FrequencyLow:		int32(driverFrequencyLow), // int32
 		FrequencyHigh:		int32(driverFrequencyHigh), // int32
 		
-		Diameter:			int8(driverdiameter), // int
+		Diameter:			int16(driverdiameter), // int
 		Price:				int32(driverprice), // int
 		
 		BlobKey:			blobkey,

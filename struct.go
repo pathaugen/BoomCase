@@ -17,12 +17,12 @@ type Case struct {
 	FrequencyLow		int32
 	FrequencyHigh		int32
 	
-	Length				int8	// uint8 = 0-255
-	Width				int8	// uint8 = 0-255
-	Height				int8	// uint8 = 0-255
+	Length				int8	// uint8 = 0-255 (int8 = 127)
+	Width				int8	// uint8 = 0-255 (int8 = 127)
+	Height				int8	// uint8 = 0-255 (int8 = 127)
 	
-	Weight				int8	// uint8 = 0-255
-	Battery				int8	// uint8 = 0-255
+	Weight				int8	// uint8 = 0-255 (int8 = 127)
+	Battery				int8	// uint8 = 0-255 (int8 = 127)
 	Notes				string
 	
 	Price				int32	// uint16 = 0-65,535
@@ -68,7 +68,7 @@ type Driver struct {
 	FrequencyLow		int32
 	FrequencyHigh		int32
 	
-	Diameter			int8	// uint8 = 0-255
+	Diameter			int16	// uint8 = 0-255 -> int8 = -128 - 127 vs. int16 = -32,768 - 32,767
 	Price				int32	// uint16 = 0-65,535
 	
 	BlobKey				string

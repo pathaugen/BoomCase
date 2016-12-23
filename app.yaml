@@ -10,11 +10,15 @@ version: 2016-12-xx-a
 # Note: Incompatible with past versions of datastore (new structs)
 # Changelog: Major Changes
 # Break out cases and drivers frequency response into frequencylow/frequencyhigh
+
 # TODO: Drivers utilizing 10x pixels per inch of diameter (12" = 120px)
 # TODO: Driver Multiplier on cases: Adjusts size of drivers on cases
+
 # Changelog: Minor Changes
 # Add to Cart changed to "Purchase Now"
 # When clicking to edit case, add driver, or edit driver, the others hide properly.
+# Clicking a driver to add also enables it for editing populating data to alter dynamically
+
 # TODO: New Extra Options for cases (bigger battery, bottle opener, USB, AC power)
 # TODO: Battery life does not display if blank (used to display zero)
 # TODO: Speaker grills option which calculates $15 per woofer added to case
@@ -22,6 +26,9 @@ version: 2016-12-xx-a
 # TODO: Sold Out appears when case is marked as sold (also hides Purchase Now button)
 # TODO: When adding drivers, take low/high frequencies and add to case being built
 # TODO: When saving a custom case, drivers are no longer interactable.
+# Changelog: Bugs
+
+# TODO: Diameter for drivers upon creation storing as incorrect values (negative numbers)
 
 # ---------- ---------- ---------- ---------- ----------
 
