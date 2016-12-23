@@ -64,7 +64,7 @@ $(document).ready(function() {
 		$( "#featured-in" ).hide( function() {  });
 		$( "#play-loud" ).hide( function() {  });
 		
-		$( "#page-formdriver-button" ).hide( function() {  }); /*TODO*/
+		$( "#page-formdriver-button" ).show( function() {  });
 		$( "#page-formcase-button" ).hide( function() {  });
 		$( "#page-formcase" ).hide( function() {  });
 		
@@ -171,13 +171,17 @@ $(document).ready(function() {
 /* ********** ********** ********** ********** ********** */
 /* Driver Adding - Clicking a driver adds it to the speaker case to drag around */
 $(document).ready(function() {
-	
 	var iterationSpeaker = 1;
-	
 	$( ".driver-info" ).click(function() {
-		
-		
 		event.preventDefault();
+
+		/* Stop editing cases or drivers while doing this */
+		$( "#page-formcase, #page-formdriver, #page-formimage" ).css( "display", "none" );
+		
+		/* ********** ********** ********** ********** ********** */
+		/* Also enable editing of the driver clicked on */
+		$( "#page-formdriver" ).toggle();
+		/* ********** ********** ********** ********** ********** */
 		
 		var imageSource = $(this).find('img').attr('src');
 		var imageSize = $(this).attr('data-size');
@@ -338,21 +342,22 @@ $(document).ready(function() {
 
 
 /* ********** ********** ********** ********** ********** */
-/* Admin - Add Custom Case */
+/* Admin - Add or Edit Custom Case or Driver */
 $(document).ready(function() {
-	
 	$( "#page-formcase, #page-formdriver, #page-formimage" ).css( "display", "none" );
 	
 	$( "#case-container #admin-add-case, #page-case #admin-edit-case" ).click(function() {
 			event.preventDefault();
-			
 			$( "#page-formcase, #page-formimage" ).toggle();
 	});
-
-	$( "#case-container #admin-add-driver, #page-case #admin-edit-driver" ).click(function() {
-			event.preventDefault();
-			
-			$( "#page-formdriver, #page-formimage" ).toggle();
+	$( "#page-case #admin-add-driver" ).click(function() {
+		event.preventDefault();
+		$( "#page-formdriver" ).css( "display", "none" );
+		$( "#page-formimage" ).toggle();
+	});
+	$( "#page-case #admin-edit-driver" ).click(function() {
+		event.preventDefault();
+		$( "#page-formdriver" ).toggle();
 	});
 });
 /* ********** ********** ********** ********** ********** */

@@ -12,7 +12,10 @@ type Case struct {
 	Name				string
 	Overview			string
 	Featuring			string
-	FrequencyResponse	string
+	
+	//FrequencyResponse	string	// Old field: Replacced by low/high
+	FrequencyLow		int32
+	FrequencyHigh		int32
 	
 	Length				int8	// uint8 = 0-255
 	Width				int8	// uint8 = 0-255
@@ -60,7 +63,11 @@ func caseImageKey(ctx appengine.Context) *datastore.Key {
 // [START driver_struct]
 type Driver struct {
 	Name				string
-	FrequencyResponse	string
+	
+	//FrequencyResponse	string	// Old field: Replacced by low/high
+	FrequencyLow		int32
+	FrequencyHigh		int32
+	
 	Diameter			int8	// uint8 = 0-255
 	Price				int32	// uint16 = 0-65,535
 	

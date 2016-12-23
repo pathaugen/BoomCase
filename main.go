@@ -12,6 +12,10 @@ func init() {
 	http.HandleFunc("/saveimage",		handlerSaveImage)
 	http.HandleFunc("/serve/",			handlerServe)
 	http.HandleFunc("/login",			handlerLogin)
+	
+	// API Versions
+	http.HandleFunc("/api/1.0/",		handlerAPI10) // API version 1.0
+	
     http.HandleFunc("/",				handlerRoot)
 }
 

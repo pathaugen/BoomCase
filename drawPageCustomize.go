@@ -4,13 +4,14 @@ package main
 import (
     //"fmt"
     //"net/http"
+    //"net/url"
     
     //"x/net/context"
     
 	"appengine"
 	"appengine/datastore"
 	"appengine/user"
-	
+	"appengine/image"
 	//"appengine/blobstore"
     
     //"os"
@@ -86,9 +87,18 @@ func drawPageCustomize(ctx appengine.Context, output string) (string) {
 		*/
 		//blobstore.Delete(ctx, appengine.BlobKey(c.BlobKey))
 		
+		// ========== ========== ========== ========== ==========
+		// Get a thumbnail of a blobstore image
+		// https://github.com/golang/appengine/blob/master/image/image.go
+		thumbOpts := image.ServingURLOptions { Size: 200, }
+		thumbKey := appengine.BlobKey(c.BlobKey)
+		thumbnail, _ := image.ServingURL(ctx, thumbKey, &thumbOpts) // (*url.URL, error)
+		// ========== ========== ========== ========== ==========
+		
 		outputCases += `
 			<a href="/case/`+strconv.Itoa(int(id))+`" class="case-block">
-				<img src="/serve/?blobKey=`+c.BlobKey+`" />
+				<!-- <img src="/serve/?blobKey=`+c.BlobKey+`" /> -->
+				<img src="`+thumbnail.String()+`" />
 				<span class="name-container">`+c.Name+`</span>
 				<!-- <span class="watt-container"><span class="watts">`+strconv.Itoa(int(c.Watts))+`</span> Watt BoomCase</span> -->
 				<span class="">Customize this Case</span>
@@ -107,7 +117,7 @@ func drawPageCustomize(ctx appengine.Context, output string) (string) {
 	// ========== ========== ========== ========== ==========
 	// [START if_user]
 	u := user.Current(ctx)
-	if u != nil && adminEmails[u.String()] {
+	if u != nil && adminEmails[u.Email] {
 		formCaseButton := `
 			<div style="clear:both;">
 				<a href="" class="btn btn-primary" id="admin-add-case" aria-label="ADMIN: Add New Custom Case">

@@ -43,14 +43,14 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 		// ========== ========== ========== ========== ==========
 		// Check if user is an admin
 		adminAuthorization := ""
-		if adminEmails[u.String()] {
+		if adminEmails[u.Email] {
 			adminAuthorization += "<div>Authorized Administrator</div>"
 		} else { adminAuthorization += "<div>standard user</div>" }
 		// ========== ========== ========== ========== ==========
 		url, _ := user.LogoutURL(ctx, "/")
 		adminBar := `
 			<div style="text-align:center;background-color:yellow;font-weight:bold;padding:2%;">
-				<div>Welcome <a href="/login">`+u.String()+`</a>! (<a href="`+url+`">sign out</a>)</div>
+				<div>Welcome <a href="/login">`+u.Email+`</a>! (<a href="`+url+`">sign out</a>)</div>
 				`+adminAuthorization+`
 			</div>`
 	    templateContent = strings.Replace(templateContent, "<ADMINBAR>", adminBar, -1)
@@ -151,7 +151,7 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 		// ========== ========== ========== ========== ==========
 		// [START if_user]
 		u := user.Current(ctx)
-		if u != nil && adminEmails[u.String()] {
+		if u != nil && adminEmails[u.Email] {
 			// ========== ========== ========== ========== ==========
 			// Load in modular forms - usable throughout the webapp
 			formCase, _ := ioutil.ReadFile("resources/html/formcase.html")
@@ -182,19 +182,33 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 			
 			// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 			// Fill in the form with values for editing, else eliminate the values
-			valueExistingDataStoreId	:= ""
-			valueCaseName				:= ""
-			valueCaseOverview			:= ""
-			valueCaseFeaturing			:= ""
-			valueCaseFrequencyresponse	:= ""
-			valueCaseLength				:= ""
-			valueCaseWidth				:= ""
-			valueCaseHeight				:= ""
-			valueCaseWeight				:= ""
-			valueCaseBattery			:= ""
-			valueCaseNotes				:= ""
-			valueCasePrice				:= ""
-			valueCaseSold				:= ""
+			valueExistingDataStoreId		:= "" // Image to use - hidden value
+			
+			valueCaseName					:= ""
+			valueCaseOverview				:= ""
+			valueCaseFeaturing				:= ""
+			
+			//valueCaseFrequencyresponse	:= "" // Old variable before low/high
+			valueCaseFrequencyLow			:= ""
+			valueCaseFrequencyHigh			:= ""
+			
+			valueCaseLength					:= ""
+			valueCaseWidth					:= ""
+			valueCaseHeight					:= ""
+			valueCaseWeight					:= ""
+			valueCaseBattery				:= ""
+			valueCaseNotes					:= ""
+			valueCasePrice					:= ""
+			valueCaseSold					:= ""
+			
+			valueDriverName					:= ""
+			valueDriverDiameter				:= "" // Multiply these inches x 100 for base, then by case multiplier to be exact
+			
+			//valueDriverFrequencyresponse	:= "" // Old variable before low/high
+			valueDriverFrequencyLow			:= ""
+			valueDriverFrequencyHigh		:= ""
+			
+			valueDriverPrice				:= ""
 			
 			// ========== ========== ========== ========== ==========
 			if pageRequested == "case" {
@@ -213,12 +227,18 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 					id := int64(key.IntID())
 					
 					if strconv.Itoa(int(id)) == pageRequestedVariables1 {
+						// c is the variable with data from the datastore (check the struct.go file)
+						
 						// Populate the form with current values from datastore
 						valueExistingDataStoreId	= strconv.Itoa(int(id))
 						valueCaseName				= c.Name
 						valueCaseOverview			= c.Overview
 						valueCaseFeaturing			= c.Featuring
-						valueCaseFrequencyresponse	= c.FrequencyResponse
+						
+						//valueCaseFrequencyresponse	= c.FrequencyResponse
+						valueCaseFrequencyLow		= strconv.Itoa(int(c.FrequencyLow))
+						valueCaseFrequencyHigh		= strconv.Itoa(int(c.FrequencyHigh))
+						
 						valueCaseLength				= strconv.Itoa(int(c.Length))
 						valueCaseWidth				= strconv.Itoa(int(c.Width))
 						valueCaseHeight				= strconv.Itoa(int(c.Height))
@@ -235,10 +255,15 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 			
 			// Replace the HTML placeholders with blank values, or ones from datastore
 		    output = strings.Replace(output, "<EXISTINGDATASTOREID>",			valueExistingDataStoreId, -1)
+		    
 		    output = strings.Replace(output, "<VALUECASENAME>",					valueCaseName, -1)
 		    output = strings.Replace(output, "<VALUECASEOVERVIEW>",				valueCaseOverview, -1)
 		    output = strings.Replace(output, "<VALUECASEFEATURING>",			valueCaseFeaturing, -1)
-		    output = strings.Replace(output, "<VALUECASEFREQUENCYRESPONSE>",	valueCaseFrequencyresponse, -1)
+		    
+		    //output = strings.Replace(output, "<VALUECASEFREQUENCYRESPONSE>",	valueCaseFrequencyresponse, -1)
+		    output = strings.Replace(output, "<VALUECASEFREQUENCYLOW>",			valueCaseFrequencyLow, -1)
+		    output = strings.Replace(output, "<VALUECASEFREQUENCYHIGH>",		valueCaseFrequencyHigh, -1)
+		    
 		    output = strings.Replace(output, "<VALUECASELENGTH>",				valueCaseLength, -1)
 		    output = strings.Replace(output, "<VALUECASEWIDTH>",				valueCaseWidth, -1)
 		    output = strings.Replace(output, "<VALUECASEHEIGHT>",				valueCaseHeight, -1)
@@ -247,6 +272,15 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 		    output = strings.Replace(output, "<VALUECASENOTES>",				valueCaseNotes, -1)
 		    output = strings.Replace(output, "<VALUECASEPRICE>",				valueCasePrice, -1)
 		    output = strings.Replace(output, "<VALUECASESOLD>",					valueCaseSold, -1)
+		    
+		    output = strings.Replace(output, "<VALUEDRIVERNAME>",				valueDriverName, -1)
+		    output = strings.Replace(output, "<VALUEDRIVERDIAMETER>",			valueDriverDiameter, -1)
+		    
+		    //output = strings.Replace(output, "<VALUEDRIVERFREQUENCYRESPONSE>",	valueDriverFrequencyresponse, -1)
+		    output = strings.Replace(output, "<VALUEDRIVERFREQUENCYLOW>",		valueDriverFrequencyLow, -1)
+		    output = strings.Replace(output, "<VALUEDRIVERFREQUENCYHIGH>",		valueDriverFrequencyHigh, -1)
+		    
+		    output = strings.Replace(output, "<VALUEDRIVERPRICE>",				valueDriverPrice, -1)
 			// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 		} else {
 			url, _ := user.LoginURL(ctx, "/")

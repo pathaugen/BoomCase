@@ -29,7 +29,7 @@ func handlerSaveCaseDriver(w http.ResponseWriter, r *http.Request) {
 	// ========== ========== ========== ========== ==========
 	// [START if_user]
 	if u := user.Current(ctx); u != nil {
-		//g.Author = u.String()
+		//g.Author = u.Email
 	}
 	// [END if_user]
 	// ========== ========== ========== ========== ==========
