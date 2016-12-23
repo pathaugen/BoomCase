@@ -145,7 +145,8 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 	}
 	// TODO: String replace out drivers
 	// output = strings.Replace(output, "<DRIVERS>", driverTemplate, -1)
-	output += driverTemplate
+	// output += driverTemplate
+	output = strings.Replace(output, "<DRIVERS>", driverTemplate, -1)
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	
 	
