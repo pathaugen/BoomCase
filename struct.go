@@ -70,6 +70,7 @@ type Driver struct {
 	FrequencyLow		int32
 	FrequencyHigh		int32
 	
+	Weight				int8	// uint8 = 0-255 (int8 = 127)
 	Diameter			int16	// uint8 = 0-255 -> int8 = -128 - 127 vs. int16 = -32,768 - 32,767
 	Price				int32	// uint16 = 0-65,535
 	

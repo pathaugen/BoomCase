@@ -90,8 +90,9 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 	driverFrequencyLow, _	:= strconv.Atoi(r.FormValue("driverfrequencylow"))
 	driverFrequencyHigh, _	:= strconv.Atoi(r.FormValue("driverfrequencyhigh"))
 	
-	driverdiameter, _		:= strconv.Atoi(r.FormValue("driverdiameter"))
-	driverprice, _			:= strconv.Atoi(r.FormValue("driverprice"))
+	driverWeight, _			:= strconv.Atoi(r.FormValue("driverweight"))
+	driverDiameter, _		:= strconv.Atoi(r.FormValue("driverdiameter"))
+	driverPrice, _			:= strconv.Atoi(r.FormValue("driverprice"))
 	
 	driverData := Driver {
 		Name:				r.FormValue("drivername"),
@@ -102,8 +103,9 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 		FrequencyLow:		int32(driverFrequencyLow), // int32
 		FrequencyHigh:		int32(driverFrequencyHigh), // int32
 		
-		Diameter:			int16(driverdiameter), // int16
-		Price:				int32(driverprice), // int32
+		Diameter:			int16(driverDiameter), // int16
+		Weight:				int8(driverWeight), // int8
+		Price:				int32(driverPrice), // int32
 		
 		BlobKey:			blobkey,
 		

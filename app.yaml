@@ -13,12 +13,12 @@ version: 2016-12-xx-a
 # Break out cases and drivers frequency response into frequencylow/frequencyhigh
 # Add drivertype struct field and dropdown to creating new drivers with selections: low/mid/high
 # Add circle struct field and dropdown to select if driver drawn as circle or square
-
-# TODO: Drivers utilizing 10x pixels per inch of diameter (12" = 120px)
+# Drivers utilizing 10x pixels per inch of diameter (12" = 120px)
+# Add driver weight struct field and section to add data in create/edit areas
 
 # TODO: Clicking on drivers under customization populates the edit form for that driver
 
-# TODO: Driver Multiplier on cases: Adjusts size of drivers on cases
+# TODO: Driver Multiplier on cases: Adjusts size of drivers on individual cases
 #
 # Changelog: Minor Changes
 # Add to Cart changed to "Purchase Now"
@@ -33,6 +33,8 @@ version: 2016-12-xx-a
 # TODO: When a case does not exist, forwards to case selection: /case/5418393301680128 -> /case
 # TODO: Sold Out appears when case is marked as sold (also hides Purchase Now button)
 # TODO: When adding drivers, take low/high frequencies and add to case being built
+# TODO: When adding drivers, take weight and add to case being built
+# TODO: When adding drivers, add weight of drivers to weight of case
 # TODO: After clicking to save a customized case, drivers are no longer interactable.
 #
 # Changelog: Bugs

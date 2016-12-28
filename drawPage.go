@@ -217,6 +217,7 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 			valueDriverFrequencyLow			:= ""
 			valueDriverFrequencyHigh		:= ""
 			
+			valueDriverWeight				:= ""
 			valueDriverPrice				:= ""
 			valueDriverCircle				:= ""
 			
@@ -299,6 +300,7 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 		    output = strings.Replace(output, "<VALUEDRIVERFREQUENCYLOW>",		valueDriverFrequencyLow, -1)
 		    output = strings.Replace(output, "<VALUEDRIVERFREQUENCYHIGH>",		valueDriverFrequencyHigh, -1)
 		    
+		    output = strings.Replace(output, "<VALUEDRIVERWEIGHT>",				valueDriverWeight, -1)
 		    output = strings.Replace(output, "<VALUEDRIVERPRICE>",				valueDriverPrice, -1)
 		    output = strings.Replace(output, "<VALUEDRIVERCIRCLE>",				valueDriverCircle, -1)
 			// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========

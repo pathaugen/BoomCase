@@ -188,7 +188,7 @@ $(document).ready(function() {
 		/* ********** ********** ********** ********** ********** */
 		
 		var imageSource = $(this).find('img').attr('src');
-		var imageSize = $(this).attr('data-size');
+		var imageSize = $(this).attr('data-size')+'0';
 		var imageSizeHalf = parseInt(imageSize, 10) / parseInt('2', 10);
 		var imageDetails = ''; /* 'TEST: '+imageSize; */
 		
