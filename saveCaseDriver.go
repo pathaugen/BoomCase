@@ -43,14 +43,14 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 	caseFrequencyHigh, _	:= strconv.Atoi(r.FormValue("casefrequencyhigh"))
 	
 	caseLength, _			:= strconv.Atoi(r.FormValue("caselength"))
-	casewidth, _			:= strconv.Atoi(r.FormValue("casewidth"))
-	caseheight, _			:= strconv.Atoi(r.FormValue("caseheight"))
-	caseweight, _			:= strconv.Atoi(r.FormValue("caseweight"))
-	casebattery, _			:= strconv.Atoi(r.FormValue("casebattery"))
-	casewatts, _			:= strconv.Atoi(r.FormValue("casewatts"))
-	caseprice, _			:= strconv.Atoi(r.FormValue("caseprice"))
+	caseWidth, _			:= strconv.Atoi(r.FormValue("casewidth"))
+	caseHeight, _			:= strconv.Atoi(r.FormValue("caseheight"))
+	caseWeight, _			:= strconv.Atoi(r.FormValue("caseweight"))
+	caseBattery, _			:= strconv.Atoi(r.FormValue("casebattery"))
+	caseWatts, _			:= strconv.Atoi(r.FormValue("casewatts"))
+	casePrice, _			:= strconv.Atoi(r.FormValue("caseprice"))
 	
-	casesold, _				:= strconv.ParseBool(r.FormValue("casesold"))
+	caseSold, _				:= strconv.ParseBool(r.FormValue("casesold"))
 	
 	caseData := Case {
 		Name:				r.FormValue("casename"),
@@ -62,16 +62,16 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 		FrequencyHigh:		int32(caseFrequencyHigh), // int32
 		
 		Length:				int8(caseLength), // int8
-		Width:				int8(casewidth), // int8
-		Height:				int8(caseheight), // int8
+		Width:				int8(caseWidth), // int8
+		Height:				int8(caseHeight), // int8
 		
-		Weight:				int8(caseweight), // int8
-		Battery:			int8(casebattery), // int8
+		Weight:				int8(caseWeight), // int8
+		Battery:			int8(caseBattery), // int8
 		Notes:				r.FormValue("casenotes"),
 		
-		Price:				int32(caseprice), // int32
-		Watts:				int16(casewatts), // int16
-		Sold:				casesold, // bool
+		Price:				int32(casePrice), // int32
+		Watts:				int16(caseWatts), // int16
+		Sold:				caseSold, // bool
 		
 		BlobKey:			blobkey,
 		
@@ -85,6 +85,8 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 	
 	// ========== ========== ========== ========== ==========
 	// Create Struct - Driver
+	driverCircle, _			:= strconv.ParseBool(r.FormValue("drivercircle"))
+	
 	driverFrequencyLow, _	:= strconv.Atoi(r.FormValue("driverfrequencylow"))
 	driverFrequencyHigh, _	:= strconv.Atoi(r.FormValue("driverfrequencyhigh"))
 	
@@ -93,6 +95,8 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 	
 	driverData := Driver {
 		Name:				r.FormValue("drivername"),
+		Type:				r.FormValue("drivertype"),
+		Circle:				driverCircle,
 		
 		//FrequencyResponse:	r.FormValue("driverfrequencyresponse"),
 		FrequencyLow:		int32(driverFrequencyLow), // int32

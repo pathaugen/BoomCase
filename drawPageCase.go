@@ -128,11 +128,12 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 		// ========== ========== ========== ========== ==========
 		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 		
-		var driverType = "low"
-		var driverInches = "12"
+		// Placeholders until these variables are coded in from datastore
+		//var driverType = "low"
+		//var driverInches = "12"
 		
 		driverTemplate += `
-			<a href="" class="driver-info driver-info-`+driverType+`" data-size="`+driverInches+`" data-type="`+driverType+`">
+			<a href="" class="driver-info driver-info-`+c.Type+`" data-size="`+strconv.Itoa(int(c.Diameter))+`" data-type="`+c.Type+`">
 				<!-- `+strconv.Itoa(int(id))+` -->
 				<img src="`+thumbnail.String()+`" />
 				<span class="name-container">`+c.Name+`</span>

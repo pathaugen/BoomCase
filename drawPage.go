@@ -184,6 +184,8 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 			// Fill in the form with values for editing, else eliminate the values
 			valueExistingDataStoreId		:= "" // Image to use - hidden value
 			
+			
+			// Case Specific Variables
 			valueCaseName					:= ""
 			valueCaseOverview				:= ""
 			valueCaseFeaturing				:= ""
@@ -201,7 +203,14 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 			valueCasePrice					:= ""
 			valueCaseSold					:= ""
 			
+			
+			// Driver Specific Variables
 			valueDriverName					:= ""
+			
+			valueDriverTypeLow				:= ""
+			valueDriverTypeMid				:= ""
+			valueDriverTypeHigh				:= ""
+			
 			valueDriverDiameter				:= "" // Multiply these inches x 100 for base, then by case multiplier to be exact
 			
 			//valueDriverFrequencyresponse	:= "" // Old variable before low/high
@@ -209,6 +218,7 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 			valueDriverFrequencyHigh		:= ""
 			
 			valueDriverPrice				:= ""
+			valueDriverCircle				:= ""
 			
 			// ========== ========== ========== ========== ==========
 			if pageRequested == "case" {
@@ -256,6 +266,8 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 			// Replace the HTML placeholders with blank values, or ones from datastore
 		    output = strings.Replace(output, "<EXISTINGDATASTOREID>",			valueExistingDataStoreId, -1)
 		    
+		    
+		    // Case Specific Values
 		    output = strings.Replace(output, "<VALUECASENAME>",					valueCaseName, -1)
 		    output = strings.Replace(output, "<VALUECASEOVERVIEW>",				valueCaseOverview, -1)
 		    output = strings.Replace(output, "<VALUECASEFEATURING>",			valueCaseFeaturing, -1)
@@ -273,7 +285,14 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 		    output = strings.Replace(output, "<VALUECASEPRICE>",				valueCasePrice, -1)
 		    output = strings.Replace(output, "<VALUECASESOLD>",					valueCaseSold, -1)
 		    
+		    
+		    // Driver Specific Values
 		    output = strings.Replace(output, "<VALUEDRIVERNAME>",				valueDriverName, -1)
+		    
+		    output = strings.Replace(output, "<VALUEDRIVERTYPELOW>",			valueDriverTypeLow, -1)
+		    output = strings.Replace(output, "<VALUEDRIVERTYPEMID>",			valueDriverTypeMid, -1)
+		    output = strings.Replace(output, "<VALUEDRIVERTYPEHIGH>",			valueDriverTypeHigh, -1)
+		    
 		    output = strings.Replace(output, "<VALUEDRIVERDIAMETER>",			valueDriverDiameter, -1)
 		    
 		    //output = strings.Replace(output, "<VALUEDRIVERFREQUENCYRESPONSE>",	valueDriverFrequencyresponse, -1)
@@ -281,6 +300,7 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 		    output = strings.Replace(output, "<VALUEDRIVERFREQUENCYHIGH>",		valueDriverFrequencyHigh, -1)
 		    
 		    output = strings.Replace(output, "<VALUEDRIVERPRICE>",				valueDriverPrice, -1)
+		    output = strings.Replace(output, "<VALUEDRIVERCIRCLE>",				valueDriverCircle, -1)
 			// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 		} else {
 			url, _ := user.LoginURL(ctx, "/")

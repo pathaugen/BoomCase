@@ -63,6 +63,8 @@ func caseImageKey(ctx appengine.Context) *datastore.Key {
 // [START driver_struct]
 type Driver struct {
 	Name				string
+	Type				string	// low/mid/high
+	Circle				bool	// bool - Mark as circle
 	
 	//FrequencyResponse	string	// Old field: Replacced by low/high
 	FrequencyLow		int32

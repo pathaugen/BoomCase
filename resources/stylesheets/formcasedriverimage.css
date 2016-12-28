@@ -49,6 +49,9 @@
 #page-formcase		form input,
 #page-formdriver	form input,
 #page-formimage		form input,
+#page-formcase		form select,
+#page-formdriver	form select,
+#page-formimage		form select,
 #page-formcase		form textarea,
 #page-formdriver	form textarea,
 #page-formimage		form textarea {
