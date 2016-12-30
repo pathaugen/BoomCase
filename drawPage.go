@@ -202,6 +202,7 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 			valueCaseNotes					:= ""
 			valueCasePrice					:= ""
 			valueCaseSold					:= ""
+			valueCaseDriverMultiplier		:= ""
 			
 			
 			// Driver Specific Variables
@@ -258,6 +259,9 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 						valueCaseNotes				= c.Notes
 						valueCasePrice				= strconv.Itoa(int(c.Price))
 						if c.Sold { valueCaseSold = "checked" } else { valueCaseSold = "" }
+						
+						//valueCaseDriverMultiplier	= strconv.Itoa(int(c.DriverMultiplier))
+						valueCaseDriverMultiplier	= c.DriverMultiplier
 					}
 				}
 				// ========== ========== ========== ========== ==========
@@ -285,6 +289,7 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 		    output = strings.Replace(output, "<VALUECASENOTES>",				valueCaseNotes, -1)
 		    output = strings.Replace(output, "<VALUECASEPRICE>",				valueCasePrice, -1)
 		    output = strings.Replace(output, "<VALUECASESOLD>",					valueCaseSold, -1)
+		    output = strings.Replace(output, "<VALUECASEDRIVERMULTIPLIER>",		valueCaseDriverMultiplier, -1)
 		    
 		    
 		    // Driver Specific Values

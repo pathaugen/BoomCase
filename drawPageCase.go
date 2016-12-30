@@ -50,6 +50,9 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 	
 	// ========== ========== ========== ========== ==========
 	//outputCases := ""
+	
+	var caseDriverMultiplier = ""
+	
 	for i, c := range caseArray {
 		key := keys[i]
 		id := int64(key.IntID())
@@ -72,6 +75,8 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 			output = strings.Replace(output, "<CASEIMAGE>", `<img src="`+thumbnail.String()+`" />`, -1)
 			// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 			
+			// case.html replacements for this individual case:
+			
 			output = strings.Replace(output, "<CASENAME>",				c.Name, -1)
 			output = strings.Replace(output, "<CASEOVERVIEW>",			c.Overview, -1)
 			
@@ -91,6 +96,12 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 			output = strings.Replace(output, "<CASENOTES>",				c.Notes, -1)
 			
 			output = strings.Replace(output, "<CASEPRICE>",				strconv.Itoa(int(c.Price)), -1)
+			
+			// Value isn't utilized on case.html, but might be good to store and read from other functions for less datastore queries
+			//output = strings.Replace(output, "<CASEDRIVERMULTIPLIER>",	strconv.Itoa(int(c.DriverMultiplier)), -1)
+			//caseDriverMultiplier = strconv.FormatFloat(float64(c.DriverMultiplier), 'E', -1, 32)
+			// Switch to string for precision over float -> no conversion needed
+			caseDriverMultiplier = c.DriverMultiplier
 		}
 	}
 	// ========== ========== ========== ========== ==========
@@ -132,8 +143,10 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 		//var driverType = "low"
 		//var driverInches = "12"
 		
+		
+		// ========== ========== ========== ========== ==========
 		driverTemplate += `
-			<a href="" class="driver-info driver-info-`+c.Type+`" data-size="`+strconv.Itoa(int(c.Diameter))+`" data-type="`+c.Type+`">
+			<a href="" class="driver-info driver-info-`+c.Type+`" data-size="`+strconv.Itoa(int(c.Diameter))+`" data-type="`+c.Type+`" data-multiplier="`+caseDriverMultiplier+`">
 				<!-- `+strconv.Itoa(int(id))+` -->
 				<img src="`+thumbnail.String()+`" />
 				<span class="name-container">`+c.Name+`</span>
@@ -143,6 +156,8 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 				<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 			</a>
 		`
+		// ========== ========== ========== ========== ==========
+		
 	}
 	// TODO: String replace out drivers
 	// output = strings.Replace(output, "<DRIVERS>", driverTemplate, -1)

@@ -29,6 +29,8 @@ type Case struct {
 	Watts				int16
 	Sold				bool	// bool - Mark as sold
 	
+	DriverMultiplier	string	// float32 // 1.12345678 (eight digits from decimal point) -> Switch to string for precision
+	
 	BlobKey				string
 	
 	DateAdded			time.Time

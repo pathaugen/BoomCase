@@ -15,30 +15,35 @@ version: 2016-12-xx-a
 # Add circle struct field and dropdown to select if driver drawn as circle or square
 # Drivers utilizing 10x pixels per inch of diameter (12" = 120px)
 # Add driver weight struct field and section to add data in create/edit areas
+# Driver Multiplier on cases: Adjusts size of drivers on individual cases
 
 # TODO: Clicking on drivers under customization populates the edit form for that driver
 
-# TODO: Driver Multiplier on cases: Adjusts size of drivers on individual cases
+# TODO: Convert driver multiplier field into slider with graphical example
 #
 # Changelog: Minor Changes
 # Add to Cart changed to "Purchase Now"
 # When clicking to edit case, add driver, or edit driver, the others hide properly.
 # Clicking a driver to add also enables it for editing populating data to alter dynamically
 # Replace drivertype (low/mid/high) and driverinches for dynamic driver display on customization
+# Case driver multiplier conversion from float32 to string to enable precision for fractions
 
 # TODO: New Extra Options for cases (bigger battery, bottle opener, USB, AC power)
+
+# TODO: When adding drivers, take low/high frequencies and add to case being built
+# TODO: When adding drivers, take weight and add to case being built
+
+# TODO: After clicking to save a customized case, drivers are no longer interactable.
 
 # TODO: Battery life does not display if blank (previously would display zero)
 # TODO: Speaker grills option which calculates $15 per woofer added to case
 # TODO: When a case does not exist, forwards to case selection: /case/5418393301680128 -> /case
 # TODO: Sold Out appears when case is marked as sold (also hides Purchase Now button)
-# TODO: When adding drivers, take low/high frequencies and add to case being built
-# TODO: When adding drivers, take weight and add to case being built
-# TODO: When adding drivers, add weight of drivers to weight of case
-# TODO: After clicking to save a customized case, drivers are no longer interactable.
 #
 # Changelog: Bugs
 # Diameter for drivers upon creation storing as incorrect values (negative numbers)
+
+# CURRENT: Editing a case overwrites the case image with driver image (blobkey value error in form)
 
 # ---------- ---------- ---------- ---------- ----------
 

@@ -178,17 +178,30 @@ $(document).ready(function() {
 	var iterationSpeaker = 1;
 	$( ".driver-info" ).click(function() {
 		event.preventDefault();
-
+		
+		
+		/* ********** ********** ********** ********** ********** */
 		/* Stop editing cases or drivers while doing this */
 		$( "#page-formcase, #page-formdriver, #page-formimage" ).css( "display", "none" );
+		/* ********** ********** ********** ********** ********** */
+		
 		
 		/* ********** ********** ********** ********** ********** */
 		/* Also enable editing of the driver clicked on */
 		$( "#page-formdriver" ).toggle();
+		
+		/* Fill out the driver form with the correct details */
+		/* xxx */
+		
 		/* ********** ********** ********** ********** ********** */
 		
+		
 		var imageSource = $(this).find('img').attr('src');
-		var imageSize = $(this).attr('data-size')+'0';
+		
+		/* Takes the inches of the diameter, multiplies by 10, and then utilizes the case driver multiplier for final value */
+		/* $(this).attr('data-multiplier') */
+		var imageSize = parseInt($(this).attr('data-size')+'0', 10) * parseInt($(this).attr('data-multiplier'), 10);
+		
 		var imageSizeHalf = parseInt(imageSize, 10) / parseInt('2', 10);
 		var imageDetails = ''; /* 'TEST: '+imageSize; */
 		
@@ -217,10 +230,11 @@ $(document).ready(function() {
 			event.stopPropagation();
 		});
 		*/
-
+		
 		iterationSpeaker++;
 		
 		
+		/* ********** ********** ********** ********** ********** */
 		/* Add speaker driver to line items for price calculations */
 		var driverName = $(this).find('.name-container').html();
 		var driverSize = $(this).find('.inch-container').find('.size').html();
@@ -239,12 +253,15 @@ $(document).ready(function() {
 		if (drivertype == "high") {
 			$("#high-add").append(elementLineItem);
 		}
+		/* ********** ********** ********** ********** ********** */
 		
 		
+		/* ********** ********** ********** ********** ********** */
 		/* Add the cost of the speaker driver to the total price */
 		var currentPrice = $("#total-price").html();
 		var newPrice = parseInt(currentPrice, 10) + parseInt(driverCost, 10);
 		$("#total-price").html(newPrice);
+		/* ********** ********** ********** ********** ********** */
 		
 		
 	});

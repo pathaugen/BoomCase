@@ -50,6 +50,8 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 	caseWatts, _			:= strconv.Atoi(r.FormValue("casewatts"))
 	casePrice, _			:= strconv.Atoi(r.FormValue("caseprice"))
 	
+	//caseDriverMuliplier, _	:= strconv.ParseFloat(r.FormValue("casedrivermultiplier"), 64)
+	
 	caseSold, _				:= strconv.ParseBool(r.FormValue("casesold"))
 	
 	caseData := Case {
@@ -72,6 +74,7 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 		Price:				int32(casePrice), // int32
 		Watts:				int16(caseWatts), // int16
 		Sold:				caseSold, // bool
+		DriverMultiplier:	r.FormValue("casedrivermultiplier"), // float32(caseDriverMuliplier), // float32
 		
 		BlobKey:			blobkey,
 		
@@ -116,6 +119,7 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 	
 	// ========== ========== ========== ========== ==========
 	if caseData.Name != "" {
+		output += "<hr />"
 		output += "<h1>Proceeding with CASE creation in datastore</h1>"
 		
 		output += "<h1>r.FormValue(\"casename\") = ["+r.FormValue("casename")+"]</h1>"
@@ -156,19 +160,24 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 		
 		_, err := datastore.Put(ctx, newKey, &caseData)
 		if err != nil {
+			output += "<hr />"
 			output += "<h1>ERROR: datastore failed: "+err.Error()+"</h1>"
 		} else {
+			output += "<hr />"
 			output += "<h1>SUCCESS: Created datastore entry for new case</h1>"
 			output += `<h1><a href="/">Return Home</a></h1>`
 			//output += `<h1><a href="/case/`+strconv.Itoa(int(newKey.IntID()))+`">Go Directly to New Case</a></h1>` // Only works for existing cases..
 			//output += `<h1><a href="/case/`+newKey.StringID()+`">Go Directly to New Case</a></h1>` // Only works for existing cases..
 			output += `<h1><a href="/customize">Go to Case Selection</a></h1>`
 			if caseData.BlobKey != "" {
+				output += "<hr />"
+				output += "<h1>blobkey: "+caseData.BlobKey+"</h1>"
 				output += "<img src=\"/serve/?blobKey="+caseData.BlobKey+"\" />"
-			} else { output += "<h1>No image was uploaded</h1>" }
+			} else { output += "<hr /><h1>No image was uploaded</h1>" }
 		}
 		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	} else if driverData.Name != "" {
+		output += "<hr />"
 		output += "<h1>Proceeding with DRIVER creation in datastore</h1>"
 		
 		output += "<h1>r.FormValue(\"drivername\") = ["+r.FormValue("drivername")+"]</h1>"
@@ -209,20 +218,25 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 		
 		_, err := datastore.Put(ctx, newKey, &driverData)
 		if err != nil {
+			output += "<hr />"
 			output += "<h1>ERROR: datastore failed: "+err.Error()+"</h1>"
 		} else {
+			output += "<hr />"
 			output += "<h1>SUCCESS: Created datastore entry for new driver</h1>"
 			output += `<h1><a href="/">Return Home</a></h1>`
 			output += `<h1><a href="/customize">Go to Case Selection</a></h1>`
 			if driverData.BlobKey != "" {
+				output += "<hr />"
+				output += "<h1>blobkey: "+driverData.BlobKey+"</h1>"
 				output += "<img src=\"/serve/?blobKey="+driverData.BlobKey+"\" />"
-			} else { output += "<h1>No image was uploaded</h1>" }
+			} else { output += "<hr /><h1>No image was uploaded</h1>" }
 		}
 		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	} else if caseData.BlobKey != "" {
 		// ========== ========== ========== ========== ==========
 		// Delete blobstore entry
 		//deleteBlobKey := "EUG76sbkgL8CDsNUokKcRQ=="
+		output += "<hr />"
 		output += "<div>Prepare to delete from blobstore: "+caseData.BlobKey+"</div>"
 		blobstore.Delete(ctx, appengine.BlobKey(caseData.BlobKey)) // https://cloud.google.com/appengine/docs/go/blobstore/reference#Delete
 		output += "<div>Finished deleting from blobstore</div>"
