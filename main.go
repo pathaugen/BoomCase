@@ -24,7 +24,9 @@ func init() {
 // os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine/')
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 
-// Dummy Main() as required - Used for executable when running after build
+// main() used for executable when running after build, and also required for Travis CI
 func main() {
 	fmt.Println("BoomCase Google App Engine Application. Deploy code to Google App Engine (GAE) to utilize. No command line functions available.")
+	
+	// TODO: Creation of offline BoomCase customization web server application for POS kiosks utilizing same code
 }

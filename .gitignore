@@ -2,6 +2,7 @@
 
 # Most important is to ignore the Travis CI GAE key file:
 client-secret.json
+client-secret.json.enc
 
 
 # ========================= ========================= =========================
