@@ -1,4 +1,9 @@
 
+# Travis CI builds require "appengine" to function correctly
+
+# GAE auto deploymemt:
+# https://docs.travis-ci.com/user/deployment/google-app-engine/
+
 language: go
 
 go:
@@ -6,3 +11,15 @@ go:
   - 1.6
   - 1.7.x
   - master
+
+# http://stackoverflow.com/questions/32249082/compile-app-engine-in-travis-ci-and-go/32254406
+install:
+  - go get google.golang.org/appengine
+
+# http://stackoverflow.com/questions/13114334/run-a-google-app-engine-on-travis-ci-and-test-it-with-phantomjs#13973415
+# https://github.com/travis-ci/travis-ci/issues/738
+# before_script:
+
+# goapp test ./...
+script:
+  - go test -v ./...

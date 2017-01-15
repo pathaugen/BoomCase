@@ -1,5 +1,9 @@
 
 
+# Most important is to ignore the Travis CI GAE key file:
+client-secret.json
+
+
 # ========================= ========================= =========================
 
 # Windows image file caches
