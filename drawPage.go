@@ -175,7 +175,8 @@ func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Conte
 			
 			// Slip the blobkey into the forms
 			//if r.FormValue("blobkey") != "" { output = strings.Replace(output, "<BLOBKEY>", r.FormValue("blobkey"), -1) }
-			if blobkey != "" { output = strings.Replace(output, "<BLOBKEY>", blobkey, -1) }
+			if blobkey != "" { output = strings.Replace(output, "<CASEBLOBKEY>", blobkey, -1) }
+			if blobkey != "" { output = strings.Replace(output, "<DRIVERBLOBKEY>", blobkey, -1) }
 			
 			// Stylesheet for the case/driver form
 			stylesheetLink += `<link rel="stylesheet" type="text/css" href="/resources/stylesheets/formcasedriverimage.css" />`

@@ -22,9 +22,9 @@ import (
 
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 string) (string, blobkey string) {
+func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 string) (string, caseblobkey string) {
 	
-	//blobkey := ""
+	//caseblobkey := ""
 	
 	// ========== ========== ========== ========== ==========
 	// Utilizing the requested case number, display the case values from database
@@ -59,7 +59,7 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 		
 		if strconv.Itoa(int(id)) == pageRequestedVariables1 {
 			
-			blobkey = c.BlobKey
+			caseblobkey = c.BlobKey
 			
 			// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 			// Utilizing the requested case id, pull the image key for display via blobstore
@@ -68,7 +68,7 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 			// Get a thumbnail of a blobstore image
 			// https://github.com/golang/appengine/blob/master/image/image.go
 			thumbOpts := image.ServingURLOptions { Size: 800, }
-			thumbKey := appengine.BlobKey(blobkey)
+			thumbKey := appengine.BlobKey(caseblobkey)
 			thumbnail, _ := image.ServingURL(ctx, thumbKey, &thumbOpts) // (*url.URL, error)
 			// ========== ========== ========== ========== ==========
 			//output = strings.Replace(output, "<CASEIMAGE>", `<img src="/serve/?blobKey=`+blobkey+`" />`, -1)
@@ -112,6 +112,8 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	// Add all the drivers from datastore
 	
+	var driverblobkey = ""
+	
 	var driverTemplate = ""
 	
 	// Array to hold the results
@@ -126,7 +128,7 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 		key := keysDriver[i]
 		id := int64(key.IntID())
 		
-		blobkey = c.BlobKey
+		driverblobkey = c.BlobKey
 		
 		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 		// Utilizing the requested driver id, pull the image key for display via blobstore
@@ -134,7 +136,7 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 		// Get a thumbnail of a blobstore images
 		// https://github.com/golang/appengine/blob/master/image/image.go
 		thumbOpts := image.ServingURLOptions { Size: 800, }
-		thumbKey := appengine.BlobKey(blobkey)
+		thumbKey := appengine.BlobKey(driverblobkey)
 		thumbnail, _ := image.ServingURL(ctx, thumbKey, &thumbOpts) // (*url.URL, error)
 		// ========== ========== ========== ========== ==========
 		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
@@ -146,13 +148,17 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 		
 		// ========== ========== ========== ========== ==========
 		driverTemplate += `
-			<a href="" class="driver-info driver-info-`+c.Type+`" data-size="`+strconv.Itoa(int(c.Diameter))+`" data-type="`+c.Type+`" data-multiplier="`+caseDriverMultiplier+`">
+			<a href="" class="driver-info driver-info-`+c.Type+`" data-size="`+strconv.Itoa(int(c.Diameter))+`" data-type="`+c.Type+`" data-circle="`+strconv.FormatBool(c.Circle)+`" data-multiplier="`+caseDriverMultiplier+`">
 				<!-- `+strconv.Itoa(int(id))+` -->
 				<img src="`+thumbnail.String()+`" />
 				<span class="name-container">`+c.Name+`</span>
 				<span class="inch-container"><span class="size">`+strconv.Itoa(int(c.Diameter))+`</span>"</span>
-				<span class="frequency-container"><span class="frequency">`+strconv.Itoa(int(c.FrequencyLow))+`hz - `+strconv.Itoa(int(c.FrequencyHigh))+`hz</span></span>
+				<span class="frequency-container">
+					<span class="frequencylow">`+strconv.Itoa(int(c.FrequencyLow))+`</span>hz -
+					<span class="frequencyhigh">`+strconv.Itoa(int(c.FrequencyHigh))+`</span>hz
+				</span>
 				<span class="price-container">+ $<span class="price">`+strconv.Itoa(int(c.Price))+`</span>/each</span>
+				<span class="weight-container" style="display:none;">`+strconv.Itoa(int(c.Weight))+`</span>
 				<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 			</a>
 		`
@@ -206,7 +212,7 @@ func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 
 	// ========== ========== ========== ========== ==========
     
     
-    return output, blobkey
+    return output, caseblobkey
 }
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 

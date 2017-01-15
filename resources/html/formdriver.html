@@ -8,10 +8,14 @@
 		<input id="existingdatastoreid" name="existingdatastoreid" type="hidden" value="<EXISTINGDATASTOREID>" />
 		
 		<!-- Used to transmit blobkey from an uploaded image -->
-		<input id="blobkey" name="blobkey" type="hidden" value="<BLOBKEY>" />
+		<input id="blobkey" name="blobkey" type="hidden" value="<DRIVERBLOBKEY>" />
 		
 		<fieldset>
 			<legend>Edit BoomCase Driver Details</legend>
+			
+			<div id="previewimagedriver" style="text-align:center;">
+				<img src="/serve/?blobKey=" />
+			</div>
 			
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
 			<div>
@@ -36,7 +40,7 @@
 				<label for="drivertype">Driver Type</label>
 				low (low range subwoofer), mid (mid range driver), high (high range tweeter)
 				<!-- <input id="drivertype" name="drivertype" type="text" placeholder="12" value="<VALUEDRIVERDIAMETER>" /> -->
-				<select name="drivertype">
+				<select name="drivertype" id="drivertype">
 					<option value="low" <VALUEDRIVERTYPELOW>>low (low range subwoofer)</option> <!-- selected -->
 					<option value="mid" <VALUEDRIVERTYPEMID>>mid (mid range driver)</option> <!-- selected -->
 					<option value="high" <VALUEDRIVERTYPEHIGH>>high (high range tweeter)</option> <!-- selected -->

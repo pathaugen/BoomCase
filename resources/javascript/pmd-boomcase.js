@@ -190,17 +190,30 @@ $(document).ready(function() {
 		/* Also enable editing of the driver clicked on */
 		$( "#page-formdriver" ).toggle();
 		
-		/* Fill out the driver form with the correct details */
-		/* xxx */
+		/* Blank out the form to start */
+		$("#previewimagedriver").html("");
+		$("#drivername").val("");
 		
+		$("#drivertype").val("low");
+		
+		$("#driverdiameter").val("");
+		$("#driverfrequencylow").val("");
+		$("#driverfrequencyhigh").val("");
+		$("#driverweight").val("");
+		$("#driverprice").val("");
+		$("#drivercircle").prop('checked', false);
 		/* ********** ********** ********** ********** ********** */
 		
 		
 		var imageSource = $(this).find('img').attr('src');
 		
 		/* Takes the inches of the diameter, multiplies by 10, and then utilizes the case driver multiplier for final value */
+		/* parseInt vs parseFloat */
 		/* $(this).attr('data-multiplier') */
-		var imageSize = parseInt($(this).attr('data-size')+'0', 10) * parseInt($(this).attr('data-multiplier'), 10);
+		var imageSizeDiameter = parseFloat($(this).attr('data-size')+'0');
+		var imageSizeMultiplier = parseFloat($(this).attr('data-multiplier'));
+		var imageSize = imageSizeDiameter * imageSizeMultiplier;
+		console.log("Driver Size Calculation: imageSizeDiameter-"+imageSizeDiameter+" * imageSizeMultiplier-"+imageSizeMultiplier+" = "+imageSize);
 		
 		var imageSizeHalf = parseInt(imageSize, 10) / parseInt('2', 10);
 		var imageDetails = ''; /* 'TEST: '+imageSize; */
@@ -239,20 +252,14 @@ $(document).ready(function() {
 		var driverName = $(this).find('.name-container').html();
 		var driverSize = $(this).find('.inch-container').find('.size').html();
 		var driverCost = $(this).find('.price-container').find('.price').html();
-		var drivertype = $(this).attr('data-type');
+		var driverType = $(this).attr('data-type');
 		/* <div>INCHES" DRTIVERNAME + $COST</div> */
 		var elementLineItem = $("<div>", {
 			'html'	: driverSize+'" '+driverName+' + $'+driverCost
 		});
-		if (drivertype == "low") {
-			$("#low-add").append(elementLineItem);
-		}
-		if (drivertype == "mid") {
-			$("#mid-add").append(elementLineItem);
-		}
-		if (drivertype == "high") {
-			$("#high-add").append(elementLineItem);
-		}
+		if (driverType == "low") { $("#low-add").append(elementLineItem); }
+		if (driverType == "mid") { $("#mid-add").append(elementLineItem); }
+		if (driverType == "high") { $("#high-add").append(elementLineItem); }
 		/* ********** ********** ********** ********** ********** */
 		
 		
@@ -263,6 +270,35 @@ $(document).ready(function() {
 		$("#total-price").html(newPrice);
 		/* ********** ********** ********** ********** ********** */
 		
+		
+		/* ********** ********** ********** ********** ********** */
+		/* Fill out the driver form with the correct details */
+		
+		var driverWeight = $(this).find('.weight-container').html();
+		var driverFrequencyLow = $(this).find('.frequency-container').find('.frequencylow').html();
+		var driverFrequencyHigh = $(this).find('.frequency-container').find('.frequencyhigh').html();
+		
+		$("#previewimagedriver").html("<img src=\""+imageSource+"\" style=\"width:50%;\" />");
+		$("#drivername").val(driverName);
+		
+		$("#drivertype").val(driverType);
+		
+		$("#driverdiameter").val(driverSize);
+		$("#driverfrequencylow").val(driverFrequencyLow);
+		$("#driverfrequencyhigh").val(driverFrequencyHigh);
+		$("#driverweight").val(driverWeight);
+		$("#driverprice").val(driverCost);
+		
+		/*
+		var driverCircleChecked = $(this).find('.price-container').is(':checked');
+		if (driverCircleChecked) { $("#drivercircle").prop('checked', true); }
+		else { $("#drivercircle").prop('checked', false); }
+		*/
+		var driverCircle = $(this).attr('data-circle');
+		if (driverCircle == "true") { $("#drivercircle").prop('checked', true); }
+		else { $("#drivercircle").prop('checked', false); }
+		
+		/* ********** ********** ********** ********** ********** */
 		
 	});
 });

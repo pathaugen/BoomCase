@@ -8,7 +8,7 @@
 		<input id="existingdatastoreid" name="existingdatastoreid" type="hidden" value="<EXISTINGDATASTOREID>" />
 		
 		<!-- Used to transmit blobkey from an uploaded image -->
-		<input id="blobkey" name="blobkey" type="hidden" value="<BLOBKEY>" />
+		<input id="blobkey" name="blobkey" type="hidden" value="<CASEBLOBKEY>" />
 		
 		<fieldset>
 			<legend>Edit BoomCase Custom Case Details</legend>
@@ -112,8 +112,11 @@ One - Mid Range"><VALUECASEFEATURING></textarea>
 			
 			<div>
 				<label for="casedrivermultiplier">Driver Multiplier</label>
-				Drivers are multiplied by this value to increase or decrease their size to fit the case. Example: 1.0 (standard size), 1.75 (75% bigger), 0.25 (25% of original size).
-				<input id="casedrivermultiplier" name="casedrivermultiplier" type="text" placeholder="1.0" value="<VALUECASEDRIVERMULTIPLIER>" />
+				Drivers are multiplied by this value to increase or decrease their size to fit the case.
+				<br />Each inch in diameter is 10px wide.
+				<br />Make sure to measure the diameter of drivers precisely (1" tweeter isn't just 1" in diameter)
+				<br />Examples: 3.0 (3x is a good starting point), 4.2 (4.2x bigger), 5.5 (5.5x bigger), 0.8 (80% original size).
+				<input id="casedrivermultiplier" name="casedrivermultiplier" type="text" placeholder="3.0" value="<VALUECASEDRIVERMULTIPLIER>" />
 			</div>
 			
 			
@@ -130,5 +133,13 @@ One - Mid Range"><VALUECASEFEATURING></textarea>
 		</fieldset>
 	</form>
 	<!-- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- -->
+	
+	<div id="previewimagecase" style="width:800px;text-align:center;margin:auto;">
+		<img src="/serve/?blobKey=<CASEBLOBKEY>" />
+		<div style="background-color:yellow;width:100px;height:100px;"></div>
+		<div style="background-color:red;width:300px;height:300px;"></div>
+		<div style="background-color:blue;width:500px;height:500px;"></div>
+	</div>
+	
 </div>
 
