@@ -6,12 +6,12 @@ import (
     //"net/http"
     //"net/url"
     
-    //"x/net/context"
+    "golang.org/x/net/context"
     
-	"appengine"
-	"appengine/datastore"
-	"appengine/user"
-	"appengine/image"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
+	"google.golang.org/appengine/user"
+	"google.golang.org/appengine/image"
 	//"appengine/blobstore"
     
     //"os"
@@ -22,7 +22,7 @@ import (
 
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func drawPageCustomize(ctx appengine.Context, output string) (string) {
+func drawPageCustomize(ctx context.Context, output string) (string) { // context.Context vs appengine.Context
     
     
 	//output = strings.Replace(output, "<CASE>", drawCase(r), -1)

@@ -56,12 +56,12 @@ import (
 	
 	"strconv"
 	
-	"appengine"
-	"appengine/datastore"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
 	//"appengine/user"
 	
-	//"google.golang.org/appengine/blobstore"
-	"appengine/blobstore"
+	//"appengine/blobstore"
+	"google.golang.org/appengine/blobstore"
 )
 
 

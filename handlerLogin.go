@@ -4,8 +4,9 @@ package main
 import (
     "fmt"
     "net/http"
-	"appengine"
-	"appengine/user"
+    
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/user"
 )
 
 // ========== ========== ========== ========== ==========

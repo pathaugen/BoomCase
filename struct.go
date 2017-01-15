@@ -2,8 +2,11 @@
 package main
 import (
 	"time"
-	"appengine"
-	"appengine/datastore"
+	
+    "golang.org/x/net/context"
+    
+	//"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
 )
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
@@ -37,7 +40,7 @@ type Case struct {
 }
 // [END case_struct]
 // caseKey returns the key used for all case entries.
-func caseKey(ctx appengine.Context) *datastore.Key {
+func caseKey(ctx context.Context) *datastore.Key { // context.Context vs appengine.Context
 	// The string "default_case" here could be varied to have multiple types of cases.
 	return datastore.NewKey(ctx, "Case", "default_case", 0, nil)
 }
@@ -56,7 +59,7 @@ type CaseImage struct {
 }
 // [END image_struct]
 // imageKey returns the key used for all case entries.
-func caseImageKey(ctx appengine.Context) *datastore.Key {
+func caseImageKey(ctx context.Context) *datastore.Key { // context.Context vs appengine.Context
 	return datastore.NewKey(ctx, "CaseImage", "default_caseimage", 0, nil)
 }
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
@@ -82,7 +85,7 @@ type Driver struct {
 }
 // [END driver_struct]
 // driverKey returns the key used for all case entries.
-func driverKey(ctx appengine.Context) *datastore.Key {
+func driverKey(ctx context.Context) *datastore.Key { // context.Context vs appengine.Context
 	return datastore.NewKey(ctx, "Driver", "default_driver", 0, nil)
 }
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========

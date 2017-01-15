@@ -8,12 +8,14 @@ import (
 	
 	"strconv"
 	
-	"appengine"
-	"appengine/datastore"
+    "golang.org/x/net/context"
+	
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
 	//"appengine/user"
 	
-	//"google.golang.org/appengine/blobstore"
-	"appengine/blobstore" // https://cloud.google.com/appengine/docs/go/blobstore/reference
+	//"appengine/blobstore"
+	"google.golang.org/appengine/blobstore" // https://cloud.google.com/appengine/docs/go/blobstore/reference
 )
 
 
@@ -21,7 +23,7 @@ import (
 //func saveCaseDatastore(r *http.Request, ctx appengine.Context, caseData Case) (string) {
 //func saveCaseDriverDatastore(r *http.Request, ctx appengine.Context, blobkey string) (string) {
 //func saveCaseDriver(r *http.Request, ctx appengine.Context, blobkey string) (string) {
-func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
+func saveCaseDriver(r *http.Request, ctx context.Context) (string) { // context.Context vs appengine.Context
 	output := ""
 	
 	// Capture the blobkey from query string

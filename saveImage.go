@@ -12,8 +12,8 @@ import (
 	//"appengine/datastore"
 	//"appengine/user"
 	
-	//"google.golang.org/appengine/blobstore"
-	"appengine/blobstore" // https://cloud.google.com/appengine/docs/go/blobstore/reference
+	//"appengine/blobstore"
+	"google.golang.org/appengine/blobstore" // https://cloud.google.com/appengine/docs/go/blobstore/reference
 )
 
 

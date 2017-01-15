@@ -5,13 +5,13 @@ import (
     //"fmt"
     "net/http"
     
-    //"x/net/context"
+    "golang.org/x/net/context"
     
-	"appengine"
-	"appengine/datastore"
-	"appengine/user"
+	//"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
+	"google.golang.org/appengine/user"
 	
-	"appengine/blobstore"
+	"google.golang.org/appengine/blobstore"
     
     //"os"
     "io/ioutil"
@@ -20,7 +20,7 @@ import (
 )
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func drawPage(r *http.Request, ctx appengine.Context) (string) { //context.Context
+func drawPage(r *http.Request, ctx context.Context) (string) { // context.Context vs appengine.Context
 	
 	// Calculate the page that was requested
 	pageRequestedString := r.URL.Path[1:]

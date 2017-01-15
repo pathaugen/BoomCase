@@ -5,12 +5,12 @@ import (
     //"fmt"
     //"net/http"
     
-    //"x/net/context"
+    "golang.org/x/net/context"
     
-	"appengine"
-	"appengine/datastore"
-	"appengine/user"
-	"appengine/image"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
+	"google.golang.org/appengine/user"
+	"google.golang.org/appengine/image"
 	
 	//"appengine/blobstore"
     
@@ -22,7 +22,7 @@ import (
 
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func drawPageCase(ctx appengine.Context, output string, pageRequestedVariables1 string) (string, caseblobkey string) {
+func drawPageCase(ctx context.Context, output string, pageRequestedVariables1 string) (string, caseblobkey string) { // context.Context vs appengine.Context
 	
 	//caseblobkey := ""
 	
