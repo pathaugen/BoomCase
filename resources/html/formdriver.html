@@ -8,10 +8,14 @@
 		<input id="existingdatastoreid" name="existingdatastoreid" type="hidden" value="<EXISTINGDATASTOREID>" />
 		
 		<!-- Used to transmit blobkey from an uploaded image -->
-		<input id="blobkey" name="blobkey" type="hidden" value="<BLOBKEY>" />
+		<input id="blobkey" name="blobkey" type="hidden" value="<DRIVERBLOBKEY>" />
 		
 		<fieldset>
 			<legend>Edit BoomCase Driver Details</legend>
+			
+			<div id="previewimagedriver" style="text-align:center;">
+				<img src="/serve/?blobKey=" />
+			</div>
 			
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
 			<div>
@@ -33,16 +37,52 @@
 			
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
 			<div style="">
-				<div style="width:45%;float:left;">
-					<label for="driverdiameter">Diameter in Inches</label>
-					__ " (inches)
-					<input id="driverdiameter" name="driverdiameter" type="text" placeholder="12" value="<VALUEDRIVERDIAMETER>" />
-				</div>
+				<label for="drivertype">Driver Type</label>
+				low (low range subwoofer), mid (mid range driver), high (high range tweeter)
+				<!-- <input id="drivertype" name="drivertype" type="text" placeholder="12" value="<VALUEDRIVERDIAMETER>" /> -->
+				<select name="drivertype" id="drivertype">
+					<option value="low" <VALUEDRIVERTYPELOW>>low (low range subwoofer)</option> <!-- selected -->
+					<option value="mid" <VALUEDRIVERTYPEMID>>mid (mid range driver)</option> <!-- selected -->
+					<option value="high" <VALUEDRIVERTYPEHIGH>>high (high range tweeter)</option> <!-- selected -->
+				</select>
+			</div>
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			<div style="">
+				<label for="driverdiameter">Diameter in Inches</label>
+				__ " (inches)
+				<input id="driverdiameter" name="driverdiameter" type="text" placeholder="12" value="<VALUEDRIVERDIAMETER>" />
+			</div>
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			<div style="">
+				<!--
 				<div style="width:45%;float:left;margin-left:10%;">
 					<label for="driverfrequencyresponse">Frequency Response</label>
 					"__hz - __khz"
 					<input id="driverfrequencyresponse" name="driverfrequencyresponse" type="text" placeholder="70hz - 20khz" value="<VALUEDRIVERFREQUENCYRESPONSE>" />
 				</div>
+				-->
+				<div style="width:45%;float:left;">
+					<label for="driverfrequencylow">Frequency Response Low</label>
+					hz of the low end of this driver.
+					<input id="driverfrequencylow" name="driverfrequencylow" type="text" placeholder="70" value="<VALUEDRIVERFREQUENCYLOW>" />
+				</div>
+				<div style="width:45%;float:left;margin-left:10%;">
+					<label for="driverfrequencyhigh">Frequency Response High</label>
+					hz of the high end of this driver.
+					<input id="driverfrequencyhigh" name="driverfrequencyhigh" type="text" placeholder="20000" value="<VALUEDRIVERFREQUENCYHIGH>" />
+				</div>
+			</div>
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			<div>
+				<label for="driverweight">Weight</label>
+				Weight in lbs used to calculate total weight of a custom case. Examples: 5, 1.5, 0.25, 1.75
+				<input id="driverweight" name="driverweight" type="text" placeholder="0" value="<VALUEDRIVERWEIGHT>" />
 			</div>
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
 			
@@ -51,6 +91,20 @@
 				<label for="driverprice">Base Price</label>
 				$___
 				<input id="driverprice" name="driverprice" type="text" placeholder="45" value="<VALUEDRIVERPRICE>" />
+			</div>
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			
+			<!-- ---------- ---------- ---------- ---------- ---------- -->
+			<div style="">
+				<label for="drivercircle">Automatically Display as Circle</label>
+				Automatically cut and display as a circle (most drivers), or it will display as a square transparent PNG (MUST be properly cut out and saved as transparent PNG)
+				<!--
+				<select name="drivercircle">
+					<option value="yes">Yes! Cut and display as a circle</option>
+					<option value="no">No. Display as a square transparent PNG</option>
+				</select>
+				-->
+				<input id="drivercircle" name="drivercircle" type="checkbox" value="true" <VALUEDRIVERCIRCLE> /> <!-- checked -->
 			</div>
 			<!-- ---------- ---------- ---------- ---------- ---------- -->
 			

@@ -56,12 +56,12 @@ import (
 	
 	"strconv"
 	
-	"appengine"
-	"appengine/datastore"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
 	//"appengine/user"
 	
-	//"google.golang.org/appengine/blobstore"
-	"appengine/blobstore"
+	//"appengine/blobstore"
+	"google.golang.org/appengine/blobstore"
 )
 
 
@@ -107,20 +107,27 @@ func saveCase(r *http.Request) (string) {
 	
 	// i, err := strconv.ParseInt("-42", 10, 64)
 	// i, err := strconv.Atoi("-42")
-	caseLength, _	:= strconv.Atoi(r.FormValue("caselength"))
-	casewidth, _	:= strconv.Atoi(r.FormValue("casewidth"))
-	caseheight, _	:= strconv.Atoi(r.FormValue("caseheight"))
-	caseweight, _	:= strconv.Atoi(r.FormValue("caseweight"))
-	casebattery, _	:= strconv.Atoi(r.FormValue("casebattery"))
-	caseprice, _	:= strconv.Atoi(r.FormValue("caseprice"))
+	caseFrequencyLow, _		:= strconv.Atoi(r.FormValue("casefrequencylow"))
+	caseFrequencyHigh, _	:= strconv.Atoi(r.FormValue("casefrequencyhigh"))
 	
-	casesold, _		:= strconv.ParseBool(r.FormValue("casesold"))
+	caseLength, _			:= strconv.Atoi(r.FormValue("caselength"))
+	casewidth, _			:= strconv.Atoi(r.FormValue("casewidth"))
+	caseheight, _			:= strconv.Atoi(r.FormValue("caseheight"))
+	caseweight, _			:= strconv.Atoi(r.FormValue("caseweight"))
+	casebattery, _			:= strconv.Atoi(r.FormValue("casebattery"))
+	caseprice, _			:= strconv.Atoi(r.FormValue("caseprice"))
 	
+	casesold, _				:= strconv.ParseBool(r.FormValue("casesold"))
+	
+	// Create a new Case from Struct.go
 	caseData := Case {
 		Name:				r.FormValue("casename"),
 		Overview:			r.FormValue("caseoverview"),
 		Featuring:			r.FormValue("casefeaturing"),
-		FrequencyResponse:	r.FormValue("casefrequencyresponse"),
+		
+		//FrequencyResponse:	r.FormValue("casefrequencyresponse"),
+		FrequencyLow:		int32(caseFrequencyLow), // int
+		FrequencyHigh:		int32(caseFrequencyHigh), // int
 		
 		Length:				int8(caseLength), // int
 		Width:				int8(casewidth), // int
@@ -157,6 +164,7 @@ func saveCase(r *http.Request) (string) {
 		output += "<div>Prepare to delete from blobstore: "+caseData.BlobKey+"</div>"
 		blobstore.Delete(ctx, appengine.BlobKey(caseData.BlobKey)) // https://cloud.google.com/appengine/docs/go/blobstore/reference#Delete
 		output += "<div>Finished deleting from blobstore</div>"
+		output += `<div><a href="/">Return Home</a></div>`
 		// ========== ========== ========== ========== ==========
 	} else {
 		output += "<h1>Form was submitted blank</h1>"

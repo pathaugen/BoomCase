@@ -4,7 +4,7 @@ Project Status: BETA
 ---------- ---------- ---------- ---------- ----------
 
 Current Version Deployed to Google App Engine:
-2016-11-14-a
+2016-11-15-a
 
 ---------- ---------- ---------- ---------- ----------
 
@@ -30,6 +30,7 @@ Video Background Examples:
 ---------- ---------- ---------- ---------- ----------
 
 * GitHub Project Repository: <https://github.com/pathaugen/boomcase>
+* Travis CI Builds: <https://travis-ci.org/pathaugen/boomcase>
 * Google App Engine URL: <https://pmd-boomcase.appspot.com/>
 * Design Firm Friendly URL: <https://boomcase.productionmediadesign.com/>
 
@@ -55,6 +56,7 @@ Feature List
   * Utilization of pure HTML/CSS/JS to keep future updates to app simple
   * Login via Google credentials to backend dashboard
   * Dashboard for management of internal data and elements
+  * Continuous Integration via Travis CI autodeploys on GitHub master branch checkin
 
 * Frontend:
   * Responsive design combining look of two separate web properties 

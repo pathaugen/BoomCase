@@ -64,16 +64,20 @@ $(document).ready(function() {
 		$( "#featured-in" ).hide( function() {  });
 		$( "#play-loud" ).hide( function() {  });
 		
-		$( "#page-formdriver-button" ).hide( function() {  }); /*TODO*/
+		$( "#page-formdriver-button" ).show( function() {  });
 		$( "#page-formcase-button" ).hide( function() {  });
 		$( "#page-formcase" ).hide( function() {  });
 		
 		/*$( "#page-case #case-image #case-image-container" ).css( "float", "left" );*/
 	});
 	
-
+	/* Saving or Closing the Customization Area */
 	$( ".trigger-customize-close, .trigger-customize-save" ).click(function() {
 		event.preventDefault();
+		
+		/* Hide the driver adding and editing sections */
+		$( "#page-formdriver" ).css( "display", "none" );
+		$( "#page-formimage" ).css( "display", "none" );
 		
 		$( "#case-information" ).show( function() {  });
 		$( "#case-addspeaker" ).hide( function() {  });
@@ -171,16 +175,46 @@ $(document).ready(function() {
 /* ********** ********** ********** ********** ********** */
 /* Driver Adding - Clicking a driver adds it to the speaker case to drag around */
 $(document).ready(function() {
-	
 	var iterationSpeaker = 1;
-	
 	$( ".driver-info" ).click(function() {
-		
-		
 		event.preventDefault();
 		
+		
+		/* ********** ********** ********** ********** ********** */
+		/* Stop editing cases or drivers while doing this */
+		$( "#page-formcase, #page-formdriver, #page-formimage" ).css( "display", "none" );
+		/* ********** ********** ********** ********** ********** */
+		
+		
+		/* ********** ********** ********** ********** ********** */
+		/* Also enable editing of the driver clicked on */
+		$( "#page-formdriver" ).toggle();
+		
+		/* Blank out the form to start */
+		$("#previewimagedriver").html("");
+		$("#drivername").val("");
+		
+		$("#drivertype").val("low");
+		
+		$("#driverdiameter").val("");
+		$("#driverfrequencylow").val("");
+		$("#driverfrequencyhigh").val("");
+		$("#driverweight").val("");
+		$("#driverprice").val("");
+		$("#drivercircle").prop('checked', false);
+		/* ********** ********** ********** ********** ********** */
+		
+		
 		var imageSource = $(this).find('img').attr('src');
-		var imageSize = $(this).attr('data-size');
+		
+		/* Takes the inches of the diameter, multiplies by 10, and then utilizes the case driver multiplier for final value */
+		/* parseInt vs parseFloat */
+		/* $(this).attr('data-multiplier') */
+		var imageSizeDiameter = parseFloat($(this).attr('data-size')+'0');
+		var imageSizeMultiplier = parseFloat($(this).attr('data-multiplier'));
+		var imageSize = imageSizeDiameter * imageSizeMultiplier;
+		console.log("Driver Size Calculation: imageSizeDiameter-"+imageSizeDiameter+" * imageSizeMultiplier-"+imageSizeMultiplier+" = "+imageSize);
+		
 		var imageSizeHalf = parseInt(imageSize, 10) / parseInt('2', 10);
 		var imageDetails = ''; /* 'TEST: '+imageSize; */
 		
@@ -209,35 +243,62 @@ $(document).ready(function() {
 			event.stopPropagation();
 		});
 		*/
-
+		
 		iterationSpeaker++;
 		
 		
+		/* ********** ********** ********** ********** ********** */
 		/* Add speaker driver to line items for price calculations */
 		var driverName = $(this).find('.name-container').html();
 		var driverSize = $(this).find('.inch-container').find('.size').html();
 		var driverCost = $(this).find('.price-container').find('.price').html();
-		var drivertype = $(this).attr('data-type');
+		var driverType = $(this).attr('data-type');
 		/* <div>INCHES" DRTIVERNAME + $COST</div> */
 		var elementLineItem = $("<div>", {
 			'html'	: driverSize+'" '+driverName+' + $'+driverCost
 		});
-		if (drivertype == "low") {
-			$("#low-add").append(elementLineItem);
-		}
-		if (drivertype == "mid") {
-			$("#mid-add").append(elementLineItem);
-		}
-		if (drivertype == "high") {
-			$("#high-add").append(elementLineItem);
-		}
+		if (driverType == "low") { $("#low-add").append(elementLineItem); }
+		if (driverType == "mid") { $("#mid-add").append(elementLineItem); }
+		if (driverType == "high") { $("#high-add").append(elementLineItem); }
+		/* ********** ********** ********** ********** ********** */
 		
 		
+		/* ********** ********** ********** ********** ********** */
 		/* Add the cost of the speaker driver to the total price */
 		var currentPrice = $("#total-price").html();
 		var newPrice = parseInt(currentPrice, 10) + parseInt(driverCost, 10);
 		$("#total-price").html(newPrice);
+		/* ********** ********** ********** ********** ********** */
 		
+		
+		/* ********** ********** ********** ********** ********** */
+		/* Fill out the driver form with the correct details */
+		
+		var driverWeight = $(this).find('.weight-container').html();
+		var driverFrequencyLow = $(this).find('.frequency-container').find('.frequencylow').html();
+		var driverFrequencyHigh = $(this).find('.frequency-container').find('.frequencyhigh').html();
+		
+		$("#previewimagedriver").html("<img src=\""+imageSource+"\" style=\"width:50%;\" />");
+		$("#drivername").val(driverName);
+		
+		$("#drivertype").val(driverType);
+		
+		$("#driverdiameter").val(driverSize);
+		$("#driverfrequencylow").val(driverFrequencyLow);
+		$("#driverfrequencyhigh").val(driverFrequencyHigh);
+		$("#driverweight").val(driverWeight);
+		$("#driverprice").val(driverCost);
+		
+		/*
+		var driverCircleChecked = $(this).find('.price-container').is(':checked');
+		if (driverCircleChecked) { $("#drivercircle").prop('checked', true); }
+		else { $("#drivercircle").prop('checked', false); }
+		*/
+		var driverCircle = $(this).attr('data-circle');
+		if (driverCircle == "true") { $("#drivercircle").prop('checked', true); }
+		else { $("#drivercircle").prop('checked', false); }
+		
+		/* ********** ********** ********** ********** ********** */
 		
 	});
 });
@@ -338,21 +399,28 @@ $(document).ready(function() {
 
 
 /* ********** ********** ********** ********** ********** */
-/* Admin - Add Custom Case */
+/* Admin - Add or Edit Custom Case or Driver */
 $(document).ready(function() {
-	
 	$( "#page-formcase, #page-formdriver, #page-formimage" ).css( "display", "none" );
-	
-	$( "#case-container #admin-add-case, #page-case #admin-edit-case" ).click(function() {
-			event.preventDefault();
-			
-			$( "#page-formcase, #page-formimage" ).toggle();
-	});
 
-	$( "#case-container #admin-add-driver, #page-case #admin-edit-driver" ).click(function() {
+	$( "#case-container #admin-add-case" ).click(function() {
 			event.preventDefault();
-			
-			$( "#page-formdriver, #page-formimage" ).toggle();
+			$( "#page-formimage" ).toggle();
+	});
+	
+	$( "#page-case #admin-edit-case" ).click(function() {
+		event.preventDefault();
+		$( "#page-formcase" ).toggle();
+	});
+	
+	$( "#page-case #admin-add-driver" ).click(function() {
+		event.preventDefault();
+		$( "#page-formdriver" ).css( "display", "none" );
+		$( "#page-formimage" ).toggle();
+	});
+	$( "#page-case #admin-edit-driver" ).click(function() {
+		event.preventDefault();
+		$( "#page-formdriver" ).toggle();
 	});
 });
 /* ********** ********** ********** ********** ********** */

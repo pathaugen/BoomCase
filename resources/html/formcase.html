@@ -8,7 +8,7 @@
 		<input id="existingdatastoreid" name="existingdatastoreid" type="hidden" value="<EXISTINGDATASTOREID>" />
 		
 		<!-- Used to transmit blobkey from an uploaded image -->
-		<input id="blobkey" name="blobkey" type="hidden" value="<BLOBKEY>" />
+		<input id="blobkey" name="blobkey" type="hidden" value="<CASEBLOBKEY>" />
 		
 		<fieldset>
 			<legend>Edit BoomCase Custom Case Details</legend>
@@ -30,10 +30,22 @@ Two - 6.5 inch Woofers
 Two - Dome Tweeters
 One - Mid Range"><VALUECASEFEATURING></textarea>
 			</div>
+			<!--
 			<div>
 				<label for="casefrequencyresponse">Frequency Response</label>
 				"__hz - __khz" or "Depends on customization options."
 				<input id="casefrequencyresponse" name="casefrequencyresponse" type="text" placeholder="70hz - 20khz" value="<VALUECASEFREQUENCYRESPONSE>" />
+			</div>
+			-->
+			<div>
+				<label for="casefrequencylow">Frequency Response Low</label>
+				hz of the low end of this case. Blank if a custom case.
+				<input id="casefrequencylow" name="casefrequencylow" type="text" placeholder="70" value="<VALUECASEFREQUENCYLOW>" />
+			</div>
+			<div>
+				<label for="casefrequencyhigh">Frequency Response High</label>
+				hz of the high end of this case. Blank if a custom case.
+				<input id="casefrequencyhigh" name="casefrequencyhigh" type="text" placeholder="20000" value="<VALUECASEFREQUENCYHIGH>" />
 			</div>
 			
 			
@@ -99,6 +111,16 @@ One - Mid Range"><VALUECASEFEATURING></textarea>
 			
 			
 			<div>
+				<label for="casedrivermultiplier">Driver Multiplier</label>
+				Drivers are multiplied by this value to increase or decrease their size to fit the case.
+				<br />Each inch in diameter is 10px wide.
+				<br />Make sure to measure the diameter of drivers precisely (1" tweeter isn't just 1" in diameter)
+				<br />Examples: 3.0 (3x is a good starting point), 4.2 (4.2x bigger), 5.5 (5.5x bigger), 0.8 (80% original size).
+				<input id="casedrivermultiplier" name="casedrivermultiplier" type="text" placeholder="3.0" value="<VALUECASEDRIVERMULTIPLIER>" />
+			</div>
+			
+			
+			<div>
 				<input type="submit" value="Submit">
 				<!--
 				<a href="/dashboard" class="btn btn-primary" aria-label="Save this case to the database">
@@ -111,5 +133,13 @@ One - Mid Range"><VALUECASEFEATURING></textarea>
 		</fieldset>
 	</form>
 	<!-- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- -->
+	
+	<div id="previewimagecase" style="width:800px;text-align:center;margin:auto;">
+		<img src="/serve/?blobKey=<CASEBLOBKEY>" />
+		<div style="background-color:yellow;width:100px;height:100px;"></div>
+		<div style="background-color:red;width:300px;height:300px;"></div>
+		<div style="background-color:blue;width:500px;height:500px;"></div>
+	</div>
+	
 </div>
 

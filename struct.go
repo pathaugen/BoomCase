@@ -2,8 +2,11 @@
 package main
 import (
 	"time"
-	"appengine"
-	"appengine/datastore"
+	
+    "golang.org/x/net/context"
+    
+	//"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
 )
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
@@ -12,19 +15,24 @@ type Case struct {
 	Name				string
 	Overview			string
 	Featuring			string
-	FrequencyResponse	string
 	
-	Length				int8	// uint8 = 0-255
-	Width				int8	// uint8 = 0-255
-	Height				int8	// uint8 = 0-255
+	//FrequencyResponse	string	// Old field: Replacced by low/high
+	FrequencyLow		int32
+	FrequencyHigh		int32
 	
-	Weight				int8	// uint8 = 0-255
-	Battery				int8	// uint8 = 0-255
+	Length				int8	// uint8 = 0-255 (int8 = 127)
+	Width				int8	// uint8 = 0-255 (int8 = 127)
+	Height				int8	// uint8 = 0-255 (int8 = 127)
+	
+	Weight				int8	// uint8 = 0-255 (int8 = 127)
+	Battery				int8	// uint8 = 0-255 (int8 = 127)
 	Notes				string
 	
 	Price				int32	// uint16 = 0-65,535
 	Watts				int16
 	Sold				bool	// bool - Mark as sold
+	
+	DriverMultiplier	string	// float32 // 1.12345678 (eight digits from decimal point) -> Switch to string for precision
 	
 	BlobKey				string
 	
@@ -32,7 +40,7 @@ type Case struct {
 }
 // [END case_struct]
 // caseKey returns the key used for all case entries.
-func caseKey(ctx appengine.Context) *datastore.Key {
+func caseKey(ctx context.Context) *datastore.Key { // context.Context vs appengine.Context
 	// The string "default_case" here could be varied to have multiple types of cases.
 	return datastore.NewKey(ctx, "Case", "default_case", 0, nil)
 }
@@ -51,7 +59,7 @@ type CaseImage struct {
 }
 // [END image_struct]
 // imageKey returns the key used for all case entries.
-func caseImageKey(ctx appengine.Context) *datastore.Key {
+func caseImageKey(ctx context.Context) *datastore.Key { // context.Context vs appengine.Context
 	return datastore.NewKey(ctx, "CaseImage", "default_caseimage", 0, nil)
 }
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
@@ -60,8 +68,15 @@ func caseImageKey(ctx appengine.Context) *datastore.Key {
 // [START driver_struct]
 type Driver struct {
 	Name				string
-	FrequencyResponse	string
-	Diameter			int8	// uint8 = 0-255
+	Type				string	// low/mid/high
+	Circle				bool	// bool - Mark as circle
+	
+	//FrequencyResponse	string	// Old field: Replacced by low/high
+	FrequencyLow		int32
+	FrequencyHigh		int32
+	
+	Weight				int8	// uint8 = 0-255 (int8 = 127)
+	Diameter			int16	// uint8 = 0-255 -> int8 = -128 - 127 vs. int16 = -32,768 - 32,767
 	Price				int32	// uint16 = 0-65,535
 	
 	BlobKey				string
@@ -70,7 +85,7 @@ type Driver struct {
 }
 // [END driver_struct]
 // driverKey returns the key used for all case entries.
-func driverKey(ctx appengine.Context) *datastore.Key {
+func driverKey(ctx context.Context) *datastore.Key { // context.Context vs appengine.Context
 	return datastore.NewKey(ctx, "Driver", "default_driver", 0, nil)
 }
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========

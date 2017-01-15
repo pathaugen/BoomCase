@@ -6,8 +6,8 @@ import (
 	"net/http"
 	//"time"
 	
-	"appengine"
-	"appengine/datastore"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
 	//"appengine/user"
 )
 
@@ -15,6 +15,8 @@ import (
 
 
 
+
+// Drawing cases has been temporarily moved to drawPageCustomize.go
 
 
 
@@ -104,7 +106,7 @@ func drawCase(r *http.Request) (string) {
 	/*
 	// If the user is already signed in to your application, user.Current returns a pointer to a user.User value. Otherwise, it returns nil:
 	if u := user.Current(c); u != nil {
-		g.Author = u.String()
+		g.Author = u.Email
 	}
 	// We set the same parent key on every Greeting entity to ensure each Greeting is in the same entity group.
 	// Queries across the single entity group will be consistent.
@@ -162,7 +164,7 @@ func drawCase(r *http.Request) (string) {
 	
 	// [START if_user]
 	if u := user.Current(c); u != nil {
-		g.Author = u.String()
+		g.Author = u.Email
 	}
 	// We set the same parent key on every Greeting entity to ensure each Greeting is in the same entity group.
 	// Queries across the single entity group will be consistent.

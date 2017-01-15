@@ -58,16 +58,18 @@ import (
 	
 	"strconv"
 	
-	"appengine"
-	"appengine/datastore"
+    "golang.org/x/net/context"
+    
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
 	//"appengine/user"
 	
-	//"google.golang.org/appengine/blobstore"
-	"appengine/blobstore" // https://cloud.google.com/appengine/docs/go/blobstore/reference
+	//"appengine/blobstore"
+	"google.golang.org/appengine/blobstore" // https://cloud.google.com/appengine/docs/go/blobstore/reference
 )
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func saveDriver(r *http.Request, ctx appengine.Context) (string) {
+func saveDriver(r *http.Request, ctx context.Context) (string) { // context.Context vs appengine.Context
 	output := ""
 	
 	// ========== ========== ========== ========== ==========
@@ -89,14 +91,20 @@ func saveDriver(r *http.Request, ctx appengine.Context) (string) {
 		DateAdded			time.Time
 	}
 	*/
+	driverFrequencyLow, _	:= strconv.Atoi(r.FormValue("driverfrequencylow"))
+	driverFrequencyHigh, _	:= strconv.Atoi(r.FormValue("driverfrequencyhigh"))
+	
 	driverdiameter, _		:= strconv.Atoi(r.FormValue("driverdiameter"))
 	driverprice, _			:= strconv.Atoi(r.FormValue("driverprice"))
 	
 	driverData := Driver {
 		Name:				r.FormValue("drivername"),
-		FrequencyResponse:	r.FormValue("driverfrequencyresponse"),
 		
-		Diameter:			int8(driverdiameter), // int
+		//FrequencyResponse:	r.FormValue("driverfrequencyresponse"),
+		FrequencyLow:		int32(driverFrequencyLow), // int32
+		FrequencyHigh:		int32(driverFrequencyHigh), // int32
+		
+		Diameter:			int16(driverdiameter), // int
 		Price:				int32(driverprice), // int
 		
 		BlobKey:			blobkey,
@@ -118,6 +126,7 @@ func saveDriver(r *http.Request, ctx appengine.Context) (string) {
 		output += "<div>Prepare to delete from blobstore: "+driverData.BlobKey+"</div>"
 		blobstore.Delete(ctx, appengine.BlobKey(driverData.BlobKey)) // https://cloud.google.com/appengine/docs/go/blobstore/reference#Delete
 		output += "<div>Finished deleting from blobstore</div>"
+		output += `<div><a href="/">Return Home</a></div>`
 		// ========== ========== ========== ========== ==========
 	} else {
 		output += "<h1>Form was submitted blank</h1>"
@@ -154,7 +163,7 @@ func saveDriverBlobstore(r *http.Request) (string) {
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-func saveDriverDatastore(r *http.Request, ctx appengine.Context, driverData Driver) (string) {
+func saveDriverDatastore(r *http.Request, ctx context.Context, driverData Driver) (string) { // context.Context vs appengine.Context
 	output := ""
 	
 	// ========== ========== ========== ========== ==========

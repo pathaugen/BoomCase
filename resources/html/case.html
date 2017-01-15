@@ -90,6 +90,21 @@
 			
 			<div>
 				
+				<DRIVERS>
+				
+				<!--
+				<a href="" class="driver-info driver-info-LOW|MID|HIGH" data-size="INCHES" data-type="LOW|MID|HIGH">
+					<img src="IMAGE" />
+					<span class="name-container">NAME</span>
+					<span class="inch-container"><span class="size">INCHES</span>"</span>
+					<span class="frequency-container"><span class="frequency">FREQUENCY</span></span>
+					<span class="price-container">+ $<span class="price">PRICE</span>/each</span>
+					<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+				</a>
+				-->
+				
+				
+				<!--
 				<a href="" class="driver-info driver-info-low" data-size="300" data-type="low">
 					<img src="/speakeruploads/low1.jpg" />
 					<span class="name-container">Small Sub</span>
@@ -98,7 +113,10 @@
 					<span class="price-container">+ $<span class="price">65</span>/each</span>
 					<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 				</a>
+				-->
 				
+				
+				<!--
 				<a href="" class="driver-info driver-info-low" data-size="300" data-type="low">
 					<img src="/speakeruploads/low2.jpg" />
 					<span class="name-container">Big Sub</span>
@@ -143,6 +161,7 @@
 					<span class="price-container">+ $<span class="price">25</span>/each</span>
 					<span class="add-container"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 				</a>
+				-->
 				
 			</div>
 			
@@ -232,6 +251,7 @@
 		
 		
 		<!-- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- -->
+		<!-- Right side bar with information about a custom case -->
 		<div id="case-information">
 			<h1><CASENAME></h1>
 			
@@ -251,7 +271,8 @@
 			
 			<div>
 				<h2>Frequency Response</h2>
-				<CASEFREQUENCYRESPONSE>
+				<!-- <CASEFREQUENCYRESPONSE> -->
+				<CASEFREQUENCYLOW>hz - <CASEFREQUENCYHIGH>hz
 			</div>
 			
 			<div>
@@ -261,7 +282,8 @@
 			
 			<div>
 				<h2>Weight</h2>
-				<CASEWEIGHT> lbs
+				<CASEWEIGHT> lbs (stock case)
+				<div>+ <span id="">0</span> lbs (weight of drivers)</div>
 			</div>
 			
 			<div>
@@ -352,7 +374,8 @@
 			
 			<div>
 				<h2>Total Price</h2>
-				<h1>$<span id="total-price"><CASEPRICE></span></h1>
+				<h1 style="margin-bottom:0px;">$<span id="total-price"><CASEPRICE></span></h1>
+				<div style="font-size:0.8em;">($ Base Price + $ added drivers)</div>
 			</div>
 			
 			<div>
@@ -360,7 +383,7 @@
 			</div>
 			
 			<a href="/cart" class="btn btn-primary" aria-label="View items in your shopping cart">
-				<i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart
+				<i class="fa fa-shopping-cart" aria-hidden="true"></i> Purchase Now
 			</a>
 			
 			
@@ -372,10 +395,9 @@
 		</div>
 		<!-- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- -->
 		
-		
-		<FORMDRIVER>
 		<FORMCASE>
-		
+		<FORMDRIVER>
+		<FORMIMAGE>
 		
 	</div>
 	

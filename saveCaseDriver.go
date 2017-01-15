@@ -8,12 +8,14 @@ import (
 	
 	"strconv"
 	
-	"appengine"
-	"appengine/datastore"
+    "golang.org/x/net/context"
+	
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/datastore"
 	//"appengine/user"
 	
-	//"google.golang.org/appengine/blobstore"
-	"appengine/blobstore" // https://cloud.google.com/appengine/docs/go/blobstore/reference
+	//"appengine/blobstore"
+	"google.golang.org/appengine/blobstore" // https://cloud.google.com/appengine/docs/go/blobstore/reference
 )
 
 
@@ -21,7 +23,7 @@ import (
 //func saveCaseDatastore(r *http.Request, ctx appengine.Context, caseData Case) (string) {
 //func saveCaseDriverDatastore(r *http.Request, ctx appengine.Context, blobkey string) (string) {
 //func saveCaseDriver(r *http.Request, ctx appengine.Context, blobkey string) (string) {
-func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
+func saveCaseDriver(r *http.Request, ctx context.Context) (string) { // context.Context vs appengine.Context
 	output := ""
 	
 	// Capture the blobkey from query string
@@ -39,33 +41,42 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 	
 	// ========== ========== ========== ========== ==========
 	// Create Struct - Case
-	caseLength, _	:= strconv.Atoi(r.FormValue("caselength"))
-	casewidth, _	:= strconv.Atoi(r.FormValue("casewidth"))
-	caseheight, _	:= strconv.Atoi(r.FormValue("caseheight"))
-	caseweight, _	:= strconv.Atoi(r.FormValue("caseweight"))
-	casebattery, _	:= strconv.Atoi(r.FormValue("casebattery"))
-	casewatts, _	:= strconv.Atoi(r.FormValue("casewatts"))
-	caseprice, _	:= strconv.Atoi(r.FormValue("caseprice"))
+	caseFrequencyLow, _		:= strconv.Atoi(r.FormValue("casefrequencylow"))
+	caseFrequencyHigh, _	:= strconv.Atoi(r.FormValue("casefrequencyhigh"))
 	
-	casesold, _		:= strconv.ParseBool(r.FormValue("casesold"))
+	caseLength, _			:= strconv.Atoi(r.FormValue("caselength"))
+	caseWidth, _			:= strconv.Atoi(r.FormValue("casewidth"))
+	caseHeight, _			:= strconv.Atoi(r.FormValue("caseheight"))
+	caseWeight, _			:= strconv.Atoi(r.FormValue("caseweight"))
+	caseBattery, _			:= strconv.Atoi(r.FormValue("casebattery"))
+	caseWatts, _			:= strconv.Atoi(r.FormValue("casewatts"))
+	casePrice, _			:= strconv.Atoi(r.FormValue("caseprice"))
+	
+	//caseDriverMuliplier, _	:= strconv.ParseFloat(r.FormValue("casedrivermultiplier"), 64)
+	
+	caseSold, _				:= strconv.ParseBool(r.FormValue("casesold"))
 	
 	caseData := Case {
 		Name:				r.FormValue("casename"),
 		Overview:			r.FormValue("caseoverview"),
 		Featuring:			r.FormValue("casefeaturing"),
-		FrequencyResponse:	r.FormValue("casefrequencyresponse"),
+		
+		//FrequencyResponse:	r.FormValue("casefrequencyresponse"),
+		FrequencyLow:		int32(caseFrequencyLow), // int32
+		FrequencyHigh:		int32(caseFrequencyHigh), // int32
 		
 		Length:				int8(caseLength), // int8
-		Width:				int8(casewidth), // int8
-		Height:				int8(caseheight), // int8
+		Width:				int8(caseWidth), // int8
+		Height:				int8(caseHeight), // int8
 		
-		Weight:				int8(caseweight), // int8
-		Battery:			int8(casebattery), // int8
+		Weight:				int8(caseWeight), // int8
+		Battery:			int8(caseBattery), // int8
 		Notes:				r.FormValue("casenotes"),
 		
-		Price:				int32(caseprice), // int16
-		Watts:				int16(casewatts), // int16
-		Sold:				casesold, // bool
+		Price:				int32(casePrice), // int32
+		Watts:				int16(caseWatts), // int16
+		Sold:				caseSold, // bool
+		DriverMultiplier:	r.FormValue("casedrivermultiplier"), // float32(caseDriverMuliplier), // float32
 		
 		BlobKey:			blobkey,
 		
@@ -76,36 +87,50 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 	//if blobkey != "" && blobkey != "<BLOBKEY>" { caseData.BlobKey = blobkey }
 	// ========== ========== ========== ========== ==========
 	
+	
 	// ========== ========== ========== ========== ==========
 	// Create Struct - Driver
-	/*
-	driverdiameter, _		:= strconv.Atoi(r.FormValue("driverdiameter"))
-	driverprice, _			:= strconv.Atoi(r.FormValue("driverprice"))
+	driverCircle, _			:= strconv.ParseBool(r.FormValue("drivercircle"))
+	
+	driverFrequencyLow, _	:= strconv.Atoi(r.FormValue("driverfrequencylow"))
+	driverFrequencyHigh, _	:= strconv.Atoi(r.FormValue("driverfrequencyhigh"))
+	
+	driverWeight, _			:= strconv.Atoi(r.FormValue("driverweight"))
+	driverDiameter, _		:= strconv.Atoi(r.FormValue("driverdiameter"))
+	driverPrice, _			:= strconv.Atoi(r.FormValue("driverprice"))
 	
 	driverData := Driver {
 		Name:				r.FormValue("drivername"),
-		FrequencyResponse:	r.FormValue("driverfrequencyresponse"),
+		Type:				r.FormValue("drivertype"),
+		Circle:				driverCircle,
 		
-		Diameter:			driverdiameter, // int
-		Price:				driverprice, // int
+		//FrequencyResponse:	r.FormValue("driverfrequencyresponse"),
+		FrequencyLow:		int32(driverFrequencyLow), // int32
+		FrequencyHigh:		int32(driverFrequencyHigh), // int32
+		
+		Diameter:			int16(driverDiameter), // int16
+		Weight:				int8(driverWeight), // int8
+		Price:				int32(driverPrice), // int32
 		
 		BlobKey:			blobkey,
 		
 		DateAdded:			time.Now(),
 	}
-	*/
 	// ========== ========== ========== ========== ==========
 	
 	
 	// ========== ========== ========== ========== ==========
-	output += "<h1>r.FormValue(\"casename\") = ["+r.FormValue("casename")+"]</h1>"
-	output += "<h1>caseData.Name = ["+caseData.Name+"]</h1>"
 	if caseData.Name != "" {
+		output += "<hr />"
+		output += "<h1>Proceeding with CASE creation in datastore</h1>"
+		
+		output += "<h1>r.FormValue(\"casename\") = ["+r.FormValue("casename")+"]</h1>"
+		output += "<h1>caseData.Name = ["+caseData.Name+"]</h1>"
 		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 		// Store Golang struct in the datastore
 		
 		// Use a new generated key, or replace with existing key to overwrite data
-		newKey := datastore.NewIncompleteKey(ctx, "Case", caseKey(ctx))
+		newKey := datastore.NewIncompleteKey(ctx, "Case", caseKey(ctx)) // newKey.IntID() is 0 until .Put into the datastore
 		
 		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 		if r.FormValue("existingdatastoreid") != "" {
@@ -137,22 +162,87 @@ func saveCaseDriver(r *http.Request, ctx appengine.Context) (string) {
 		
 		_, err := datastore.Put(ctx, newKey, &caseData)
 		if err != nil {
+			output += "<hr />"
 			output += "<h1>ERROR: datastore failed: "+err.Error()+"</h1>"
 		} else {
+			output += "<hr />"
 			output += "<h1>SUCCESS: Created datastore entry for new case</h1>"
 			output += `<h1><a href="/">Return Home</a></h1>`
+			//output += `<h1><a href="/case/`+strconv.Itoa(int(newKey.IntID()))+`">Go Directly to New Case</a></h1>` // Only works for existing cases..
+			//output += `<h1><a href="/case/`+newKey.StringID()+`">Go Directly to New Case</a></h1>` // Only works for existing cases..
+			output += `<h1><a href="/customize">Go to Case Selection</a></h1>`
 			if caseData.BlobKey != "" {
+				output += "<hr />"
+				output += "<h1>blobkey: "+caseData.BlobKey+"</h1>"
 				output += "<img src=\"/serve/?blobKey="+caseData.BlobKey+"\" />"
-			} else { output += "<h1>No image was uploaded</h1>" }
+			} else { output += "<hr /><h1>No image was uploaded</h1>" }
+		}
+		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+	} else if driverData.Name != "" {
+		output += "<hr />"
+		output += "<h1>Proceeding with DRIVER creation in datastore</h1>"
+		
+		output += "<h1>r.FormValue(\"drivername\") = ["+r.FormValue("drivername")+"]</h1>"
+		output += "<h1>driverData.Name = ["+driverData.Name+"]</h1>"
+		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+		// Store Golang struct in the datastore
+		
+		// Use a new generated key, or replace with existing key to overwrite data
+		newKey := datastore.NewIncompleteKey(ctx, "Driver", driverKey(ctx)) // newKey.IntID() is 0 until .Put into the datastore
+		
+		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+		if r.FormValue("existingdatastoreid") != "" {
+			// Datastore query to get the key of existing entry to overwrite
+			
+			// Array to hold the results
+			var driverArray []Case
+			
+			// Datastore query
+			q := datastore.NewQuery("Driver").Ancestor(driverKey(ctx)) //.Filter("ID =", "5488762045857792") //.Filter("Featuring =", "featuring") //.Filter("ID=", pageRequestedVariables1) //.Ancestor(caseKey(c)).Order("-Date").Limit(10)
+			keys, err := q.GetAll(ctx, &driverArray)
+			if err != nil { /*log.Errorf(ctx, "fetching case: %v", err);return*/ /*http.Error(w, err.Error(), http.StatusInternalServerError);return*/  }
+			
+			// ========== ========== ========== ========== ==========
+			//outputCases := ""
+			for i, _ := range driverArray {
+				key := keys[i]
+				id := int64(key.IntID())
+				
+				if strconv.Itoa(int(id)) == r.FormValue("existingdatastoreid") {
+					// Store the key to use
+					newKey = key
+				}
+			}
+			// ========== ========== ========== ========== ==========
+			//if queryKey { newKey = queryKey }
+		}
+		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+		
+		_, err := datastore.Put(ctx, newKey, &driverData)
+		if err != nil {
+			output += "<hr />"
+			output += "<h1>ERROR: datastore failed: "+err.Error()+"</h1>"
+		} else {
+			output += "<hr />"
+			output += "<h1>SUCCESS: Created datastore entry for new driver</h1>"
+			output += `<h1><a href="/">Return Home</a></h1>`
+			output += `<h1><a href="/customize">Go to Case Selection</a></h1>`
+			if driverData.BlobKey != "" {
+				output += "<hr />"
+				output += "<h1>blobkey: "+driverData.BlobKey+"</h1>"
+				output += "<img src=\"/serve/?blobKey="+driverData.BlobKey+"\" />"
+			} else { output += "<hr /><h1>No image was uploaded</h1>" }
 		}
 		// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 	} else if caseData.BlobKey != "" {
 		// ========== ========== ========== ========== ==========
 		// Delete blobstore entry
 		//deleteBlobKey := "EUG76sbkgL8CDsNUokKcRQ=="
+		output += "<hr />"
 		output += "<div>Prepare to delete from blobstore: "+caseData.BlobKey+"</div>"
 		blobstore.Delete(ctx, appengine.BlobKey(caseData.BlobKey)) // https://cloud.google.com/appengine/docs/go/blobstore/reference#Delete
 		output += "<div>Finished deleting from blobstore</div>"
+		output += `<div><a href="/">Return Home</a></div>`
 		// ========== ========== ========== ========== ==========
 	} else { output += "<h1>Form was submitted blank</h1>" }
 	// ========== ========== ========== ========== ==========

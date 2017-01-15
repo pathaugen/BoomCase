@@ -1,10 +1,65 @@
 
 
 application: pmd-boomcase
-version: 2016-11-15-a
 runtime: go
 api_version: go1
 
+# ---------- ---------- ---------- ---------- ----------
+version: 2016-12-xx-a
+#
+# Changelog: Major Changes
+# Clicking on drivers under customization populates the edit form for that driver
+#
+# TODO: Convert driver multiplier field into slider with graphical reference changing size
+#
+# Changelog: Minor Changes
+#
+# TODO: New Extra Options for cases (bigger battery, bottle opener, USB, AC power)
+# TODO: When adding drivers, take low/high frequencies and add to case being built
+# TODO: When adding drivers, take weight and add to case being built
+# TODO: After clicking to save a customized case, drivers are no longer interactable.
+# TODO: Battery life does not display if blank (previously would display zero)
+# TODO: Speaker grills option which calculates $15 per woofer added to case
+# TODO: When a case does not exist, forwards to case selection: /case/5418393301680128 -> /case
+# TODO: Sold Out appears when case is marked as sold (also hides Purchase Now button)
+# TODO: Uploading driver or case image, can cancel once see the preview
+#
+# Changelog: Bugs
+
+# CURRENT: existingdatastoreid and blobkey need to distinguish case and driver
+# CURRENT: Display of drivers properly takes into account circle flag
+
+# TODO: Drivers can be 0.25 lbs and still work
+# TODO: Creating driver (not edit) shouldn't show a image preview
+# TODO: "None Currently Selected" needs to disappear when adding drivers to case
+# ---------- ---------- ---------- ---------- ----------
+
+# ---------- ---------- ---------- ---------- ----------
+#version: 2016-12-30-a
+# Note: Incompatible with past versions of datastore (new structs)
+#
+# Changelog: Major Changes
+# Break out cases and drivers frequency response into frequencylow/frequencyhigh
+# Add drivertype struct field and dropdown to creating new drivers with selections: low/mid/high
+# Add circle struct field and dropdown to select if driver drawn as circle or square
+# Drivers utilizing 10x pixels per inch of diameter (12" = 120px)
+# Add driver weight struct field and section to add data in create/edit areas
+# Driver Multiplier on cases: Adjusts size of drivers on individual cases
+#
+# Changelog: Minor Changes
+# Add to Cart changed to "Purchase Now"
+# When clicking to edit case, add driver, or edit driver, the others hide properly.
+# Clicking a driver to add also enables it for editing populating data to alter dynamically
+# Replace drivertype (low/mid/high) and driverinches for dynamic driver display on customization
+# Case driver multiplier conversion from float32 to string to enable precision for fractions
+# Add image of the driver that is being edited to driver edit form
+# Add image of case under the case form for better driver multiplier reference
+# Blank out edit driver form to start when clicking a driver to add
+#
+# Changelog: Bugs
+# Diameter for drivers upon creation storing as incorrect values (negative numbers)
+# Editing a case overwrites the case image with driver image (blobkey value error in form)
+# ---------- ---------- ---------- ---------- ----------
 
 handlers:
 - url: /resources/stylesheets
