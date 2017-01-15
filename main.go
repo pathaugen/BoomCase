@@ -22,3 +22,8 @@ func init() {
 // if true, running in production environment
 // os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine/')
 // ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+
+// Dummy Main() as required - Used for executable when running after build
+func main() {
+	
+}
