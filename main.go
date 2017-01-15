@@ -2,6 +2,7 @@
 package main
 
 import (
+	"fmt"
     "net/http"
 )
 
@@ -25,5 +26,5 @@ func init() {
 
 // Dummy Main() as required - Used for executable when running after build
 func main() {
-	
+	fmt.Println("BoomCase Google App Engine Application. Deploy code to Google App Engine (GAE) to utilize. No command line functions available.")
 }
