@@ -1,27 +1,20 @@
 
-# Travis CI builds require "appengine" to function correctly
-
-# GAE auto deploymemt:
-# https://docs.travis-ci.com/user/deployment/google-app-engine/
-
 language: go
 
 go:
-  - 1.x
-  - 1.6
-  - 1.7.x
-  - master
+- 1.x
+- 1.6
+- 1.7.x
+- master
 
-# http://stackoverflow.com/questions/32249082/compile-app-engine-in-travis-ci-and-go/32254406
-# https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-1.9.48.zip
 install:
-  - go get google.golang.org/appengine
+# Travis CI builds require "appengine" to function correctly
+- go get google.golang.org/appengine
 
-
-# http://stackoverflow.com/questions/13114334/run-a-google-app-engine-on-travis-ci-and-test-it-with-phantomjs#13973415
-# https://github.com/travis-ci/travis-ci/issues/738
-# before_script:
-
-# goapp test ./...
-#script:
-# go test -v ./...
+#deploy:
+#  provider: gae
+#  keyfile: client-secret.json.enc
+#  project: pmd-boomcase
+#before_install:
+#- openssl aes-256-cbc -K $encrypted_202eef1b0921_key -iv $encrypted_202eef1b0921_iv
+#  -in client-secret.json.enc -out client-secret.json -d
