@@ -1,0 +1,66 @@
+
+/*
+PMD framework.css
+
+version 2017-01-19
+ - Initial version
+*/
+
+body {
+	font-family:		sans-serif;
+	padding:			0;
+	margin:				0;
+}
+
+
+/* ********** ********** ********** ********** ********** */
+/* Header */
+#header {
+	background-color:	#2e2e2e;
+	color:				white;
+	padding:			2%;
+	overflow:			auto;
+}
+#header a {
+	color:				white;
+}
+/* ********** ********** ********** ********** ********** */
+
+
+/* ********** ********** ********** ********** ********** */
+/* Content */
+#content {
+	background-color:	#575757;
+	overflow:			auto;
+}
+#content .content-block {
+	background-color:	white;
+	margin:				2% auto;
+	padding:			2%;
+	width:				75%;
+}
+/* ********** ********** ********** ********** ********** */
+
+
+/* ********** ********** ********** ********** ********** */
+/* Footer */
+#footer {
+	font-size:			0.8em;
+	background-color:	#2e2e2e;
+	color:				white;
+	overflow:			auto;
+}
+#footer a {
+	color:				white;
+}
+#footer .content-block {
+	clear:				both;
+	margin:				2% auto;
+	width:				75%;
+}
+#footer .content-block-float {
+	float:				left;
+	padding-left:		2%;
+}
+/* ********** ********** ********** ********** ********** */
+
