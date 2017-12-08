@@ -5,9 +5,22 @@ runtime: go
 api_version: go1
 
 
+# ---------- START: Instructions ----------
+# Running Application on Local Machine:
+# First: Check for updates:
+# > gcloud components update
+# Second: Go to the app folder and run the app:
+# > cd [path to app]
+# > dev_appserver.py app.yaml
+# Third: Check out the app locally:
+# http://localhost:8080/
+# Finally: Deploy Application:
+# > gcloud app deploy --project boomcase --version 2017-12-xx-a
+# ---------- END: Instructions ----------
+
 
 # ---------- ---------- ---------- ---------- ----------
-version: 2016-12-xx-a
+version: 2017-12-xx-a
 #
 # Changelog: Major Changes
 # Clicking on drivers under customization populates the edit form for that driver
