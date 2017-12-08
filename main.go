@@ -9,7 +9,11 @@ import (
   "net/http"
 )
 
-// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+
+
+
+
+// ========== START: GAE config handlers for URIs ========== ========== ========== ========== ========== ========== ========== ========== ==========
 // GAE config handlers for URIs
 func init() {
 	http.HandleFunc("/savecasedriver",	handlerSaveCaseDriver)
@@ -25,7 +29,7 @@ func init() {
 
 // if true, running in production environment
 // os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine/')
-// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+// ========== END: GAE config handlers for URIs ========== ========== ========== ========== ========== ========== ========== ========== ==========
 
 // main() used for executable when running after build, and also required for Travis CI
 func main() {

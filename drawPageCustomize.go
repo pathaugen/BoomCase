@@ -5,15 +5,15 @@ import (
     //"fmt"
     //"net/http"
     //"net/url"
-    
+
     "golang.org/x/net/context"
-    
+
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
 	"google.golang.org/appengine/user"
 	"google.golang.org/appengine/image"
 	//"appengine/blobstore"
-    
+
     //"os"
     //"io/ioutil"
     "strings"
@@ -21,32 +21,31 @@ import (
 )
 
 
-// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+// ========== START: drawPageCustomize ========== ========== ========== ========== ========== ========== ========== ========== ==========
 func drawPageCustomize(ctx context.Context, output string) (string) { // context.Context vs appengine.Context
-    
-    
+
+
 	//output = strings.Replace(output, "<CASE>", drawCase(r), -1)
-	
-	
-	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-	// Query the datastore and get all the cases
-	
+
+
+	// ========== START: Query the datastore and get all the cases ========== ========== ========== ========== ========== ========== ========== ========== ==========
+
 	// Array to hold the results
 	var caseArray []Case
 	//caseArray := make([]Case, 100)
-	
+
 	// Datastore query
 	q := datastore.NewQuery("Case") //.Ancestor(caseKey(c)).Order("-Date").Limit(10)
 	keys, err := q.GetAll(ctx, &caseArray)
 	if err != nil { /*log.Errorf(ctx, "fetching case: %v", err);return*/ /*http.Error(w, err.Error(), http.StatusInternalServerError);return*/  }
-	
-	
+
+
 	// ========== ========== ========== ========== ==========
 	// Array to hold the results as data in a wrapper (res.Data.Name) with Key (res.Key) and Id (res.Id)
 	//res := make([]Return, len(keys))
 	//var res []Return
 	//res := make([]Return, 100)
-	
+
 	/*
 	// Migrate datastore retults to Results struct
 	for i, c := range caseArray {
@@ -70,14 +69,14 @@ func drawPageCustomize(ctx context.Context, output string) (string) { // context
 	}
 	*/
 	// ========== ========== ========== ========== ==========
-	
-	
+
+
 	// ========== ========== ========== ========== ==========
 	outputCases := ""
 	for i, c := range caseArray {
 		key := keys[i]
 		id := int64(key.IntID())
-		
+
 		// Pull the image from blobstore
 		/*
 		var caseArray []Case
@@ -86,15 +85,14 @@ func drawPageCustomize(ctx context.Context, output string) (string) { // context
 		if err != nil {  }
 		*/
 		//blobstore.Delete(ctx, appengine.BlobKey(c.BlobKey))
-		
-		// ========== ========== ========== ========== ==========
-		// Get a thumbnail of a blobstore image
+
+		// ========== START: Get a thumbnail of a blobstore image ========== ========== ========== ==========
 		// https://github.com/golang/appengine/blob/master/image/image.go
 		thumbOpts := image.ServingURLOptions { Size: 200, }
 		thumbKey := appengine.BlobKey(c.BlobKey)
 		thumbnail, _ := image.ServingURL(ctx, thumbKey, &thumbOpts) // (*url.URL, error)
-		// ========== ========== ========== ========== ==========
-		
+		// ========== END: Get a thumbnail of a blobstore image ========== ========== ========== ==========
+
 		outputCases += `
 			<a href="/case/`+strconv.Itoa(int(id))+`" class="case-block">
 				<!-- <img src="/serve/?blobKey=`+c.BlobKey+`" /> -->
@@ -107,14 +105,14 @@ func drawPageCustomize(ctx context.Context, output string) (string) { // context
 		`
 	}
 	// ========== ========== ========== ========== ==========
-	
-	
+
+
 	//outputCases += `<div>len(keys):[`+string(len(keys))+`]</div>`
 	output = strings.Replace(output, "<CASE>", outputCases, -1)
-	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-	
-	
-	// ========== ========== ========== ========== ==========
+	// ========== END: Query the datastore and get all the cases ========== ========== ========== ========== ========== ========== ========== ========== ==========
+
+
+	// ========== START: if_user ========== ========== ========== ==========
 	// [START if_user]
 	u := user.Current(ctx)
 	if u != nil && adminEmails[u.Email] {
@@ -128,10 +126,9 @@ func drawPageCustomize(ctx context.Context, output string) (string) { // context
 		output = strings.Replace(output, "<FORMIMAGE>", formCaseButton+"<FORMIMAGE>", -1)
 	} else { output = strings.Replace(output, "<FORMIMAGE>", "", -1) }
 	// [END if_user]
-	// ========== ========== ========== ========== ==========
-    
-    
+	// ========== END: if_user ========== ========== ========== ==========
+
+
     return output
 }
-// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-
+// ========== END: drawPageCustomize ========== ========== ========== ========== ========== ========== ========== ========== ==========

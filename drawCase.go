@@ -5,7 +5,7 @@ import (
 	//"html/template"
 	"net/http"
 	//"time"
-	
+
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/datastore"
 	//"appengine/user"
@@ -22,29 +22,29 @@ import (
 
 
 
-// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+// ========== START: drawCase ========== ========== ========== ========== ========== ========== ========== ========== ==========
 func drawCase(r *http.Request) (string) {
 	output := ""
-	
-	
+
+
 	// ========== ========== ========== ========== ==========
 	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
 	// [START new_context]
 	ctx := appengine.NewContext(r) // c or ctx
 	// [END new_context]
 	// ========== ========== ========== ========== ==========
-	
-	
+
+
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-	
-	
+
+
 	// ========== ========== ========== ========== ==========
 	// [START query]
 	query := datastore.NewQuery("Case").Ancestor(caseKey(ctx)).Order("-Date").Limit(10)
 	// [END query]
 	// ========== ========== ========== ========== ==========
-	
-	
+
+
 	// ========== ========== ========== ========== ==========
 	// [START getall]
 	cases := make([]Case, 0, 10)
@@ -56,8 +56,8 @@ func drawCase(r *http.Request) (string) {
 	}
 	// [END getall]
 	// ========== ========== ========== ========== ==========
-	
-	
+
+
 	// ========== ========== ========== ========== ==========
 	/*
 	if err := guestbookTemplate.Execute(w, greetings); err != nil {
@@ -65,8 +65,8 @@ func drawCase(r *http.Request) (string) {
 	}
 	*/
 	// ========== ========== ========== ========== ==========
-	
-	
+
+
 	// ========== ========== ========== ========== ==========
 	output = `
 		<a href="/case/1" class="case-block">
@@ -77,30 +77,30 @@ func drawCase(r *http.Request) (string) {
 		</a>
 	`
 	// ========== ========== ========== ========== ==========
-	
-	
+
+
 	// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	// ========== ========== ========== ========== ==========
 	// New Context - opaque value used by many functions in the Go App Engine SDK to communicate with the App Engine service
 	// [START new_context]
-	
+
 	//c := appengine.NewContext(r)
-	
+
 	// [END new_context]
 	// ========== ========== ========== ========== ==========
-	
-	
-	
-	
-	
+
+
+
+
+
 	// ========== ========== ========== ========== ==========
 	// Getting current user
 	/*
@@ -120,22 +120,22 @@ func drawCase(r *http.Request) (string) {
 	http.Redirect(w, r, "/", http.StatusFound)
 	*/
 	// ========== ========== ========== ========== ==========
-	
-	
-	
-	
+
+
+
+
 	// ========== ========== ========== ========== ==========
 	// func root
 	/*
 	// Ancestor queries, as shown here, are strongly consistent with the High Replication Datastore.
 	// Queries that span entity groups are eventually consistent.
 	// If we omitted the .Ancestor from this query there would be a slight chance that Greeting that had just been written would not show up in a query.
-	
+
 	// The following code constructs a Query value that requests the 10 most recent Greeting objects that are descendants of the root guestbook key in Date-descending order
 	// [START query]
 	q := datastore.NewQuery("Greeting").Ancestor(guestbookKey(c)).Order("-Date").Limit(10)
 	// [END query]
-	
+
 	// The following code calls q.GetAll(c, &greetings) to run the query and append the results to the greetings slice:
 	// [START getall]
 	greetings := make([]Greeting, 0, 10)
@@ -144,16 +144,16 @@ func drawCase(r *http.Request) (string) {
 		return
 	}
 	// [END getall]
-	
+
 	if err := guestbookTemplate.Execute(w, greetings); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 	*/
 	// ========== ========== ========== ========== ==========
-	
-	
-	
-	
+
+
+
+
 	// ========== ========== ========== ========== ==========
 	// func sign
 	/*
@@ -161,7 +161,7 @@ func drawCase(r *http.Request) (string) {
 		Content: r.FormValue("content"),
 		Date:    time.Now(),
 	}
-	
+
 	// [START if_user]
 	if u := user.Current(c); u != nil {
 		g.Author = u.Email
@@ -179,17 +179,16 @@ func drawCase(r *http.Request) (string) {
 	// [END if_user]
 	*/
 	// ========== ========== ========== ========== ==========
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
     return output
 }
-// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
-
+// ========== END: drawCase ========== ========== ========== ========== ========== ========== ========== ========== ==========
