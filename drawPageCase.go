@@ -77,25 +77,50 @@ func drawPageCase(ctx context.Context, output string, pageRequestedVariables1 st
 
 			// case.html replacements for this individual case:
 
-			output = strings.Replace(output, "<CASENAME>",				c.Name, -1)
-			output = strings.Replace(output, "<CASEOVERVIEW>",			c.Overview, -1)
+			output = strings.Replace(output, "<CASENAME>",           c.Name, -1)
+			output = strings.Replace(output, "<CASEOVERVIEW>",       c.Overview, -1)
 
-			output = strings.Replace(output, "<CASEFEATURING>",			c.Featuring, -1)
+			output = strings.Replace(output, "<CASEFEATURING>",      c.Featuring, -1)
 
 			//output = strings.Replace(output, "<CASEFREQUENCYRESPONSE>",	c.FrequencyResponse, -1)
-			output = strings.Replace(output, "<CASEFREQUENCYLOW>",		strconv.Itoa(int(c.FrequencyLow)), -1)
-			output = strings.Replace(output, "<CASEFREQUENCYHIGH>",		strconv.Itoa(int(c.FrequencyHigh)), -1)
+			output = strings.Replace(output, "<CASEFREQUENCYLOW>",   strconv.Itoa(int(c.FrequencyLow)), -1)
+			output = strings.Replace(output, "<CASEFREQUENCYHIGH>",  strconv.Itoa(int(c.FrequencyHigh)), -1)
 
-			output = strings.Replace(output, "<CASELENGTH>",			strconv.Itoa(int(c.Length)), -1)
-			output = strings.Replace(output, "<CASEWIDTH>",				strconv.Itoa(int(c.Width)), -1)
-			output = strings.Replace(output, "<CASEHEIGHT>",			strconv.Itoa(int(c.Height)), -1)
+			output = strings.Replace(output, "<CASELENGTH>",         strconv.Itoa(int(c.Length)), -1)
+			output = strings.Replace(output, "<CASEWIDTH>",          strconv.Itoa(int(c.Width)), -1)
+			output = strings.Replace(output, "<CASEHEIGHT>",         strconv.Itoa(int(c.Height)), -1)
 
-			output = strings.Replace(output, "<CASEWEIGHT>",			strconv.Itoa(int(c.Weight)), -1)
-			output = strings.Replace(output, "<CASEBATTERY>",			strconv.Itoa(int(c.Battery)), -1)
+			output = strings.Replace(output, "<CASEWEIGHT>",         strconv.Itoa(int(c.Weight)), -1)
+			output = strings.Replace(output, "<CASEBATTERY>",        strconv.Itoa(int(c.Battery)), -1)
 
-			output = strings.Replace(output, "<CASENOTES>",				c.Notes, -1)
+			output = strings.Replace(output, "<CASENOTES>",          c.Notes, -1)
 
-			output = strings.Replace(output, "<CASEPRICE>",				strconv.Itoa(int(c.Price)), -1)
+			output = strings.Replace(output, "<CASEPRICE>",          strconv.Itoa(int(c.Price)), -1)
+
+      // ========== START: Availability Check ==========
+      if c.Sold {
+        availabilityString := `
+          <br />
+          <h1 style="color:red;">Sold out</h1>
+        `
+        output = strings.Replace(output, "<AVAILABILITY>", availabilityString, -1)
+      } else {
+        availabilityString := `
+          <br />
+          <a class="btn btn-primary" id="trigger-purchase-now" aria-label="Purchase Now">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Purchase Now
+          </a>
+        `
+        output = strings.Replace(output, "<AVAILABILITY>", availabilityString, -1)
+
+        customizeString := `
+          <a class="btn btn-primary trigger-customize" aria-label="Customize This BoomCase">
+            <i class="fa fa-cogs" aria-hidden="true"></i> Customize This BoomCase
+          </a>
+        `
+        output = strings.Replace(output, "<CUSTOMIZE>", customizeString, -1)
+      }
+      // ========== END: Availability Check ==========
 
 			// Value isn't utilized on case.html, but might be good to store and read from other functions for less datastore queries
 			//output = strings.Replace(output, "<CASEDRIVERMULTIPLIER>",	strconv.Itoa(int(c.DriverMultiplier)), -1)

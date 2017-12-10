@@ -6,7 +6,8 @@ api_version: go1
 
 
 # ---------- START: Instructions ----------
-# Running Application on Local Machine:
+# Running Application on Local Machine
+# NOTE: Requires Google App Engine Installed/Configured
 # First: Check for updates:
 # > gcloud components update
 # Second: Go to the app folder and run the app:
@@ -19,16 +20,11 @@ api_version: go1
 # ---------- END: Instructions ----------
 
 
-# ---------- ---------- ---------- ---------- ----------
-version: 2017-12-xx-a
-#
-# Changelog: Major Changes
-# Clicking on drivers under customization populates the edit form for that driver
-#
+# ---------- START: TODO ---------- ---------- ---------- ----------
+# Major Tasks
 # TODO: Convert driver multiplier field into slider with graphical reference changing size
 #
-# Changelog: Minor Changes
-#
+# Minor Tasks
 # TODO: New Extra Options for cases (bigger battery, bottle opener, USB, AC power)
 # TODO: When adding drivers, take low/high frequencies and add to case being built
 # TODO: When adding drivers, take weight and add to case being built
@@ -39,14 +35,30 @@ version: 2017-12-xx-a
 # TODO: Sold Out appears when case is marked as sold (also hides Purchase Now button)
 # TODO: Uploading driver or case image, can cancel once see the preview
 #
-# Changelog: Bugs
-
-# CURRENT: existingdatastoreid and blobkey need to distinguish case and driver
-# CURRENT: Display of drivers properly takes into account circle flag
-
+# Bugs
 # TODO: Drivers can be 0.25 lbs and still work
 # TODO: Creating driver (not edit) shouldn't show a image preview
 # TODO: "None Currently Selected" needs to disappear when adding drivers to case
+# ---------- END: TODO ---------- ---------- ---------- ----------
+
+
+# ---------- START: CHANGELOG ---------- ---------- ---------- ----------
+
+# ---------- ---------- ---------- ---------- ----------
+version: 2017-12-xx-a
+#
+# Changelog: Major Changes
+# - Clicking on drivers under customization populates the edit form for that driver
+# - Revamp of page organization for launch
+#
+# Changelog: Minor Changes
+# - /admin when going into add case/driver, detection and note for logged in but non-admin
+# - When case is sold, mark appropriately
+# - When case is sold, customization buttons don't appear
+#
+# Changelog: Bugs
+# CURRENT: existingdatastoreid and blobkey need to distinguish case and driver
+# CURRENT: Display of drivers properly takes into account circle flag
 # ---------- ---------- ---------- ---------- ----------
 
 # ---------- ---------- ---------- ---------- ----------
@@ -76,6 +88,10 @@ version: 2017-12-xx-a
 # Editing a case overwrites the case image with driver image (blobkey value error in form)
 # ---------- ---------- ---------- ---------- ----------
 
+# ---------- END: CHANGELOG ---------- ---------- ---------- ----------
+
+
+# ---------- START: handlers ---------- ---------- ---------- ----------
 handlers:
 - url: /resources/stylesheets
   static_dir: resources/stylesheets
@@ -86,7 +102,6 @@ handlers:
 - url: /resources/external
   static_dir: resources/external
 
-
 # All URLs ending in .gif .png .jpg are treated as paths to
 # static files in the resources/images/ directory. The URL pattern is a
 # regular expression, with a grouping that is inserted into the path to the file.
@@ -94,16 +109,14 @@ handlers:
   static_files: resources/images/\1
   upload: resources/images/.*\.(gif|png|jpg)$
 
-
 - url: /(.*\.(webm|mp4))$
   static_files: resources/videos/\1
   upload: resources/videos/.*\.(webm|mp4)$
-
 
 - url: /(.*\.(eot|woff|ttf|svg))$
   static_files: resources/fonts/\1
   upload: resources/fonts/.*\.(ot|woff|ttf|svg)$
 
-
 - url: /.*
   script: _go_app
+# ---------- END: handlers ---------- ---------- ---------- ----------

@@ -65,7 +65,9 @@ func drawPage(r *http.Request, ctx context.Context) (string) { // context.Contex
 	stylesheetLink := ""
 	htmlContent := `<div style="text-align:center;"><h1>ERROR LOADING PAGE</h1></div>`
 
-	if pageRequested == "" { pageRequested = "home" }
+	//if pageRequested == "" { pageRequested = "home" }
+  if pageRequested == "admin" { pageRequested = "home" } // "home" is the original dashboard page of selections
+  if pageRequested == "" { pageRequested = "customize" }
 	pageRequestedTitle := pageRequested
 
 	// Using the pageRequested, pull the .html and .css for the selected resource else send a 404 .html/.css
@@ -134,8 +136,15 @@ func drawPage(r *http.Request, ctx context.Context) (string) { // context.Contex
 			`
 		} else {
 			// if blobkey doesn't exist, replace editing forms with image upload forms
-			output = strings.Replace(output, "<FORMCASE>", "<FORMIMAGE>", -1)
-			output = strings.Replace(output, "<FORMDRIVER>", "<FORMIMAGE>", -1)
+  		u := user.Current(ctx)
+      if u != nil && adminEmails[u.Email] {
+  			output = strings.Replace(output, "<FORMCASE>", "<FORMIMAGE>", -1)
+  			output = strings.Replace(output, "<FORMDRIVER>", "<FORMIMAGE>", -1)
+      } else if u != nil && !adminEmails[u.Email] {
+        notAuthorized := `<div><h2>WARNING:<br />Your email address<br />(<a href="/login">`+u.Email+`</a>)<br />is NOT authorized to add/edit cases or drivers!</h2></div>`
+  			output = strings.Replace(output, "<FORMCASE>", notAuthorized+"<FORMCASE>", -1)
+  			output = strings.Replace(output, "<FORMDRIVER>", notAuthorized+"<FORMDRIVER>", -1)
+      } else {}
 		}
 
 		output = strings.Replace(output, "<BLOBKEYIMAGE>", blobkeyHtml, -1)

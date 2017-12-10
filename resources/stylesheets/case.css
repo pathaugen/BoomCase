@@ -4,8 +4,8 @@
 }
 
 #page-case {
-	text-align:			center;
-	
+	text-align:		center;
+
 	padding:			0px 1% 0px 1%;
 }
 #page-case h1 {
@@ -20,8 +20,8 @@
 }
 #page-case #case-title h2 {
 	margin:				0px 0px 2% 0px;
-	font-weight:		normal;
-	font-size:			3.0em;
+	font-weight:	normal;
+	font-size:		3.0em;
 }
 #page-case #case-title a {
 }
@@ -29,16 +29,16 @@
 
 /* Image and Drivers are in this container*/
 #page-case #case-image {
-	float:				left;
-	
-	/*min-width:			500px;*/
-	
-	width:				66%;
-	
-	margin-bottom:		2%;
-	
+	float:					left;
+
+	/*min-width:		500px;*/
+
+	width:					66%;
+
+	margin-bottom:	2%;
+
 	/*background-color:	lightblue;*/
-	
+
 	min-width:			800px; /* CHANGE 1/4 */
 }
 
@@ -46,7 +46,7 @@
 /* ********** ********** ********** ********** ********** ********** ********** ********** ********** ********** */
 #page-case #case-image #case-image-top {
 	padding:			0 0;
-	
+
 	/*box-shadow:			rgba(0, 0, 0, 0.0980392) 0px 0px 4px;*/
 	/*background:			rgba(255, 255, 255, 1.0);*/ /* 0.6 */
 }
@@ -54,37 +54,37 @@
 	position:			relative;
 	/*background-color:	lightgreen;*/
 	margin:				auto;
-	
+
 	width:				800px; /* CHANGE 2/4 */
 }
 #page-case #case-image #case-image-container img {
 	/*display:			block;*/
 	margin:				auto;
-	
-	box-shadow:			rgba(0, 0, 0, 0.1) 0px 0px 4px;
+
+	box-shadow:					rgba(0, 0, 0, 0.1) 0px 0px 4px;
 	-webkit-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
-	-moz-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
-	
+	-moz-box-shadow:		rgba(0, 0, 0, 0.1) 0px 0px 4px;
+
 	width:				800px; /* CHANGE 3/4 */
 }
-#page-case #case-image #case-image-container a#case-image-customize {
+#page-case #case-image #case-image-container a.trigger-customize {
 	/*
 	display:			inline-block;
 	background-color:	lightblue;
 	padding:			2%;
 	*/
-	
-	position:			absolute;
+
+	position:		absolute;
 	top:				75%;
-    left:				50%;
-    transform:			translate(-50%, -75%);
-    
-    font-size:			1.5em;
+  left:				50%;
+  transform:	translate(-50%, -75%);
+
+  font-size:	1.5em;
 }
-#page-case #case-image #case-image-container a#case-image-customize:hover {
+#page-case #case-image #case-image-container a.trigger-customize:hover {
 	/*text-decoration:	none;*/
 }
-#page-case #case-image #case-image-container a#case-image-customize h1 {
+#page-case #case-image #case-image-container a.trigger-customize h1 {
 	/*margin:				0px;*/
 }
 /* ********** ********** ********** ********** ********** ********** ********** ********** ********** ********** */
@@ -95,19 +95,19 @@
 /* ********** ********** ********** ********** ********** ********** ********** ********** ********** ********** */
 #page-case #case-addspeaker {
 	display:			none;
-	
+
 	/*
 	float:				right;
 	width:				33%;
 	*/
-	
-	margin-bottom:		4%;
-	
+
+	margin-bottom:	4%;
+
 	/* min-width:			500px; */
 	margin-left:		66%; /* CHANGE 4/4 */
 }
 #page-case #case-addspeaker h1 {
-	margin-bottom:		0px;
+	margin-bottom:	0px;
 	font-size:			1.6em;
 }
 #page-case #case-addspeaker h2 {
@@ -117,17 +117,17 @@
 
 #page-case #case-addspeaker .driver-info {
 	text-decoration:	none;
-	
-	display:			inline-block;
-	text-align:			center;
+
+	display:					inline-block;
+	text-align:				center;
 	background-color:	white;
-	padding:			1%;
-	margin:				1%;
-	/* float:				left; */
-	
-	box-shadow:			rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	padding:					1%;
+	margin:						1%;
+	/* float:					left; */
+
+	box-shadow:					rgba(0, 0, 0, 0.1) 0px 0px 4px;
 	-webkit-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
-	-moz-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
+	-moz-box-shadow:		rgba(0, 0, 0, 0.1) 0px 0px 4px;
 }
 #page-case #case-addspeaker .driver-info img {
 	width:				150px;
@@ -141,25 +141,25 @@
 }
 #page-case #case-addspeaker .driver-info .name-container {
 	color:				black;
-	font-size:			1.5em;
+	font-size:		1.5em;
 	display:			block;
-	margin-top:			5px;
+	margin-top:		5px;
 }
 #page-case #case-addspeaker .driver-info .watt-container {
-	font-size:			0.9em;
+	font-size:		0.9em;
 	display:			block;
-	margin-top:			5px;
+	margin-top:		5px;
 }
 #page-case #case-addspeaker .driver-info .price-container {
-	font-size:			1.2em;
+	font-size:		1.2em;
 	display:			block;
-	margin-top:			5px;
+	margin-top:		5px;
 }
 #page-case #case-addspeaker .driver-info .add-container {
-	font-size:			2.0em;
+	font-size:		2.0em;
 	display:			block;
-	margin-top:			5px;
-	
+	margin-top:		5px;
+
 	display:			none;
 }
 
@@ -176,23 +176,23 @@
 /* ********** ********** ********** ********** ********** ********** ********** ********** ********** ********** */
 #page-case #case-information {
 	float:				right;
-	
+
 	padding:			2%;
 	/* div width padding fixes */
 	-webkit-box-sizing:	border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing:	border-box; /* Firefox, other Gecko */
 	box-sizing:			border-box; /* Opera/IE 8+ */
-	
+
 	box-shadow:			rgba(0, 0, 0, 0.1) 0px 0px 4px;
 	-webkit-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
 	-moz-box-shadow:	rgba(0, 0, 0, 0.1) 0px 0px 4px;
-	
+
 	background:			rgba(255, 255, 255, 0.9); /* 0.6 */
-	
+
 	text-align:			left;
-	
+
 	width:				33%;
-	
+
 	margin-bottom:		2%;
 }
 #page-case #case-information h1 {
@@ -224,31 +224,31 @@
 
 #page-case .draggable {
 	/*float:				left;*/
-	
+
 	position:			absolute;
 	top:				2%;
 	left:				2%; /*40%*/
-	
+
 	height:				auto; /* auto 100% */
 	/*min-height:			6.5em;*/
 	/*margin:				10%;*/
-	
+
 	/*background-color:	#29e;*/
 	color:				white;
-	
+
 	padding:			4%;
-	
+
 	/*
 	-webkit-transform:	translate(0px, 0px);
 			transform:	translate(0px, 0px);
 	*/
-	
+
 	/*background-color:	white;*/
 	/*background-image:	url('/speakeruploads/mid2.jpg');*/
 	background-repeat:	no-repeat;
-	
+
 	border:				1px solid black;
-	
+
 	/*
 	width:				200px; * 25% *
 	background-size:	200px; *contain cover*
@@ -285,7 +285,7 @@
 	#page-case #case-information {
 		width:			60%;
 		padding:		4%;
-		
+
 		clear:			both;
 		float:			none;
 		margin:			auto;
@@ -302,4 +302,3 @@
 		margin-left:	0px;
 	}
 }
-
