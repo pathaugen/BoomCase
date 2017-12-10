@@ -1,15 +1,15 @@
 
 
 <div id="page-formcase">
-	<!-- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- -->
+	<!-- ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== -->
 	<form action="<FORMACTIONCASEDRIVER>" method="post" enctype="multipart/form-data">
-		
+
 		<!-- Used to trigger an overwrite of data in datastore vs new entry created -->
 		<input id="existingdatastoreid" name="existingdatastoreid" type="hidden" value="<EXISTINGDATASTOREID>" />
-		
+
 		<!-- Used to transmit blobkey from an uploaded image -->
 		<input id="blobkey" name="blobkey" type="hidden" value="<CASEBLOBKEY>" />
-		
+
 		<fieldset>
 			<legend>Edit BoomCase Custom Case Details</legend>
 			<div>
@@ -47,14 +47,14 @@ One - Mid Range"><VALUECASEFEATURING></textarea>
 				hz of the high end of this case. Blank if a custom case.
 				<input id="casefrequencyhigh" name="casefrequencyhigh" type="text" placeholder="20000" value="<VALUECASEFREQUENCYHIGH>" />
 			</div>
-			
-			
+
+
 			<div>
 				<h2>Dimensions</h2>
 				<div>
 					__" x __" x __" (length x width x height)
 				</div>
-				
+
 				<div style="width:30%;float:left;">
 					<label for="caselength">Length</label>
 					<input id="caselength" name="caselength" type="text" placeholder="24" value="<VALUECASELENGTH>" />
@@ -68,8 +68,8 @@ One - Mid Range"><VALUECASEFEATURING></textarea>
 					<input id="caseheight" name="caseheight" type="text" placeholder="16" value="<VALUECASEHEIGHT>" />
 				</div>
 			</div>
-			
-			
+
+
 			<div style="">
 				<div style="width:45%;float:left;">
 					<label for="caseweight">Weight</label>
@@ -82,8 +82,8 @@ One - Mid Range"><VALUECASEFEATURING></textarea>
 					<input id="casebattery" name="casebattery" type="text" placeholder="18" value="<VALUECASEBATTERY>" />
 				</div>
 			</div>
-			
-			
+
+
 			<div>
 				<label for="casenotes">Notes</label>
 				e.g. All BoomCases are rechargeable. Comes with battery charger and audio cable. Includes NEW LITHIUM BATTERY! This BoomCase Ships Within two weeks. Rush Delivery Available.
@@ -108,8 +108,8 @@ One - Mid Range"><VALUECASEFEATURING></textarea>
 					<input id="casesold" name="casesold" type="checkbox" value="true" <VALUECASESOLD> /> <!-- checked -->
 				</label>
 			</div>
-			
-			
+
+
 			<div>
 				<label for="casedrivermultiplier">Driver Multiplier</label>
 				Drivers are multiplied by this value to increase or decrease their size to fit the case.
@@ -118,8 +118,8 @@ One - Mid Range"><VALUECASEFEATURING></textarea>
 				<br />Examples: 3.0 (3x is a good starting point), 4.2 (4.2x bigger), 5.5 (5.5x bigger), 0.8 (80% original size).
 				<input id="casedrivermultiplier" name="casedrivermultiplier" type="text" placeholder="3.0" value="<VALUECASEDRIVERMULTIPLIER>" />
 			</div>
-			
-			
+
+
 			<div>
 				<input type="submit" value="Submit">
 				<!--
@@ -128,18 +128,17 @@ One - Mid Range"><VALUECASEFEATURING></textarea>
 				</a>
 				-->
 			</div>
-			
-			
+
+
 		</fieldset>
 	</form>
-	<!-- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- -->
-	
+	<!-- ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== -->
+
 	<div id="previewimagecase" style="width:800px;text-align:center;margin:auto;">
 		<img src="/serve/?blobKey=<CASEBLOBKEY>" />
 		<div style="background-color:yellow;width:100px;height:100px;"></div>
 		<div style="background-color:red;width:300px;height:300px;"></div>
 		<div style="background-color:blue;width:500px;height:500px;"></div>
 	</div>
-	
-</div>
 
+</div>

@@ -1,6 +1,6 @@
 
 
-application: pmd-boomcase
+#application: pmd-boomcase
 runtime: go
 api_version: go1
 
@@ -16,7 +16,7 @@ api_version: go1
 # Third: Check out the app locally:
 # http://localhost:8080/
 # Finally: Deploy Application:
-# > gcloud app deploy --project boomcase --version 2017-12-xx-a
+# > gcloud app deploy --project pmd-boomcase --version 2017-12-09-a
 # ---------- END: Instructions ----------
 
 
@@ -45,11 +45,12 @@ api_version: go1
 # ---------- START: CHANGELOG ---------- ---------- ---------- ----------
 
 # ---------- ---------- ---------- ---------- ----------
-version: 2017-12-xx-a
+#version: 2017-12-09-a
 #
 # Changelog: Major Changes
 # - Clicking on drivers under customization populates the edit form for that driver
 # - Revamp of page organization for launch
+# - Checking out starts email form
 #
 # Changelog: Minor Changes
 # - /admin when going into add case/driver, detection and note for logged in but non-admin
@@ -120,3 +121,8 @@ handlers:
 - url: /.*
   script: _go_app
 # ---------- END: handlers ---------- ---------- ---------- ----------
+
+# ---------- ---------- ---------- ---------- ----------
+skip_files:
+- resources/videos/example2.mp4
+# ---------- ---------- ---------- ---------- ----------
