@@ -154,6 +154,10 @@ func drawPage(r *http.Request, ctx context.Context) (string) { // context.Contex
 		output = drawPageCustomize(ctx, output)
   }
 	if pageRequested == "dashboard" || pageRequested == "customize" || pageRequested == "case" {
+    
+		// Stylesheet for the case/driver form
+		stylesheetLink += `<link rel="stylesheet" type="text/css" href="/resources/stylesheets/formcasedriverimage.css" />` // TODO: This needs to be generic form CSS
+
 		// ========== ========== ========== ========== ==========
 		// [START if_user]
 		u := user.Current(ctx)
@@ -183,9 +187,6 @@ func drawPage(r *http.Request, ctx context.Context) (string) { // context.Contex
 			//if r.FormValue("blobkey") != "" { output = strings.Replace(output, "<BLOBKEY>", r.FormValue("blobkey"), -1) }
 			if blobkey != "" { output = strings.Replace(output, "<CASEBLOBKEY>", blobkey, -1) }
 			if blobkey != "" { output = strings.Replace(output, "<DRIVERBLOBKEY>", blobkey, -1) }
-
-			// Stylesheet for the case/driver form
-			stylesheetLink += `<link rel="stylesheet" type="text/css" href="/resources/stylesheets/formcasedriverimage.css" />`
 
 			// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 			// Fill in the form with values for editing, else eliminate the values
