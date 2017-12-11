@@ -16,7 +16,7 @@ api_version: go1
 # Third: Check out the app locally:
 # http://localhost:8080/
 # Finally: Deploy Application:
-# > gcloud app deploy --project pmd-boomcase --version 2017-12-09-a
+# > gcloud app deploy --project pmd-boomcase --version 2017-12-xy-z
 # ---------- END: Instructions ----------
 
 
@@ -43,6 +43,11 @@ api_version: go1
 
 
 # ---------- START: CHANGELOG ---------- ---------- ---------- ----------
+
+# ---------- ---------- ---------- ---------- ----------
+#version: 2017-12-10-b
+# - Polish on the email popup form
+# ---------- ---------- ---------- ---------- ----------
 
 # ---------- ---------- ---------- ---------- ----------
 #version: 2017-12-10-a

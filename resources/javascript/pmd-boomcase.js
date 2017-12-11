@@ -95,7 +95,7 @@ $(document).ready(function() {
 		*/
 
 		$( "#header-container" ).show( function() {  });
-		$( "#stylesheet-picker" ).show( function() {  });
+		/* $( "#stylesheet-picker" ).show( function() {  }); */ /* TODO: Reimplement this */
 
 		$( "#case-title" ).show( function() {  });
 
@@ -178,81 +178,17 @@ $(document).ready(function() {
 /* ********** START: Purchase Now - Sending the Email ********** ********** ********** ********** */
 $(document).ready(function() {
 	$( "#case-information #trigger-purchase-now" ).click(function() {
-			event.preventDefault();
-			/* alert('SEND EMAIL'); */ /* Debug */
-			var emailOverlay = `
-				<div style="
-					font-size:						1.2em;
-					text-align:						center;
-
-					background-image:			url(/background.jpg);
-					background-color:			rgb(238, 238, 238);
-					background-color:			rgba(238, 238, 238, 0.5);
-					background-position:	0px 0px;
-					background-repeat:		repeat;
-
-					position:							fixed;
-					top:									0;
-					right:								0;
-					bottom:								0;
-					left:									0;
-
-					padding:							2%;
-
-					z-index:							3000;
-				">
-					<div id="email-overlay" style="
-						margin-bottom:			20px;
-					">
-						<form action="" method="post" enctype="multipart/form-data" style="">
-							<fieldset style="
-								background-color:	white;
-							">
-								<legend><i class="fa fa-shopping-cart" aria-hidden="true"></i> Submit Purchase</legend>
-								<div>
-
-									<div>
-										<label for="customername">Your Name</label>
-										So we know what to call you when we reach out over phone or email.
-										<input id="customername" name="customername" type="text" placeholder="John Doe" value="" />
-									</div>
-
-									<div>
-										<label for="customeremail">Your Email Address</label>
-										We'll contact you here to confirm the order and as we work on the project.
-										<input id="customeremail" name="customeremail" type="text" placeholder="yourname@domain.com" value="" />
-									</div>
-
-									<div>
-										<label for="customercomments">Additional Design Comments or Questions</label>
-										<textarea id="customercomments" name="customercomments" placeholder=""></textarea>
-									</div>
-
-									<div>
-										Please check your email and <b>submit</b> to complete this order.
-										Our expert team will then review your custom design and contact you shortly.
-										Unless there is a major design issue that should be addressed you will receive an invoice for the total along with additional info on the delivery of your order.
-									</div>
-
-									<div>
-										<input type="submit" value="Submit Order" id="submit-order">
-									</div>
-
-								</div>
-							</fieldset>
-						</form>
-					</div>
-					<div style="">
-						<img src="/serve/?blobKey=1d5uVOltBvMtjoasTP73TA==" />
-					</div>
-				</div>
-			`;
+		event.preventDefault();
+		/* alert('SEND EMAIL'); */ /* Debug */
+		/* var emailOverlay = ``; */
 		/* Add the email overlay onto the page */
-		$("body").append(emailOverlay);
+		/* $("body").append(emailOverlay); */
+		$( "#email-overlay-container" ).show();
 	});
 	$( "#email-overlay #submit-order" ).click(function() {
 		event.preventDefault();
 		/* alert('CLOSE'); */
+		$( "#email-overlay-container" ).hide();
 	});
 });
 /* ********** END: Purchase Now - Sending the Email ********** ********** ********** ********** */
