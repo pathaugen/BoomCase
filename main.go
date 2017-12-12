@@ -18,6 +18,7 @@ import (
 func init() {
 	http.HandleFunc("/savecasedriver",	handlerSaveCaseDriver)
 	http.HandleFunc("/saveimage",				handlerSaveImage)
+	http.HandleFunc("/sendemail",				handlerSendEmail)
 	http.HandleFunc("/serve/",					handlerServe)
 	http.HandleFunc("/login",						handlerLogin)
 

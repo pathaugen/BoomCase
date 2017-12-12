@@ -102,6 +102,14 @@ api_version: go1
 # ---------- END: CHANGELOG ---------- ---------- ---------- ----------
 
 
+# ---------- START: Golang Vendored Packages ---------- ---------- ---------- ----------
+# mailgun-go    v1.1.0    https://github.com/mailgun/mailgun-go/releases
+# mailgun log   --        https://github.com/mailgun/log
+# args          v0.1.0    https://github.com/thrawn01/args/releases
+# pkg / errors  v0.8.0    https://github.com/pkg/errors/releases
+# ---------- END: Golang Vendored Packages ---------- ---------- ---------- ----------
+
+
 # ---------- START: handlers ---------- ---------- ---------- ----------
 handlers:
 - url: /resources/stylesheets
