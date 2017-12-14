@@ -24,10 +24,13 @@ func sendEmail(r *http.Request) (string) {
 	// ========== ========== ========== ========== ==========
 
 
+	userEmail := "pathaugen@gmail.com"
+
+
 	// ========== ========== ========== ========== ==========
 	textEmail := `
 BoomCase Email Order
-user@domain.com
+`+userEmail+`
 Thank you for your order!
 Our expert team will review your custom design and contact you shortly.
 Unless there is a major design issue that should be addressed you will receive an invoice for the total along with additional info on the delivery of your order.`
@@ -35,14 +38,21 @@ Unless there is a major design issue that should be addressed you will receive a
 
 	// ========== ========== ========== ========== ==========
 	htmlEmail := `
-<h1>BoomCase Email Order</h1>
-<div>
-	user@domain.com
-</div>
-<div>
-	Thank you for your order!
-	Our expert team will review your custom design and contact you shortly.
-	Unless there is a major design issue that should be addressed you will receive an invoice for the total along with additional info on the delivery of your order.
+<div style="font-size:1.2em;">
+	<div style="background-color:black;color:white;text-align:center;padding:50px 0;">
+		<h1>BoomCase Email Order</h1>
+	</div>
+	<div>
+		`+userEmail+`
+	</div>
+	<div style="padding:50px 0;">
+		Thank you for your order!
+		Our expert team will review your custom design and contact you shortly.
+		Unless there is a major design issue that should be addressed you will receive an invoice for the total along with additional info on the delivery of your order.
+	</div>
+	<div style="background-color:black;color:white;text-align:center;padding:50px 0;">
+		The BoomCase
+	</div>
 </div>`
 	// ========== ========== ========== ========== ==========
 
@@ -78,15 +88,15 @@ Unless there is a major design issue that should be addressed you will receive a
 
 	e := email.NewEmail()
 	e.From = "Production Media Design <postmaster@mg.productionmediadesign.com>"
-	e.To = []string{"pathaugen@gmail.com"}
+	e.To = []string{userEmail}
 	//e.Bcc = []string{"test_bcc@example.com"}
-	e.Cc = []string{"info@productionmediadesign.com"}
+	//e.Cc = []string{"info@productionmediadesign.com"}
 	e.Subject = "BoomCase Email Order for user@domain.com"
 	e.Text = []byte(textEmail)
 	e.HTML = []byte(htmlEmail)
 	//e.AttachFile("test.txt")
-	e.AttachFile("/boomcase-logo.png")
-	e.Send("smtp.mailgun.org:587", smtp.PlainAuth("", "postmaster@mg.productionmediadesign.com", "bbcfbbc6173a7dc7e8f7c22108c47145", "smtp.mailgun.org"))
+	//e.AttachFile("/boomcase-logo.png")
+	e.Send("smtp.mailgun.org:587", smtp.PlainAuth("", "postmaster@mg.productionmediadesign.com", "bbcKEYGOESHERE", "smtp.mailgun.org"))
 	// ========== ========== ========== ========== ==========
 
 
