@@ -72,7 +72,8 @@ func drawPageCase(ctx context.Context, output string, pageRequestedVariables1 st
 			thumbnail, _ := image.ServingURL(ctx, thumbKey, &thumbOpts) // (*url.URL, error)
 			// ========== ========== ========== ========== ==========
 			//output = strings.Replace(output, "<CASEIMAGE>", `<img src="/serve/?blobKey=`+blobkey+`" />`, -1)
-			output = strings.Replace(output, "<CASEIMAGE>", `<img src="`+thumbnail.String()+`" />`, -1)
+			output = strings.Replace(output, "<CASEIMAGE>",          `<img src="`+thumbnail.String()+`" />`, -1)
+      output = strings.Replace(output, "<CASEBLOBKEY>",        c.BlobKey, -1)
 			// ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
 
 			// case.html replacements for this individual case:

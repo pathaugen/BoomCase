@@ -103,10 +103,24 @@ api_version: go1
 
 
 # ---------- START: Golang Vendored Packages ---------- ---------- ---------- ----------
-# mailgun-go    v1.1.0    https://github.com/mailgun/mailgun-go/releases
-# mailgun log   --        https://github.com/mailgun/log
-# args          v0.1.0    https://github.com/thrawn01/args/releases
-# pkg / errors  v0.8.0    https://github.com/pkg/errors/releases
+
+# jordan-wright/email   v2.2      https://github.com/jordan-wright/email/releases
+
+# ---------- START: Mailgun Packages ----------
+# mailgun/mailgun-go    v1.1.0    https://github.com/mailgun/mailgun-go/releases
+# mailgun/log           --        https://github.com/mailgun/log
+# thrawn01/args         v0.1.0    https://github.com/thrawn01/args/releases
+# pkg/errors            v0.8.0    https://github.com/pkg/errors/releases
+# fatih/structs         v1.0.0    https://github.com/fatih/structs
+# drhodes/golorem       --        https://github.com/drhodes/golorem
+# go-ini/ini            v1.32.0   https://github.com/go-ini/ini/releases
+# spf13/cast            v1.1.0    https://github.com/spf13/cast/releases
+# fsnotify/fsnotify     v1.4.2    https://github.com/fsnotify/fsnotify/releases     gopkg.in/fsnotify.v1
+# onsi/gomega           v1.2.0    https://github.com/onsi/gomega/releases           REMOVED
+# onsi/ginkgo           v1.4.0    https://github.com/onsi/ginkgo/releases           REMOVED
+# go-yaml/yaml          --        https://github.com/go-yaml/yaml/tree/v1           gopkg.in/yaml.v2
+# ---------- START: Mailgun Packages ----------
+
 # ---------- END: Golang Vendored Packages ---------- ---------- ---------- ----------
 
 

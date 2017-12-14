@@ -6,6 +6,13 @@ echo ========== ========== ========== ========== ==========
 echo Starting BoomCase on Google App Engine Locally..
 echo ========== ========== ========== ========== ==========
 
+echo ========== ========== ========== ========== ==========
+echo Adding Current Folder to GOPATH
+echo ========== ========== ========== ========== ==========
+
+set GOPATH=%GOPATH%;%cd%
+echo %GOPATH%
+
 rem pause
 
 echo ========== ========== ========== ========== ==========
